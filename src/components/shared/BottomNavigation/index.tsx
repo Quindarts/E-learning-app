@@ -1,12 +1,12 @@
 import DetailsScreen from '@/screen/DetailsScreen';
 import Home from '@/screen/Home';
-import * as React from 'react';
+import theme from '@/theme';
+import { useState } from 'react';
 import { BottomNavigation } from 'react-native-paper';
 
-
 const RoutingApp = () => {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
     { key: 'home', title: 'Favorites', focusedIcon: 'heart', unfocusedIcon: 'heart-outline' },
     { key: 'detail', title: 'detail', focusedIcon: 'album' },
     { key: 'recents', title: 'Recents', focusedIcon: 'history' },
@@ -25,6 +25,8 @@ const RoutingApp = () => {
 
   return (
     <BottomNavigation
+      barStyle={{ backgroundColor: '#ffffff' }}
+      activeColor={theme.colors.primary}
       navigationState={{ index, routes }}
       onIndexChange={setIndex}
       renderScene={renderScene}
