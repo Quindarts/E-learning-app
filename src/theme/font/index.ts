@@ -7,29 +7,68 @@ const baseFont: Required<Pick<MD3Type, 'fontFamily' | 'fontWeight' | 'letterSpac
         ios: 'System',
         default: 'sans-serif',
     }),
-    fontWeight: '500',
+    fontWeight: '400',
     letterSpacing: 0.2,
-    lineHeight: 20,
+    lineHeight: 12.6,
 }
 export const fontConfig: Record<string, MD3Type> = {
     default: {
         ...baseFont,
-        fontSize: 14,
+        fontSize: 10,
     },
-    displaySmall: {
+    bodySmall: {
+        ...baseFont,
+        fontSize: 11.32,
+        fontWeight: '400',
+        lineHeight: 16,
+    },
+    bodyMedium: {
+        ...baseFont,
+        fontSize: 12,
+        fontWeight: '400',
+        lineHeight: 14.52
+    },
+    bodyLarge: {
+        ...baseFont,
+        fontSize: 15,
+        fontWeight: '400',
+        lineHeight: 18.9
+    },
+    labelSmall: {
+        ...baseFont,
+        fontSize: 13,
+        fontWeight: '500',
+        lineHeight: 16.38
+    },
+    labelMedium: {
+        ...baseFont,
+        fontSize: 13.73,
+        fontWeight: '500',
+        lineHeight: 17.3
+    },
+    labelLarge: {
+        ...baseFont,
+        fontSize: 15,
+        fontWeight: '500',
+        lineHeight: 18.9
+    },
+    titleSmall: {
+        ...baseFont,
+        fontSize: 14,
+        fontWeight: '500',
+        lineHeight: 17.64
+    },
+    titleMedium: {
         ...baseFont,
         fontSize: 16,
-        fontWeight: '600'
+        fontWeight: '500',
+        lineHeight: 20.16
     },
-    displayMedium: {
-        ...baseFont,
-        fontSize: 18,
-        fontWeight: '600'
-    },
-    displayLarge: {
+    titleLarge: {
         ...baseFont,
         fontSize: 20,
-        fontWeight: '700'
+        fontWeight: '500',
+        lineHeight: 25.2
     }
 
 

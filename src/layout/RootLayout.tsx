@@ -1,4 +1,3 @@
-import RoutingApp from '@/components/shared/BottomNavigation';
 import { View, StyleSheet } from 'react-native';
 
 interface RootLayoutProps {
