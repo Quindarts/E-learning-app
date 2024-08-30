@@ -112,10 +112,10 @@ function Home() {
         <AvatarPaper variant='md' href={'account'} />
         <AvatarPaper variant='lg' href={'account'} />
       </View>
-      {/* <AccordionPaper expanded={expanded1} handleExpanded={handlePressLesson1} list={list} /> */}
+      <AccordionPaper expanded={expanded1} handleExpanded={handlePressLesson1} list={list} />
       {/* <AccordionPaper expanded={expanded2} handleExpanded={handlePressLesson2} list={list2} /> */}
       {/* <AccordionPaper expanded={expanded3} handleExpanded={handlePressLesson3} list={list3} /> */}
-      <GroupAccordion />
+      {/* <GroupAccordion /> */}
     </RootLayout>
   );
 }
