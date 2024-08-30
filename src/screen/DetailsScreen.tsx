@@ -8,7 +8,7 @@ import { Button, HelperText, IconButton, Text, TextInput } from 'react-native-pa
 function DetailsScreen() {
   return (
     <RootLayout>
-      {/* <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
+      <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
         Hello
       </ButtonPaper>
 
@@ -38,7 +38,7 @@ function DetailsScreen() {
       </ButtonPaper>
       <ButtonPaper labelStyle={{ margin: 0 }} onPress={() => {}} mode='text' size='xl' rounded='xl'>
         Button calls
-      </ButtonPaper> */}
+      </ButtonPaper>
       {/* <Button
         mode='contained'
         style={{ borderRadius: 30 }}
@@ -137,7 +137,7 @@ function DetailsScreen() {
         containerColor='sky'
         onPress={() => {}}
       />
-      
+
       <IconButtonPaper
         icon='cog'
         variant='md'
@@ -146,7 +146,7 @@ function DetailsScreen() {
         rounded='sm'
         onPress={() => {}}
       />
-      
+
       <IconButtonPaper
         icon='bell'
         variant='md'
@@ -154,7 +154,7 @@ function DetailsScreen() {
         containerColor='gray'
         onPress={() => {}}
       />
-      
+
       <IconButtonPaper
         icon={'pencil'}
         variant='lg'
@@ -181,7 +181,7 @@ function DetailsScreen() {
         right={<TextInput.Icon icon='eye' />}
       />
       {/* search with icon  */}
-      <TextInput
+      {/* <TextInput
         label='Search'
         outlineStyle={{ borderRadius: 100 }}
         mode='outlined'
@@ -194,7 +194,7 @@ function DetailsScreen() {
             style={{ backgroundColor: '#0f3975' }}
           />
         }
-      />
+      /> */}
     </RootLayout>
   );
 }

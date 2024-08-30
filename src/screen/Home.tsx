@@ -1,7 +1,6 @@
 import AccordionPaper from '@/components/ui/Accordion';
 import AvatarPaper from '@/components/ui/Avatar';
 import ChipPaper from '@/components/ui/Chip';
-import GroupAccordion from '@/components/ui/GroupAccordion';
 import RootLayout from '@/layout/RootLayout';
 import theme from '@/theme';
 import { MaterialIcons } from '@expo/vector-icons';
