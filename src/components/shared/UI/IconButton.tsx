@@ -6,11 +6,3 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   rounded?: boolean;
   onPress?: () => void;
 }
-
-export default function CustomButton({ children, size, ...rest }: ButtonProps) {
-  return (
-    <Button mode='contained'>
-      {children}
-    </Button>
-  );
-}
