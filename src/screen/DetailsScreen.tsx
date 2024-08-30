@@ -3,11 +3,7 @@ import IconButtonPaper from '@/components/ui/IconButton';
 import RootLayout from '@/layout/RootLayout';
 import React from 'react';
 import { View } from 'react-native';
-<<<<<<< HEAD
 import { Button, HelperText, IconButton, Text, TextInput } from 'react-native-paper';
-=======
-import { IconButton, Text } from 'react-native-paper';
->>>>>>> dev
 
 function DetailsScreen() {
   return (
