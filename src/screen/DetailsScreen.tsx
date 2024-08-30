@@ -1,4 +1,5 @@
 import ButtonPaper from '@/components/ui/Button';
+import IconButtonPaper from '@/components/ui/IconButton';
 import RootLayout from '@/layout/RootLayout';
 import React from 'react';
 import { View } from 'react-native';
@@ -34,7 +35,7 @@ function DetailsScreen() {
       >
         Button chat
       </ButtonPaper>
-      <ButtonPaper onPress={() => {}} mode='text' size='xl' rounded='xl'>
+      <ButtonPaper labelStyle={{ margin: 0 }} onPress={() => {}} mode='text' size='xl' rounded='xl'>
         Button calls
       </ButtonPaper>
       {/* <Button
@@ -112,8 +113,32 @@ function DetailsScreen() {
         style={{ borderRadius: 5 }}
         onPress={() => {}}
       /> */}
-      <IconButton icon='arrow-left' size={14} onPress={() => {}} />
-      <IconButton
+      <IconButtonPaper
+        icon={'arrow-left'}
+        variant='sm'
+        rounded='sm'
+        iconColor='black'
+        containerColor='gray'
+        onPress={() => {}}
+      />
+      <IconButtonPaper
+        icon={'arrow-left'}
+        iconColor='black'
+        containerColor='default'
+        variant='sm'
+        onPress={() => {}}
+      />
+      {/* <IconButton icon='arrow-left' size={14} onPress={() => {}} /> */}
+      <IconButtonPaper
+        icon={'magnify'}
+        // mode='contained-tonal'
+        variant='lg'
+        rounded='md'
+        iconColor='default'
+        containerColor='sky'
+        onPress={() => {}}
+      />
+      {/* <IconButton
         icon='magnify'
         // mode='contained'
         size={20}
@@ -121,26 +146,49 @@ function DetailsScreen() {
         containerColor='#0f3975'
         style={{ borderRadius: 114, margin: 0 }}
         onPress={() => {}}
+      /> */}
+      <IconButtonPaper
+        icon='cog'
+        variant='md'
+        iconColor='sky'
+        containerColor='cyan'
+        rounded='sm'
+        onPress={() => {}}
       />
       {/* i - 1 */}
-      <IconButton
+      {/* <IconButton
         icon='cog'
         size={18}
         iconColor='#0f3975'
         containerColor='#bad5fc'
         style={{ borderRadius: 5 }}
         onPress={() => {}}
-      />
+      /> */}
       {/* i - 1 */}
-      <IconButton
+      <IconButtonPaper
+        icon='bell'
+        variant='md'
+        iconColor='sky'
+        containerColor='gray'
+        onPress={() => {}}
+      />
+      {/* <IconButton
         icon='bell'
         size={18}
         iconColor='#0f3975'
         containerColor='#f1f1f1'
         style={{ borderRadius: 5 }}
         onPress={() => {}}
-      />
+      /> */}
       {/* </View> */}
+      <IconButtonPaper
+        icon={'pencil'}
+        variant='lg'
+        rounded='md'
+        iconColor='default'
+        containerColor='stone'
+        onPress={() => {}}
+      />
     </RootLayout>
   );
 }
