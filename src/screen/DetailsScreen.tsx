@@ -181,7 +181,7 @@ function DetailsScreen() {
         right={<TextInput.Icon icon='eye' />}
       />
       {/* search with icon  */}
-      <TextInput
+      {/* <TextInput
         label='Search'
         outlineStyle={{ borderRadius: 100 }}
         mode='outlined'
@@ -194,7 +194,7 @@ function DetailsScreen() {
             style={{ backgroundColor: '#0f3975' }}
           />
         }
-      />
+      /> */}
     </RootLayout>
   );
 }
