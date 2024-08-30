@@ -1,3 +1,4 @@
+import ButtonPaper from '@/components/ui/Button';
 import RootLayout from '@/layout/RootLayout';
 import React from 'react';
 import { View } from 'react-native';
@@ -6,9 +7,37 @@ import { Button, IconButton, Text } from 'react-native-paper';
 function DetailsScreen() {
   return (
     <RootLayout>
-      {/* <View> */}
-      {/* b - 1 */}
-      <Button
+      <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
+        Hello
+      </ButtonPaper>
+      <ButtonPaper onPress={() => {}} uppercase={true} mode='contained' size='lg' rounded='xl'>
+        Button sign in
+      </ButtonPaper>
+      <ButtonPaper
+        onPress={() => {}}
+        uppercase={true}
+        mode='contained-tonal'
+        size='sm'
+        rounded='xl'
+      >
+        Button Skip
+      </ButtonPaper>
+      <ButtonPaper onPress={() => {}} mode='outlined' size='sm' rounded='xl'>
+        Button tags
+      </ButtonPaper>
+      <ButtonPaper
+        labelStyle={{ margin: 0 }}
+        onPress={() => {}}
+        mode='contained'
+        size='xl'
+        rounded='xl'
+      >
+        Button chat
+      </ButtonPaper>
+      <ButtonPaper onPress={() => {}} mode='text' size='xl' rounded='xl'>
+        Button calls
+      </ButtonPaper>
+      {/* <Button
         mode='contained'
         style={{ borderRadius: 30 }}
         contentStyle={{ paddingVertical: 16, paddingHorizontal: 56 }}
@@ -19,32 +48,23 @@ function DetailsScreen() {
       >
         Button continue
       </Button>
-      {/* b - 2 */}
       <Button
         mode='contained'
-        // style={{ borderRadius: 5, paddingVertical: 16, paddingHorizontal: 56 }}
         style={{ borderRadius: 30 }}
         contentStyle={{ paddingVertical: 16, paddingHorizontal: 50 }}
         labelStyle={{ margin: 0 }}
         uppercase={true}
-        // compact={true}
         onPress={() => {}}
-        // compact={true}
       >
         Button sign in
       </Button>
-      {/* b - 3 */}
       <Button
         mode='contained-tonal'
         style={{
           borderRadius: 40,
-          // backgroundColor: 'F1F1F1',
-          // backgroundColor: '#f1f1f1',
-          // alignSelf: 'flex-start'
         }}
         labelStyle={{
           margin: 0,
-          // color: 'black',
         }}
         contentStyle={{ minWidth: 0, padding: 14 }}
         uppercase={true}
@@ -52,12 +72,10 @@ function DetailsScreen() {
       >
         Button Skip
       </Button>
-      {/* b - 4 */}
       <Button
         mode='outlined'
         style={{
           borderRadius: 100,
-          // borderColor: '#dedede',
         }}
         contentStyle={{
           paddingVertical: 8,
@@ -68,7 +86,6 @@ function DetailsScreen() {
       >
         Button tags
       </Button>
-      {/* b - 5 */}
       <Button
         mode='contained'
         style={{ borderRadius: 22.68 }}
@@ -78,7 +95,6 @@ function DetailsScreen() {
       >
         Button Chat
       </Button>
-      {/* b - 5 */}
       <Button
         mode='text'
         style={{ borderRadius: 22.68, backgroundColor: '#f4f9ff' }}
@@ -88,7 +104,6 @@ function DetailsScreen() {
       >
         Button Calls
       </Button>
-      {/* i - 1 */}
       <IconButton
         mode='contained'
         icon='arrow-left'
@@ -96,10 +111,8 @@ function DetailsScreen() {
         // containerColor='#f1f1f1'
         style={{ borderRadius: 5 }}
         onPress={() => {}}
-      />
-      {/* i - 2 */}
+      /> */}
       <IconButton icon='arrow-left' size={14} onPress={() => {}} />
-      {/* i - 3 */}
       <IconButton
         icon='magnify'
         // mode='contained'
