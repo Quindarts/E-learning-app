@@ -1,15 +1,21 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
-import { Button, ButtonProps, IconButton, Text } from 'react-native-paper';
-
+import { Chip, ChipProps, Text } from 'react-native-paper';
 enum SIZE {
   SMALL = 'sm',
   LARGE = 'md',
   MEDIUM = 'lg',
   XL = 'xl',
 }
-interface ButtonPropsType extends ButtonProps {
+
+interface ChipPropsType extends ChipProps {
+  className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   rounded?: 'sm' | 'md' | 'lg' | 'xl';
+  icon: string;
+  bgColor?: string;
+  borderColor?: string;
+  textColor?: string;
 }
 const roundedStyle = (text: string) => {
   let value = 4;
@@ -29,6 +35,7 @@ const roundedStyle = (text: string) => {
   }
   return value;
 };
+
 const sizeStyle = (text: string) => {
   let value = {
     paddingVertical: 8,
@@ -64,19 +71,36 @@ const sizeStyle = (text: string) => {
   return value;
 };
 
-const ButtonPaper: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
-  const { children, rounded = 'sm', size = `sm`, ...rest } = props;
+const ChipPaper: React.FC<ChipPropsType> = (props) => {
+  const { children, bgColor, borderColor, textColor, icon, ...rest } = props;
+
   return (
-    <Button
+    <Chip
       style={{
-        borderRadius: roundedStyle(rounded),
+        backgroundColor: bgColor,
+        borderRadius: 10,
       }}
-      contentStyle={sizeStyle(size)}
+      textStyle={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 10,
+        color: textColor,
+        paddingHorizontal: 18,
+        paddingVertical: 2,
+      }}
       {...rest}
     >
-      {children}
-    </Button>
+      <MaterialIcons width={24} icon={icon} />
+      <Text
+        style={{
+          color: textColor,
+        }}
+        variant='bodyLarge'
+      >
+        {`${children}`}
+      </Text>
+    </Chip>
   );
 };
 
-export default ButtonPaper;
+export default ChipPaper;

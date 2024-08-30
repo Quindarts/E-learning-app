@@ -3,7 +3,11 @@ import IconButtonPaper from '@/components/ui/IconButton';
 import RootLayout from '@/layout/RootLayout';
 import React from 'react';
 import { View } from 'react-native';
+<<<<<<< HEAD
 import { Button, HelperText, IconButton, Text, TextInput } from 'react-native-paper';
+=======
+import { IconButton, Text } from 'react-native-paper';
+>>>>>>> dev
 
 function DetailsScreen() {
   return (
@@ -11,6 +15,7 @@ function DetailsScreen() {
       {/* <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
         Hello
       </ButtonPaper>
+
       <ButtonPaper onPress={() => {}} uppercase={true} mode='contained' size='lg' rounded='xl'>
         Button sign in
       </ButtonPaper>
