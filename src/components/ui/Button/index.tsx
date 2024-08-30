@@ -9,7 +9,6 @@ enum SIZE {
 }
 
 interface ButtonPropsType extends ButtonProps {
-  className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   rounded?: 'sm' | 'md' | 'lg' | 'xl';
   // hasIcon?: boolean;

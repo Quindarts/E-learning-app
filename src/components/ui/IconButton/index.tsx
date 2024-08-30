@@ -7,10 +7,9 @@ enum SIZE_ICON_BUTTON {
 }
 
 interface IconButtonType extends IconButtonProps {
-  className?: string;
   variant?: 'sm' | 'md' | 'lg'; // size icon
   rounded?: 'sm' | 'md';
-  iconColor?: 'sky' | 'gray' | 'stone' | 'cyan' | 'black' | 'default';
+  iconColor?: 'sky' | 'gray' | 'stone' | 'cyan' | 'black' | 'default'; // default is white
   containerColor?: 'sky' | 'gray' | 'stone' | 'cyan' | 'black' | 'default';
 }
 

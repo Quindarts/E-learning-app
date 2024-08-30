@@ -3,12 +3,12 @@ import IconButtonPaper from '@/components/ui/IconButton';
 import RootLayout from '@/layout/RootLayout';
 import React from 'react';
 import { View } from 'react-native';
-import { Button, IconButton, Text } from 'react-native-paper';
+import { Button, HelperText, IconButton, Text, TextInput } from 'react-native-paper';
 
 function DetailsScreen() {
   return (
     <RootLayout>
-      <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
+      {/* <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
         Hello
       </ButtonPaper>
       <ButtonPaper onPress={() => {}} uppercase={true} mode='contained' size='lg' rounded='xl'>
@@ -37,7 +37,7 @@ function DetailsScreen() {
       </ButtonPaper>
       <ButtonPaper labelStyle={{ margin: 0 }} onPress={() => {}} mode='text' size='xl' rounded='xl'>
         Button calls
-      </ButtonPaper>
+      </ButtonPaper> */}
       {/* <Button
         mode='contained'
         style={{ borderRadius: 30 }}
@@ -113,7 +113,7 @@ function DetailsScreen() {
         style={{ borderRadius: 5 }}
         onPress={() => {}}
       /> */}
-      <IconButtonPaper
+      {/* <IconButtonPaper
         icon={'arrow-left'}
         variant='sm'
         rounded='sm'
@@ -128,25 +128,15 @@ function DetailsScreen() {
         variant='sm'
         onPress={() => {}}
       />
-      {/* <IconButton icon='arrow-left' size={14} onPress={() => {}} /> */}
       <IconButtonPaper
         icon={'magnify'}
-        // mode='contained-tonal'
         variant='lg'
         rounded='md'
         iconColor='default'
         containerColor='sky'
         onPress={() => {}}
       />
-      {/* <IconButton
-        icon='magnify'
-        // mode='contained'
-        size={20}
-        iconColor='#fff'
-        containerColor='#0f3975'
-        style={{ borderRadius: 114, margin: 0 }}
-        onPress={() => {}}
-      /> */}
+      
       <IconButtonPaper
         icon='cog'
         variant='md'
@@ -155,16 +145,7 @@ function DetailsScreen() {
         rounded='sm'
         onPress={() => {}}
       />
-      {/* i - 1 */}
-      {/* <IconButton
-        icon='cog'
-        size={18}
-        iconColor='#0f3975'
-        containerColor='#bad5fc'
-        style={{ borderRadius: 5 }}
-        onPress={() => {}}
-      /> */}
-      {/* i - 1 */}
+      
       <IconButtonPaper
         icon='bell'
         variant='md'
@@ -172,15 +153,7 @@ function DetailsScreen() {
         containerColor='gray'
         onPress={() => {}}
       />
-      {/* <IconButton
-        icon='bell'
-        size={18}
-        iconColor='#0f3975'
-        containerColor='#f1f1f1'
-        style={{ borderRadius: 5 }}
-        onPress={() => {}}
-      /> */}
-      {/* </View> */}
+      
       <IconButtonPaper
         icon={'pencil'}
         variant='lg'
@@ -188,6 +161,38 @@ function DetailsScreen() {
         iconColor='default'
         containerColor='stone'
         onPress={() => {}}
+      /> */}
+      <TextInput
+        mode='outlined'
+        outlineStyle={{ borderRadius: 6 }}
+        // dense={true}
+        textColor='#858383'
+      />
+      <HelperText type='error' visible={true}>
+        This field is required
+      </HelperText>
+      <TextInput
+        mode='outlined'
+        outlineStyle={{ borderRadius: 6 }}
+        dense={true}
+        textColor='#858383'
+        secureTextEntry={true}
+        right={<TextInput.Icon icon='eye' />}
+      />
+      {/* search with icon  */}
+      <TextInput
+        label='Search'
+        outlineStyle={{ borderRadius: 100 }}
+        mode='outlined'
+        left={
+          <TextInput.Icon
+            icon={require('@/picture/iconamoon--search-light.png')}
+            // icon={{ uri: ''}}
+            color={'#fff'}
+            size={18}
+            style={{ backgroundColor: '#0f3975' }}
+          />
+        }
       />
     </RootLayout>
   );
