@@ -65,7 +65,7 @@ function AccordionPaper(props: any) {
                       gap: 15,
                     }}
                   >
-                    <MaterialIcons name={value.icon} size={24} color={theme.colors.primary} />
+                    {/* <MaterialIcons name={value.icon} size={24} color={theme.colors.primary} /> */}
                     <Text
                       style={{
                         color: '#333',

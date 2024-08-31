@@ -1,9 +1,12 @@
 import ButtonPaper from '@/components/ui/Button';
 import IconButtonPaper from '@/components/ui/IconButton';
+import TextInputPaper from '@/components/ui/TextInput';
 import RootLayout from '@/layout/RootLayout';
+import { Formik, FormikProps, FormikValues, yupToFormErrors } from 'formik';
 import React from 'react';
 import { View } from 'react-native';
 import { Button, HelperText, IconButton, Text, TextInput } from 'react-native-paper';
+import * as Yup from 'yup';
 
 function DetailsScreen() {
   return (
@@ -137,7 +140,7 @@ function DetailsScreen() {
         containerColor='sky'
         onPress={() => {}}
       />
-      
+
       <IconButtonPaper
         icon='cog'
         variant='md'
@@ -146,7 +149,7 @@ function DetailsScreen() {
         rounded='sm'
         onPress={() => {}}
       />
-      
+
       <IconButtonPaper
         icon='bell'
         variant='md'
@@ -154,7 +157,7 @@ function DetailsScreen() {
         containerColor='gray'
         onPress={() => {}}
       />
-      
+
       <IconButtonPaper
         icon={'pencil'}
         variant='lg'
@@ -163,23 +166,35 @@ function DetailsScreen() {
         containerColor='stone'
         onPress={() => {}}
       /> */}
-      <TextInput
-        mode='outlined'
-        outlineStyle={{ borderRadius: 6 }}
-        // dense={true}
-        textColor='#858383'
-      />
-      <HelperText type='error' visible={true}>
-        This field is required
-      </HelperText>
-      <TextInput
-        mode='outlined'
-        outlineStyle={{ borderRadius: 6 }}
-        dense={true}
-        textColor='#858383'
-        secureTextEntry={true}
-        right={<TextInput.Icon icon='eye' />}
-      />
+      {/* <Formik>
+
+      </Formik> */}
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        validationSchema={Yup.object().shape({
+          email: Yup.string().email().required(),
+          password: Yup.string().required(),
+        })}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        {({ handleSubmit }: FormikProps<FormValues>) => (
+          <View>
+            <TextInputPaper name='email' placeholder='Email' mode='outlined' textColor='primary' />
+            <TextInputPaper
+              name='password'
+              placeholder='Password'
+              mode='outlined'
+              textColor='primary'
+              isSecure={true}
+              icon='eye'
+            />
+            <Button onPress={() => handleSubmit()}>Submit</Button>
+          </View>
+        )}
+      </Formik>
+
       {/* search with icon  */}
       {/* <TextInput
         label='Search'
@@ -197,6 +212,11 @@ function DetailsScreen() {
       /> */}
     </RootLayout>
   );
+}
+
+interface FormValues {
+  email: string;
+  password: string;
 }
 
 export default DetailsScreen;
