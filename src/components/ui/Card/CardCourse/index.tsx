@@ -1,14 +1,15 @@
+import theme from '@/theme';
 import { View } from 'react-native';
-import { Card, CardProps, Paragraph, ProgressBar, Title } from 'react-native-paper';
+import { Text, Card, CardProps, Paragraph, ProgressBar, Title } from 'react-native-paper';
 
 interface CourseCardProps {
   title: string;
-  designer: string;
+  creater: string;
   progress: number;
   imageSource: any; // Adjust type based on your image source
 }
 
-const CourseCardPaper: React.FC<CourseCardProps> = ({ title, designer, progress, imageSource }) => {
+const CourseCardPaper: React.FC<CourseCardProps> = ({ title, creater, progress, imageSource }) => {
   return (
     <Card
       elevation={2}
@@ -25,10 +26,21 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({ title, designer, progress,
           style={{ borderRadius: 10, flex: 3, height: 'auto' }}
         />
         <Card.Content style={{ paddingLeft: 0, paddingRight: 0, flex: 7 }}>
-          <Title style={{ fontSize: 18, fontWeight: 700, margin: 0 }}>{title}</Title>
-          <Paragraph style={{ fontSize: 12, marginTop: 0 }}>By {designer}</Paragraph>
-          <Paragraph style={{ textAlign: 'right' }}>{progress}% Done</Paragraph>
-          <ProgressBar progress={progress / 100} color='#0f3975' />
+          <Text
+            variant='titleSmall'
+            style={{
+              // fontSize: 18,
+              fontWeight: 700,
+              // margin: 0,
+            }}
+          >
+            {title}
+          </Text>
+          <Text style={{ fontSize: 9, color: '#7E7E7E', marginBottom: 15 }}>By {creater}</Text>
+          <Text style={{ textAlign: 'right', fontSize: 9, color: '#858383' }}>
+            {progress}% Done
+          </Text>
+          <ProgressBar progress={progress / 100} color={theme.colors.primary} />
         </Card.Content>
       </View>
     </Card>

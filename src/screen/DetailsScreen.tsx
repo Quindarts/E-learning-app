@@ -1,5 +1,6 @@
 import ButtonPaper from '@/components/ui/Button';
 import CourseCardPaper from '@/components/ui/Card/CardCourse';
+import CardNotification from '@/components/ui/Card/CardNotification';
 import CardProjectPaper from '@/components/ui/Card/CardProject/Index';
 import ProjectCardPaper from '@/components/ui/Card/CardProject/Index';
 import CardReview from '@/components/ui/Card/CardReview';
@@ -221,47 +222,72 @@ function DetailsScreen() {
         }
       /> */}
 
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+      {/* <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
         <CardProjectPaper
           imageSource={{ uri: 'https://picsum.photos/700' }}
           title='Project Title'
-          designer='Designer Name'
+          creater='Designer Name'
           initialRating={3}
           progress={50}
         />
         <CardProjectPaper
           imageSource={{ uri: 'https://picsum.photos/700' }}
           title='Project Title'
-          designer='Designer Name'
+          creater='Designer Name'
           initialRating={3}
           progress={80}
         />
-      </View>
+      </View> */}
 
-      <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+      {/* <View style={{ flexDirection: 'column' }}>
         <CourseCardPaper
           imageSource={{ uri: 'https://picsum.photos/700' }}
           title='Course Title'
-          designer='Designer Name'
+          creater='Designer Name'
           progress={50}
         />
         <CourseCardPaper
           imageSource={{ uri: 'https://picsum.photos/700' }}
           title='Course Title'
-          designer='Designer Name'
+          creater='Designer Name'
           progress={50}
         />
-      </View>
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+      </View> */}
+      {/* <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
         <CardReview
           name='John Doe'
           reviewText='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
           initialRating={5}
+          imgURL={'account'}
         />
         <CardReview
           name='John Doe'
           reviewText='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
           initialRating={5}
+          imgURL={'account'}
+        />
+      </View> */}
+      <View>
+        <CardNotification
+          icon={'check'}
+          title='Transaction Completed'
+          message='Lorem Ipsum Dummy Text Here'
+          color='success'
+          time='2m ago'
+        />
+        <CardNotification
+          icon={'thumb-up'}
+          title='Lesson Completed'
+          message='Lorem Ipsum Dummy Text Here'
+          color='warning'
+          time='2m ago'
+        />
+        <CardNotification
+          icon={'file-document-outline'}
+          title='Due Date Is near'
+          message='Lorem Ipsum Dummy Text Here'
+          color='error'
+          time='2m ago'
         />
       </View>
     </RootLayout>
