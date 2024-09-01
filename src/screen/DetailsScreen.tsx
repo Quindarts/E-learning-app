@@ -1,17 +1,21 @@
 import ButtonPaper from '@/components/ui/Button';
+import CourseCardPaper from '@/components/ui/Card/CardCourse';
+import CardProjectPaper from '@/components/ui/Card/CardProject/Index';
+import ProjectCardPaper from '@/components/ui/Card/CardProject/Index';
+import CardReview from '@/components/ui/Card/CardReview';
 import IconButtonPaper from '@/components/ui/IconButton';
 import TextInputPaper from '@/components/ui/TextInput';
 import RootLayout from '@/layout/RootLayout';
 import { Formik, FormikProps, FormikValues, yupToFormErrors } from 'formik';
 import React from 'react';
 import { View } from 'react-native';
-import { Button, HelperText, IconButton, Text, TextInput } from 'react-native-paper';
+import { Button, Card, HelperText, IconButton, Text, TextInput } from 'react-native-paper';
 import * as Yup from 'yup';
 
 function DetailsScreen() {
   return (
     <RootLayout>
-      <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
+      {/* <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
         Hello
       </ButtonPaper>
 
@@ -41,7 +45,7 @@ function DetailsScreen() {
       </ButtonPaper>
       <ButtonPaper labelStyle={{ margin: 0 }} onPress={() => {}} mode='text' size='xl' rounded='xl'>
         Button calls
-      </ButtonPaper>
+      </ButtonPaper> */}
       {/* <Button
         mode='contained'
         style={{ borderRadius: 30 }}
@@ -166,10 +170,8 @@ function DetailsScreen() {
         containerColor='stone'
         onPress={() => {}}
       /> */}
-      {/* <Formik>
 
-      </Formik> */}
-      <Formik
+      {/* <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={Yup.object().shape({
           email: Yup.string().email().required(),
@@ -181,8 +183,16 @@ function DetailsScreen() {
       >
         {({ handleSubmit }: FormikProps<FormValues>) => (
           <View>
-            <TextInputPaper name='email' placeholder='Email' mode='outlined' textColor='primary' />
             <TextInputPaper
+              isRequired={true}
+              label='Email'
+              name='email'
+              placeholder='Email'
+              mode='outlined'
+              textColor='primary'
+            />
+            <TextInputPaper
+              label='Password'
               name='password'
               placeholder='Password'
               mode='outlined'
@@ -193,7 +203,7 @@ function DetailsScreen() {
             <Button onPress={() => handleSubmit()}>Submit</Button>
           </View>
         )}
-      </Formik>
+      </Formik> */}
 
       {/* search with icon  */}
       {/* <TextInput
@@ -210,6 +220,50 @@ function DetailsScreen() {
           />
         }
       /> */}
+
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+        <CardProjectPaper
+          imageSource={{ uri: 'https://picsum.photos/700' }}
+          title='Project Title'
+          designer='Designer Name'
+          initialRating={3}
+          progress={50}
+        />
+        <CardProjectPaper
+          imageSource={{ uri: 'https://picsum.photos/700' }}
+          title='Project Title'
+          designer='Designer Name'
+          initialRating={3}
+          progress={80}
+        />
+      </View>
+
+      <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+        <CourseCardPaper
+          imageSource={{ uri: 'https://picsum.photos/700' }}
+          title='Course Title'
+          designer='Designer Name'
+          progress={50}
+        />
+        <CourseCardPaper
+          imageSource={{ uri: 'https://picsum.photos/700' }}
+          title='Course Title'
+          designer='Designer Name'
+          progress={50}
+        />
+      </View>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+        <CardReview
+          name='John Doe'
+          reviewText='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          initialRating={5}
+        />
+        <CardReview
+          name='John Doe'
+          reviewText='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          initialRating={5}
+        />
+      </View>
     </RootLayout>
   );
 }
