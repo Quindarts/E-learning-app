@@ -11,7 +11,7 @@ import * as Yup from 'yup';
 function DetailsScreen() {
   return (
     <RootLayout>
-      {/* <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
+      <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
         Hello
       </ButtonPaper>
 
@@ -41,83 +41,9 @@ function DetailsScreen() {
       </ButtonPaper>
       <ButtonPaper labelStyle={{ margin: 0 }} onPress={() => {}} mode='text' size='xl' rounded='xl'>
         Button calls
-      </ButtonPaper> */}
-      {/* <Button
-        mode='contained'
-        style={{ borderRadius: 30 }}
-        contentStyle={{ paddingVertical: 16, paddingHorizontal: 56 }}
-        labelStyle={{ margin: 0 }}
-        uppercase={true}
-        // compact={true}
-        onPress={() => {}}
-      >
-        Button continue
-      </Button>
-      <Button
-        mode='contained'
-        style={{ borderRadius: 30 }}
-        contentStyle={{ paddingVertical: 16, paddingHorizontal: 50 }}
-        labelStyle={{ margin: 0 }}
-        uppercase={true}
-        onPress={() => {}}
-      >
-        Button sign in
-      </Button>
-      <Button
-        mode='contained-tonal'
-        style={{
-          borderRadius: 40,
-        }}
-        labelStyle={{
-          margin: 0,
-        }}
-        contentStyle={{ minWidth: 0, padding: 14 }}
-        uppercase={true}
-        onPress={() => {}}
-      >
-        Button Skip
-      </Button>
-      <Button
-        mode='outlined'
-        style={{
-          borderRadius: 100,
-        }}
-        contentStyle={{
-          paddingVertical: 8,
-          paddingHorizontal: 14,
-        }}
-        labelStyle={{ margin: 0, color: 'black' }}
-        onPress={() => {}}
-      >
-        Button tags
-      </Button>
-      <Button
-        mode='contained'
-        style={{ borderRadius: 22.68 }}
-        contentStyle={{ paddingVertical: 14, paddingHorizontal: 60 }}
-        labelStyle={{ margin: 0 }}
-        onPress={() => {}}
-      >
-        Button Chat
-      </Button>
-      <Button
-        mode='text'
-        style={{ borderRadius: 22.68, backgroundColor: '#f4f9ff' }}
-        contentStyle={{ paddingVertical: 14, paddingHorizontal: 60 }}
-        labelStyle={{ margin: 0 }}
-        onPress={() => {}}
-      >
-        Button Calls
-      </Button>
-      <IconButton
-        mode='contained'
-        icon='arrow-left'
-        size={18}
-        // containerColor='#f1f1f1'
-        style={{ borderRadius: 5 }}
-        onPress={() => {}}
-      /> */}
-      {/* <IconButtonPaper
+      </ButtonPaper>
+
+      <IconButtonPaper
         icon={'arrow-left'}
         variant='sm'
         rounded='sm'
@@ -165,10 +91,7 @@ function DetailsScreen() {
         iconColor='default'
         containerColor='stone'
         onPress={() => {}}
-      /> */}
-      {/* <Formik>
-
-      </Formik> */}
+      />
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={Yup.object().shape({
