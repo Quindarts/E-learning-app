@@ -1,17 +1,22 @@
-import theme from '@/theme';
-import { MaterialIcons } from '@expo/vector-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { List, Text } from 'react-native-paper';
+import { MaterialIcons } from '@expo/vector-icons';
+import theme from '@/theme';
 
-function AccordionPaper(props: any) {
-  const { list, handleExpanded, expanded } = props;
+function AccordionGroupPaper({ list }: any) {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const handleExpanded = (id: string) => {
+    setExpandedId((prevId) => (prevId === id ? null : id));
+  };
 
   return (
     <List.Section
       style={{
         flex: 1,
         width: '100%',
+        minHeight: 165,
       }}
       title=''
     >
@@ -34,8 +39,8 @@ function AccordionPaper(props: any) {
             color: '#333',
           }}
           title={item.name}
-          expanded={expanded}
-          onPress={handleExpanded}
+          expanded={expandedId === item.id}
+          onPress={() => handleExpanded(item.id)}
         >
           <View
             style={{
@@ -83,4 +88,4 @@ function AccordionPaper(props: any) {
   );
 }
 
-export default AccordionPaper;
+export default AccordionGroupPaper;

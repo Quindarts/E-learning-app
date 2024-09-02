@@ -1,6 +1,8 @@
 import AccordionPaper from '@/components/ui/Accordion';
 import AvatarPaper from '@/components/ui/Avatar';
 import ChipPaper from '@/components/ui/Chip';
+import AccordionGroupPaper from '@/components/ui/GroupAccordion';
+import GroupAccordion from '@/components/ui/GroupAccordion';
 import RootLayout from '@/layout/RootLayout';
 import theme from '@/theme';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -34,41 +36,21 @@ function Home() {
       ],
     },
   ];
-  const list2 = [
+  const data = [
     {
-      name: 'Lesson 2 : App Design Process',
+      id: '1',
+      name: 'Accordion 1',
       details: [
-        {
-          content: 'Lorem ipsum dolor sit amet consectetur.',
-          icon: 'play-circle-filled',
-        },
-        {
-          content: 'Lorem ipsum dolor sit amet consectetur.',
-          icon: 'article',
-        },
-        {
-          content: 'Lorem ipsum dolor sit amet consectetur.',
-          icon: 'play-circle-filled',
-        },
+        { id: '1-1', icon: 'star', content: 'Item 1' },
+        { id: '1-2', icon: 'favorite', content: 'Item 2' },
       ],
     },
-  ];
-  const list3 = [
     {
-      name: 'Lesson 3 : App Design Process',
+      id: '2',
+      name: 'Accordion 2',
       details: [
-        {
-          content: 'Lorem ipsum dolor sit amet consectetur.',
-          icon: 'play-circle-filled',
-        },
-        {
-          content: 'Lorem ipsum dolor sit amet consectetur.',
-          icon: 'article',
-        },
-        {
-          content: 'Lorem ipsum dolor sit amet consectetur.',
-          icon: 'play-circle-filled',
-        },
+        { id: '2-1', icon: 'face', content: 'Item 3' },
+        { id: '2-2', icon: 'home', content: 'Item 4' },
       ],
     },
   ];
@@ -85,36 +67,34 @@ function Home() {
       <Text variant='titleMedium'>titleMedium text</Text>
       <Text variant='titleLarge'>titleLarge text</Text>
       <Text variant='titleLarge'>Chip</Text>
-      <View style={{ display: 'flex', flexDirection: 'row' }}>
+      <View style={{ gap: 10 }}>
         <ChipPaper
           onPress={() => {}}
           mode='outlined'
           bgColor='#FFFFFF'
-          icon='flat-color-icons:google'
+          icon='google'
           textColor='#0000008A'
         >
-          Sign Up with Google{' '}
+          Sign Up with Google
         </ChipPaper>
         <ChipPaper
           onPress={() => {}}
           bgColor='#1877F2'
           mode='outlined'
-          icon='formkit:facebook'
+          icon='facebook'
           textColor='white'
         >
-          Sign Up with Facebook{' '}
+          Sign Up with Facebook
         </ChipPaper>
       </View>
 
       <View style={{ display: 'flex', flexDirection: 'row' }}>
-        <AvatarPaper variant='sm' href={'account'} />
-        <AvatarPaper variant='md' href={'account'} />
-        <AvatarPaper variant='lg' href={'account'} />
+        <AvatarPaper variant='sm' href={{ uri: 'https://picsum.photos/700' }} />
+        <AvatarPaper variant='md' href={{ uri: 'https://picsum.photos/700' }} />
+        <AvatarPaper variant='lg' href={{ uri: 'https://picsum.photos/700' }} />
       </View>
       <AccordionPaper expanded={expanded1} handleExpanded={handlePressLesson1} list={list} />
-      {/* <AccordionPaper expanded={expanded2} handleExpanded={handlePressLesson2} list={list2} /> */}
-      {/* <AccordionPaper expanded={expanded3} handleExpanded={handlePressLesson3} list={list3} /> */}
-      {/* <GroupAccordion /> */}
+      <AccordionGroupPaper list={data} />
     </RootLayout>
   );
 }

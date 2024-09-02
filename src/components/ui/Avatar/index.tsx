@@ -4,7 +4,7 @@ import { Avatar, AvatarImageProps } from 'react-native-paper';
 
 interface AvatarPropsType extends AvatarImageProps {
   variant: 'sm' | 'md' | 'lg';
-  href: string;
+  href: any;
 }
 enum SIZE {
   SMALL = 'sm',
@@ -28,6 +28,6 @@ const sizeStyle = (text: string): number => {
 };
 function AvatarPaper(props: Pick<AvatarPropsType, 'href' | 'variant'>) {
   const { href, variant = 'sm', ...rest } = props;
-  return <Avatar.Icon size={sizeStyle(variant)} icon={href} {...rest} />;
+  return <Avatar.Image size={sizeStyle(variant)} source={href} {...rest} />;
 }
 export default AvatarPaper;

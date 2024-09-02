@@ -1,4 +1,4 @@
-import { MaterialIcons } from '@expo/vector-icons';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import React from 'react';
 import { Chip, ChipProps, Text } from 'react-native-paper';
 enum SIZE {
@@ -12,7 +12,7 @@ interface ChipPropsType extends ChipProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   rounded?: 'sm' | 'md' | 'lg' | 'xl';
-  icon: string;
+  icon: any;
   bgColor?: string;
   borderColor?: string;
   textColor?: string;
@@ -79,21 +79,22 @@ const ChipPaper: React.FC<ChipPropsType> = (props) => {
       style={{
         backgroundColor: bgColor,
         borderRadius: 10,
-      }}
-      textStyle={{
-        display: 'flex',
+        flexDirection: 'row',
         alignItems: 'center',
         gap: 10,
+      }}
+      textStyle={{
         color: textColor,
         paddingHorizontal: 18,
         paddingVertical: 2,
       }}
       {...rest}
     >
-      <MaterialIcons width={24} icon={icon} />
+      <FontAwesome6 name={icon} size={18} />
       <Text
         style={{
           color: textColor,
+          marginLeft: 6,
         }}
         variant='bodyLarge'
       >

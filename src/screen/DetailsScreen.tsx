@@ -16,10 +16,9 @@ import * as Yup from 'yup';
 function DetailsScreen() {
   return (
     <RootLayout>
-      {/* <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
+      <ButtonPaper onPress={() => {}} mode='contained' size='sm' rounded='sm'>
         Hello
       </ButtonPaper>
-
       <ButtonPaper onPress={() => {}} uppercase={true} mode='contained' size='lg' rounded='xl'>
         Button sign in
       </ButtonPaper>
@@ -46,83 +45,8 @@ function DetailsScreen() {
       </ButtonPaper>
       <ButtonPaper labelStyle={{ margin: 0 }} onPress={() => {}} mode='text' size='xl' rounded='xl'>
         Button calls
-      </ButtonPaper> */}
-      {/* <Button
-        mode='contained'
-        style={{ borderRadius: 30 }}
-        contentStyle={{ paddingVertical: 16, paddingHorizontal: 56 }}
-        labelStyle={{ margin: 0 }}
-        uppercase={true}
-        // compact={true}
-        onPress={() => {}}
-      >
-        Button continue
-      </Button>
-      <Button
-        mode='contained'
-        style={{ borderRadius: 30 }}
-        contentStyle={{ paddingVertical: 16, paddingHorizontal: 50 }}
-        labelStyle={{ margin: 0 }}
-        uppercase={true}
-        onPress={() => {}}
-      >
-        Button sign in
-      </Button>
-      <Button
-        mode='contained-tonal'
-        style={{
-          borderRadius: 40,
-        }}
-        labelStyle={{
-          margin: 0,
-        }}
-        contentStyle={{ minWidth: 0, padding: 14 }}
-        uppercase={true}
-        onPress={() => {}}
-      >
-        Button Skip
-      </Button>
-      <Button
-        mode='outlined'
-        style={{
-          borderRadius: 100,
-        }}
-        contentStyle={{
-          paddingVertical: 8,
-          paddingHorizontal: 14,
-        }}
-        labelStyle={{ margin: 0, color: 'black' }}
-        onPress={() => {}}
-      >
-        Button tags
-      </Button>
-      <Button
-        mode='contained'
-        style={{ borderRadius: 22.68 }}
-        contentStyle={{ paddingVertical: 14, paddingHorizontal: 60 }}
-        labelStyle={{ margin: 0 }}
-        onPress={() => {}}
-      >
-        Button Chat
-      </Button>
-      <Button
-        mode='text'
-        style={{ borderRadius: 22.68, backgroundColor: '#f4f9ff' }}
-        contentStyle={{ paddingVertical: 14, paddingHorizontal: 60 }}
-        labelStyle={{ margin: 0 }}
-        onPress={() => {}}
-      >
-        Button Calls
-      </Button>
-      <IconButton
-        mode='contained'
-        icon='arrow-left'
-        size={18}
-        // containerColor='#f1f1f1'
-        style={{ borderRadius: 5 }}
-        onPress={() => {}}
-      /> */}
-      {/* <IconButtonPaper
+      </ButtonPaper>
+      <IconButtonPaper
         icon={'arrow-left'}
         variant='sm'
         rounded='sm'
@@ -145,7 +69,6 @@ function DetailsScreen() {
         containerColor='sky'
         onPress={() => {}}
       />
-
       <IconButtonPaper
         icon='cog'
         variant='md'
@@ -154,7 +77,6 @@ function DetailsScreen() {
         rounded='sm'
         onPress={() => {}}
       />
-
       <IconButtonPaper
         icon='bell'
         variant='md'
@@ -162,7 +84,6 @@ function DetailsScreen() {
         containerColor='gray'
         onPress={() => {}}
       />
-
       <IconButtonPaper
         icon={'pencil'}
         variant='lg'
@@ -170,9 +91,11 @@ function DetailsScreen() {
         iconColor='default'
         containerColor='stone'
         onPress={() => {}}
-      /> */}
+      />
+      {/* <Formik>
 
-      {/* <Formik
+      </Formik> */}
+      <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={Yup.object().shape({
           email: Yup.string().email().required(),
@@ -204,8 +127,8 @@ function DetailsScreen() {
             <Button onPress={() => handleSubmit()}>Submit</Button>
           </View>
         )}
-      </Formik> */}
-
+      </Formik>
+      
       {/* search with icon  */}
       {/* <TextInput
         label='Search'
@@ -221,8 +144,7 @@ function DetailsScreen() {
           />
         }
       /> */}
-
-      {/* <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
         <CardProjectPaper
           imageSource={{ uri: 'https://picsum.photos/700' }}
           title='Project Title'
@@ -237,9 +159,8 @@ function DetailsScreen() {
           initialRating={3}
           progress={80}
         />
-      </View> */}
-
-      {/* <View style={{ flexDirection: 'column' }}>
+      </View>
+      <View style={{ flexDirection: 'column' }}>
         <CourseCardPaper
           imageSource={{ uri: 'https://picsum.photos/700' }}
           title='Course Title'
@@ -252,8 +173,8 @@ function DetailsScreen() {
           creater='Designer Name'
           progress={50}
         />
-      </View> */}
-      {/* <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+      </View>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
         <CardReview
           name='John Doe'
           reviewText='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
@@ -266,7 +187,7 @@ function DetailsScreen() {
           initialRating={5}
           imgURL={'account'}
         />
-      </View> */}
+      </View>
       <View>
         <CardNotification
           icon={'check'}
