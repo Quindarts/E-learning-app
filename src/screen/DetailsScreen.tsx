@@ -5,6 +5,7 @@ import CardProjectPaper from '@/components/ui/Card/CardProject/Index';
 import ProjectCardPaper from '@/components/ui/Card/CardProject/Index';
 import CardReview from '@/components/ui/Card/CardReview';
 import IconButtonPaper from '@/components/ui/IconButton';
+import SearchBarPaper from '@/components/ui/SearchBar';
 import TextInputPaper from '@/components/ui/TextInput';
 import RootLayout from '@/layout/RootLayout';
 import { Formik, FormikProps, FormikValues, yupToFormErrors } from 'formik';
@@ -267,7 +268,7 @@ function DetailsScreen() {
           imgURL={'account'}
         />
       </View> */}
-      <View>
+      {/* <View>
         <CardNotification
           icon={'check'}
           title='Transaction Completed'
@@ -289,7 +290,8 @@ function DetailsScreen() {
           color='error'
           time='2m ago'
         />
-      </View>
+      </View> */}
+      <SearchBarPaper />
     </RootLayout>
   );
 }
