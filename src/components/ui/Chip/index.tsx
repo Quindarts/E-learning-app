@@ -1,5 +1,7 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import React from 'react';
+import { Image, View } from 'react-native';
 import { Chip, ChipProps, Text } from 'react-native-paper';
 enum SIZE {
   SMALL = 'sm',
@@ -12,10 +14,11 @@ interface ChipPropsType extends ChipProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   rounded?: 'sm' | 'md' | 'lg' | 'xl';
-  icon: any;
+  icon?: any;
   bgColor?: string;
   borderColor?: string;
   textColor?: string;
+  iconImage?: any;
 }
 const roundedStyle = (text: string) => {
   let value = 4;
@@ -72,29 +75,47 @@ const sizeStyle = (text: string) => {
 };
 
 const ChipPaper: React.FC<ChipPropsType> = (props) => {
-  const { children, bgColor, borderColor, textColor, icon, ...rest } = props;
+  const { children, bgColor, borderColor, iconImage, textColor, icon, ...rest } = props;
 
   return (
     <Chip
       style={{
         backgroundColor: bgColor,
         borderRadius: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 10,
+        margin: 0,
+        padding: 0,
       }}
       textStyle={{
         color: textColor,
-        paddingHorizontal: 18,
-        paddingVertical: 2,
+        width: '100%',
+        alignItems: 'center',
+        margin: 0,
+        height: 30,
       }}
       {...rest}
     >
-      <FontAwesome6 name={icon} size={18} />
+      <View
+        style={{
+          width: 50,
+          flexDirection: 'column',
+          marginTop: 10,
+        }}
+      >
+        {iconImage ? (
+          <Image
+            source={require('../../../../assets/google.png')}
+            style={{ width: 24, height: 24, marginHorizontal: 'auto' }}
+          />
+        ) : (
+          <MaterialIcons style={{ color: textColor, textAlign: 'center' }} name={icon} size={24} />
+        )}
+      </View>
       <Text
         style={{
           color: textColor,
-          marginLeft: 6,
+          textAlign: 'center',
+          fontSize: 16,
+          fontWeight: '600',
         }}
         variant='bodyLarge'
       >

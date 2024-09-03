@@ -44,15 +44,12 @@ export default function TextInputPaper(props: TextFieldProps) {
     ...rest
   } = props;
   const [visible, setVisible] = useState(false);
-  // field is an object that contains name, value, onChange, onBlur
-  // meta is an object that contains error, touched, value
-  // helpers is an object that contains setValue, setTouched, setError
-  const [field, meta, helpers] = useField(name); // name is name of the field in formik
+  const [field, meta, helpers] = useField(name);
 
   return (
     <View style={{ marginVertical: 5 }}>
       {label ? (
-        <Text variant='labelLarge' style={{ fontWeight: 700 }}>
+        <Text variant='labelLarge' style={{ fontWeight: 700, marginBottom: 10 }}>
           {label}{' '}
           <Text variant='labelLarge' style={{ color: 'red' }}>
             {isRequired ? '*' : ''}
@@ -66,7 +63,6 @@ export default function TextInputPaper(props: TextFieldProps) {
         dense={dense}
         secureTextEntry={isSecure && !visible}
         value={field.value}
-        // onChangeText={field.onChange(name)}
         onChangeText={helpers.setValue}
         onBlur={field.onBlur(name)}
         error={meta.error && meta.touched ? true : false}
