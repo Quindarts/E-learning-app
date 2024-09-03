@@ -12,8 +12,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    paddingHorizontal: 28,
-    paddingVertical: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
     // backgroundColor: '#fff',
   },
 });

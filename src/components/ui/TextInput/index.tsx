@@ -1,11 +1,14 @@
 import { useField } from 'formik';
 import { useState } from 'react';
-import { HelperText, TextInput, TextInputProps } from 'react-native-paper';
+import { View } from 'react-native';
+import { Text, HelperText, TextInput, TextInputProps } from 'react-native-paper';
 
 interface TextFieldProps extends TextInputProps {
+  isRequired?: boolean;
+  label?: string;
   mode?: 'flat' | 'outlined';
   icon?: string;
-  dense?: boolean;
+  dense?: boolean; // nhỏ gọn
   textColor?: string;
   name: string;
   isSecure?: boolean;
@@ -30,6 +33,8 @@ const textColorMapping = (text: string) => {
 };
 export default function TextInputPaper(props: TextFieldProps) {
   const {
+    isRequired = false,
+    label,
     mode = 'outlined',
     dense = false,
     textColor = '#858383',
@@ -39,10 +44,21 @@ export default function TextInputPaper(props: TextFieldProps) {
     ...rest
   } = props;
   const [visible, setVisible] = useState(false);
-  const [field, meta, helpers] = useField(name);
+  // field is an object that contains name, value, onChange, onBlur
+  // meta is an object that contains error, touched, value
+  // helpers is an object that contains setValue, setTouched, setError
+  const [field, meta, helpers] = useField(name); // name is name of the field in formik
 
   return (
-    <>
+    <View style={{ marginVertical: 5 }}>
+      {label ? (
+        <Text variant='labelLarge' style={{ fontWeight: 700 }}>
+          {label}{' '}
+          <Text variant='labelLarge' style={{ color: 'red' }}>
+            {isRequired ? '*' : ''}
+          </Text>
+        </Text>
+      ) : null}
       <TextInput
         mode={mode}
         textColor={textColorMapping(textColor)}
@@ -69,6 +85,6 @@ export default function TextInputPaper(props: TextFieldProps) {
           {meta.error}
         </HelperText>
       ) : null}
-    </>
+    </View>
   );
 }

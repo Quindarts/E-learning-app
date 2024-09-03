@@ -89,9 +89,9 @@ function Home() {
       </View>
 
       <View style={{ display: 'flex', flexDirection: 'row' }}>
-        <AvatarPaper variant='sm' href={'account'} />
-        <AvatarPaper variant='md' href={'account'} />
-        <AvatarPaper variant='lg' href={'account'} />
+        <AvatarPaper variant='sm' href={{ uri: 'https://picsum.photos/700' }} />
+        <AvatarPaper variant='md' href={{ uri: 'https://picsum.photos/700' }} />
+        <AvatarPaper variant='lg' href={{ uri: 'https://picsum.photos/700' }} />
       </View>
       <AccordionPaper expanded={expanded1} handleExpanded={handlePressLesson1} list={list} />
       <AccordionGroupPaper list={data} />
