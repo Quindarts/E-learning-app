@@ -8,6 +8,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '@/screen/Home';
 import LoginScreen from '@/screen/auth/Login';
 import OnBoardingScreen from '@/screen/onBoarding';
+import SignUp from '@/screen/auth/SignUp';
+import ResetPassword from '@/screen/auth/ResetPassword';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -23,7 +25,8 @@ export default function App() {
               component={OnBoardingScreen}
               options={{ headerShown: false }}
             />
-
+            <Stack.Screen name='SignUp' component={SignUp} options={{ headerShown: false }} />
+            <Stack.Screen name='ResetPassword' component={ResetPassword} />
             <Stack.Screen name='Home' component={Home} />
           </Stack.Navigator>
         </NavigationContainer>

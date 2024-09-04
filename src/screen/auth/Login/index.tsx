@@ -2,6 +2,7 @@ import ButtonPaper from '@/components/ui/Button';
 import ChipPaper from '@/components/ui/Chip';
 import TextInputPaper from '@/components/ui/TextInput';
 import theme from '@/theme';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { Formik, FormikProps } from 'formik';
 import React from 'react';
 import { View } from 'react-native';
@@ -13,7 +14,8 @@ interface FormValues {
   password: string;
 }
 
-function LoginScreen({ navigation }: any) {
+function LoginScreen() {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
     <View
       style={{
@@ -79,6 +81,9 @@ function LoginScreen({ navigation }: any) {
                   marginTop: 4,
                   fontSize: 12,
                   color: '#6C6C6C',
+                }}
+                onPress={() => {
+                  navigation.navigate('ResetPassword');
                 }}
               >
                 Forget password?
@@ -156,7 +161,9 @@ function LoginScreen({ navigation }: any) {
                 color: theme.colors.primary,
                 marginLeft: 10,
               }}
-              onPress={() => {}}
+              onPress={() => {
+                navigation.navigate('SignUp');
+              }}
             >
               Sign Up here
             </Text>

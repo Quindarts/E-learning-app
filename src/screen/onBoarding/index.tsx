@@ -1,9 +1,11 @@
 import ButtonPaper from '@/components/ui/Button';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 
-function OnBoardingScreen({ navigation }: any) {
+function OnBoardingScreen() {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
     <View
       style={{
@@ -46,14 +48,19 @@ function OnBoardingScreen({ navigation }: any) {
       >
         <ButtonPaper
           mode='contained'
-          onPress={() => navigation.replace('Login')}
+          onPress={() => navigation.navigate('Login')}
           style={{ width: 160 }}
           size='lg'
           rounded='sm'
         >
           SIGN IN
         </ButtonPaper>
-        <ButtonPaper style={{ width: 160 }} onPress={() => {}} size='lg' mode='outlined'>
+        <ButtonPaper
+          style={{ width: 160 }}
+          onPress={() => navigation.navigate('SignUp')}
+          size='lg'
+          mode='outlined'
+        >
           SIGN UP
         </ButtonPaper>
       </View>

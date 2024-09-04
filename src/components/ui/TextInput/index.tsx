@@ -47,9 +47,9 @@ export default function TextInputPaper(props: TextFieldProps) {
   const [field, meta, helpers] = useField(name);
 
   return (
-    <View style={{ marginVertical: 5 }}>
+    <View style={{ marginTop: 4 }}>
       {label ? (
-        <Text variant='labelLarge' style={{ fontWeight: 700, marginBottom: 10 }}>
+        <Text variant='labelLarge' style={{ fontWeight: 700 }}>
           {label}{' '}
           <Text variant='labelLarge' style={{ color: 'red' }}>
             {isRequired ? '*' : ''}
@@ -77,7 +77,7 @@ export default function TextInputPaper(props: TextFieldProps) {
         {...rest}
       />
       {meta.error && meta.touched ? (
-        <HelperText type='error' visible={true}>
+        <HelperText type='error' visible={true} style={{ paddingBottom: 0 }}>
           {meta.error}
         </HelperText>
       ) : null}
