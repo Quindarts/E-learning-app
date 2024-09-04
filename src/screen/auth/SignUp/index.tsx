@@ -19,15 +19,16 @@ export default function SignUp() {
         backgroundColor: 'white',
       }}
     >
-      {/* <IconButtonPaper
+      {/* Chả hiểu sao mà dùng postion thì không bo góc được mà phải style */}
+      <IconButtonPaper
         icon={'arrow-left'}
         variant='lg'
         // rounded='sm'
         iconColor='black'
         containerColor='gray'
-        style={{ position: 'absolute', top: 20, left: 20 }}
+        style={{ position: 'absolute', top: 30, left: 10, overflow: 'hidden', borderRadius: 5 }}
         onPress={() => navigation.goBack()}
-      /> */}
+      />
       {/* Title  */}
       <View
         style={{
@@ -164,16 +165,6 @@ export default function SignUp() {
           </Text>
         </Text>
       </View>
-      {/* Chả hiểu sao mà dùng postion thì không bo góc được mà phải style */}
-      <IconButtonPaper
-        icon={'arrow-left'}
-        variant='lg'
-        // rounded='sm'
-        iconColor='black'
-        containerColor='gray'
-        style={{ position: 'absolute', top: 30, left: 10, overflow: 'hidden', borderRadius: 5 }}
-        onPress={() => navigation.goBack()}
-      />
     </View>
   );
 }
