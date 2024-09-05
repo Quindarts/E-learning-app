@@ -11,6 +11,7 @@ import OnBoardingScreen from '@/screen/onBoarding';
 import SignUp from '@/screen/auth/SignUp';
 import ResetPassword from '@/screen/auth/ResetPassword';
 import SettingsScreen from '@/screen/settings';
+import ProfileScreen from '@/screen/Profile';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -35,7 +36,8 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen name='Home' component={Home} /> */}
-            <Stack.Screen name='Settings' component={SettingsScreen} />
+            {/* <Stack.Screen name='Settings' component={SettingsScreen} /> */}
+            <Stack.Screen name='Profile' component={ProfileScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>

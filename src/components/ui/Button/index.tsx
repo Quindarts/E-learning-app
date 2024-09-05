@@ -10,6 +10,7 @@ enum SIZE {
 interface ButtonPropsType extends ButtonProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   rounded?: 'sm' | 'md' | 'lg' | 'xl';
+  textColors?: string;
 }
 const roundedStyle = (text: string) => {
   let value = 4;
@@ -65,7 +66,7 @@ const sizeStyle = (text: string) => {
 };
 
 const ButtonPaper: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
-  const { children, rounded = 'sm', size = `sm`, ...rest } = props;
+  const { children, rounded = 'sm', size = `sm`, textColors, ...rest } = props;
   return (
     <Button
       style={{
@@ -73,6 +74,8 @@ const ButtonPaper: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
       }}
       contentStyle={sizeStyle(size)}
       {...rest}
+      // if textColors is passed then use it else use default
+      textColor={textColors ? textColors : ''}
     >
       {children}
     </Button>

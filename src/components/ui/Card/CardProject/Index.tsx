@@ -28,7 +28,7 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
         // resizeMode='cover' // Điều chỉnh cách hình ảnh được hiển thị
         // resizeMethod='scale' // Điều chỉnh cách hình ảnh được xử lý khi thay đổi kích thước
         source={imageSource}
-        style={{ borderRadius: 10, width: '100%', height: (screenWidth - 20) / 2 }} // trừ padding / 2
+        style={{ borderRadius: 10, width: '100%', height: (screenWidth - 30) / 2 }} // trừ padding / 2
       />
       <Card.Content style={{ paddingLeft: 0, paddingRight: 0, marginTop: 10 }}>
         <View

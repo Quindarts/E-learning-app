@@ -1,5 +1,5 @@
 import RoutingApp from '@/components/shared/BottomNavigation';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, StatusBar } from 'react-native';
 
 interface RootLayoutProps {
   children: React.ReactNode;
