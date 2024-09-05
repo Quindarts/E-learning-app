@@ -10,6 +10,7 @@ import LoginScreen from '@/screen/auth/Login';
 import OnBoardingScreen from '@/screen/onBoarding';
 import SignUp from '@/screen/auth/SignUp';
 import ResetPassword from '@/screen/auth/ResetPassword';
+import SettingsScreen from '@/screen/settings';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -18,8 +19,10 @@ export default function App() {
     <SafeAreaProvider style={styles.container}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName={isLoggedIn ? 'Home' : 'OnBoarding'}>
-            <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
+          <Stack.Navigator
+          // initialRouteName={isLoggedIn ? 'Home' : 'OnBoarding'}
+          >
+            {/* <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
             <Stack.Screen
               name='OnBoarding'
               component={OnBoardingScreen}
@@ -31,7 +34,8 @@ export default function App() {
               component={ResetPassword}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name='Home' component={Home} />
+            <Stack.Screen name='Home' component={Home} /> */}
+            <Stack.Screen name='Settings' component={SettingsScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
