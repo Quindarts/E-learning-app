@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosConfig = axios.create({
-  baseURL: ``,
+  baseURL: 'https://reqres.in/api',
   headers: {
     'Content-Type': 'application/json',
   },

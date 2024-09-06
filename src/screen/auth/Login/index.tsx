@@ -1,6 +1,8 @@
 import ButtonPaper from '@/components/ui/Button';
 import ChipPaper from '@/components/ui/Chip';
 import TextInputPaper from '@/components/ui/TextInput';
+import authService from '@/services/authService';
+import useUserStore from '@/store/auth/useUserStore';
 import theme from '@/theme';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { Formik, FormikProps } from 'formik';
@@ -16,6 +18,10 @@ interface FormValues {
 
 function LoginScreen() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+  // zustand state
+  const login = useUserStore((state) => state.login);
+  const user = useUserStore((state) => state.user);
+
   return (
     <View
       style={{
@@ -56,13 +62,22 @@ function LoginScreen() {
         }}
       >
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ email: 'eve.holt@reqres.in', password: 'cityslicka' }}
           validationSchema={Yup.object().shape({
             email: Yup.string().email().required(),
             password: Yup.string().required(),
           })}
-          onSubmit={(values) => {
-            console.log(values);
+          onSubmit={async (values) => {
+            const { email, password } = values;
+            const response: any = await authService.login(email, password);
+            // console.log(response.token);
+            // login(response);\
+            if (response.token) {
+              login(response);
+              console.log('user', user);
+              navigation.navigate('Settings');
+            }
+            // update state
           }}
         >
           {({ handleSubmit }: FormikProps<FormValues>) => (

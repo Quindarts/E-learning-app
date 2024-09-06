@@ -23,8 +23,8 @@ export default function App() {
           <Stack.Navigator
           // initialRouteName={isLoggedIn ? 'Home' : 'OnBoarding'}
           >
-            {/* <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
-            <Stack.Screen
+            <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
+            {/* <Stack.Screen
               name='OnBoarding'
               component={OnBoardingScreen}
               options={{ headerShown: false }}
@@ -36,8 +36,8 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen name='Home' component={Home} /> */}
-            {/* <Stack.Screen name='Settings' component={SettingsScreen} /> */}
-            <Stack.Screen name='Profile' component={ProfileScreen} />
+            <Stack.Screen name='Settings' component={SettingsScreen} />
+            {/* <Stack.Screen name='Profile' component={ProfileScreen} /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
