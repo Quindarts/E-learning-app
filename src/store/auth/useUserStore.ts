@@ -8,9 +8,15 @@ interface UserState {
   setUser: (user: any) => void;
 }
 
-const useUserStore = create<UserState>((set) => ({
+interface UserAction {
+  signup: (user: any) => void;
+  logout: () => void;
+  setUser: (user: any) => void;
+}
+
+const useUserStore = create<UserState & UserAction>((set) => ({
   user: null,
-  signup: (user: any) =>
+  signup: (user) =>
     set(
       produce((state) => {
         state.user = user;
@@ -22,7 +28,7 @@ const useUserStore = create<UserState>((set) => ({
         state.user = null;
       }),
     ),
-  setUser: (user: any) =>
+  setUser: (user) =>
     set(
       produce((state) => {
         state.user = user;

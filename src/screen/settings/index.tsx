@@ -6,6 +6,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import theme from '@/theme';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import authService from '@/services/authService';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type ItemData = {
   id: string;

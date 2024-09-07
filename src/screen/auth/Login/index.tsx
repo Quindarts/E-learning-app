@@ -1,9 +1,11 @@
 import ButtonPaper from '@/components/ui/Button';
 import ChipPaper from '@/components/ui/Chip';
 import TextInputPaper from '@/components/ui/TextInput';
+import { useAuth } from '@/hook/useAuth';
 import authService from '@/services/authService';
 import useUserStore from '@/store/auth/useUserStore';
 import theme from '@/theme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { Formik, FormikProps } from 'formik';
 import React from 'react';
@@ -19,9 +21,8 @@ interface FormValues {
 function LoginScreen() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   // zustand state
-  const login = useUserStore((state) => state.login);
   const user = useUserStore((state) => state.user);
-
+  const { handleLogin } = useAuth();
   return (
     <View
       style={{
@@ -69,12 +70,8 @@ function LoginScreen() {
           })}
           onSubmit={async (values) => {
             const { email, password } = values;
-            const response: any = await authService.login(email, password);
-            // console.log(response.token);
-            // login(response);\
+            const response: any = await handleLogin({ email, password });
             if (response.token) {
-              login(response);
-              console.log('user', user);
               navigation.navigate('Settings');
             }
             // update state
@@ -89,7 +86,13 @@ function LoginScreen() {
                 mode='outlined'
                 textColor='primary'
               />
-              <TextInputPaper label='Password' icon='eye' name='password' placeholder='Password' />
+              <TextInputPaper
+                label='Password'
+                icon='eye'
+                name='password'
+                placeholder='Password'
+                isSecure={true}
+              />
               <Text
                 style={{
                   textAlign: 'right',
