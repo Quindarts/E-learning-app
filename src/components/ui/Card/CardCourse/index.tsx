@@ -22,7 +22,8 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({ title, creater, progress, 
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 10, padding: 10 }}>
         <Card.Cover
           source={imageSource}
-          resizeMode='cover'
+          resizeMode='stretch'
+          resizeMethod='auto'
           style={{ borderRadius: 10, flex: 3, height: 'auto' }}
         />
         <Card.Content style={{ paddingLeft: 0, paddingRight: 0, flex: 7 }}>
@@ -36,7 +37,7 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({ title, creater, progress, 
           >
             {title}
           </Text>
-          <Text style={{ fontSize: 9, color: '#7E7E7E', marginBottom: 15 }}>By {creater}</Text>
+          <Text style={{ fontSize: 9, color: '#7E7E7E', marginBottom: 20 }}>By {creater}</Text>
           <Text style={{ textAlign: 'right', fontSize: 9, color: '#858383' }}>
             {progress}% Done
           </Text>
