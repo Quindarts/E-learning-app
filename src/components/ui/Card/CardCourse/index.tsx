@@ -14,7 +14,7 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({ title, creater, progress, 
     <Card
       elevation={2}
       style={{
-        marginVertical: 10,
+        marginBottom: 10,
         width: '100%',
         backgroundColor: '#F4F9FF',
       }}
@@ -22,7 +22,7 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({ title, creater, progress, 
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 10, padding: 10 }}>
         <Card.Cover
           source={imageSource}
-          resizeMode='stretch'
+          resizeMode='cover'
           resizeMethod='auto'
           style={{ borderRadius: 10, flex: 3, height: 'auto' }}
         />

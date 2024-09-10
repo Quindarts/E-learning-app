@@ -3,7 +3,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Navigation from '@/navigation';
 import theme from '@/theme';
 import { StatusBar, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigationState } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '@/screen/Home';
 import LoginScreen from '@/screen/auth/Login';
@@ -13,7 +13,30 @@ import ResetPassword from '@/screen/auth/ResetPassword';
 import SettingsScreen from '@/screen/settings';
 import ProfileScreen from '@/screen/Profile';
 import MyCoursesScreen from '@/screen/myCourses';
-
+import { View } from 'react-native';
+import IconButtonPaper from '@/components/ui/IconButton';
+const ButtonRight = () => {
+  const routeName = useNavigationState((state) => state.routes[state.index].name);
+  return (
+    <View style={{ flexDirection: 'row' }}>
+      <IconButtonPaper
+        icon='cog'
+        variant='md'
+        iconColor='sky'
+        containerColor={routeName === 'Settings' ? 'cyan' : 'gray'}
+        rounded='sm'
+        onPress={() => {}}
+      />
+      <IconButtonPaper
+        icon='bell'
+        variant='md'
+        iconColor='sky'
+        containerColor={routeName === 'Notification' ? 'cyan' : 'gray'}
+        onPress={() => {}}
+      />
+    </View>
+  );
+};
 const Stack = createNativeStackNavigator();
 export default function App() {
   let isLoggedIn = false;
@@ -22,7 +45,18 @@ export default function App() {
       <PaperProvider theme={theme}>
         <NavigationContainer>
           <Stack.Navigator
-          // initialRouteName={isLoggedIn ? 'Home' : 'OnBoarding'}
+            screenOptions={{
+              title: 'My Courses',
+              headerStyle: {
+                backgroundColor: '#fff',
+              },
+              headerTintColor: '#000',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerShadowVisible: false,
+            }}
+            // initialRouteName={isLoggedIn ? 'Home' : 'OnBoarding'}
           >
             {/* <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} /> */}
             {/* <Stack.Screen
@@ -37,8 +71,12 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen name='Home' component={Home} /> */}
-            {/* <Stack.Screen name='Settings' component={SettingsScreen} /> */}
-            {/* <Stack.Screen name='Profile' component={ProfileScreen} /> */}
+            <Stack.Screen
+              name='Settings'
+              component={SettingsScreen}
+              options={{ headerRight: () => <ButtonRight /> }}
+            />
+            <Stack.Screen name='Profile' component={ProfileScreen} />
             <Stack.Screen name='MyCourses' component={MyCoursesScreen} />
           </Stack.Navigator>
         </NavigationContainer>
