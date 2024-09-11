@@ -15,6 +15,7 @@ import ProfileScreen from '@/screen/Profile';
 import MyCoursesScreen from '@/screen/myCourses';
 import { View } from 'react-native';
 import IconButtonPaper from '@/components/ui/IconButton';
+import RoutingApp from '@/components/shared/BottomNavigation';
 const ButtonRight = () => {
   const routeName = useNavigationState((state) => state.routes[state.index].name);
   return (
@@ -46,7 +47,6 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
-              title: 'My Courses',
               headerStyle: {
                 backgroundColor: '#fff',
               },
@@ -58,8 +58,8 @@ export default function App() {
             }}
             // initialRouteName={isLoggedIn ? 'Home' : 'OnBoarding'}
           >
-            {/* <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} /> */}
-            {/* <Stack.Screen
+            <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
+            <Stack.Screen
               name='OnBoarding'
               component={OnBoardingScreen}
               options={{ headerShown: false }}
@@ -70,14 +70,18 @@ export default function App() {
               component={ResetPassword}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name='Home' component={Home} /> */}
+            <Stack.Screen
+              name='RoutingApp'
+              component={RoutingApp}
+              options={{ headerShown: false }}
+            />
             <Stack.Screen
               name='Settings'
               component={SettingsScreen}
               options={{ headerRight: () => <ButtonRight /> }}
             />
-            <Stack.Screen name='Profile' component={ProfileScreen} />
-            <Stack.Screen name='MyCourses' component={MyCoursesScreen} />
+            {/* <Stack.Screen name='Profile' component={ProfileScreen} />
+            <Stack.Screen name='MyCourses' component={MyCoursesScreen} /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
