@@ -6,13 +6,20 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  return <ScrollView contentContainerStyle={styles.container}>{children}</ScrollView>;
+  return (
+    <View style={styles.wrapper}>
+      <ScrollView contentContainerStyle={styles.container}>{children}</ScrollView>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  wrapper: {
     flex: 1,
-    padding: 20,
+  },
+  container: {
+    paddingHorizontal: 20,
+    paddingTop: 10,
     backgroundColor: '#fff',
   },
 });

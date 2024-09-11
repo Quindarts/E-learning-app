@@ -4,6 +4,9 @@ import { FlatList, Image, StyleSheet, TouchableOpacity, View } from 'react-nativ
 import { Button, Icon, Text } from 'react-native-paper';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import theme from '@/theme';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
+import authService from '@/services/authService';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type ItemData = {
   id: string;
@@ -109,13 +112,36 @@ const Item = ({ item, onPress, backgroundColor, textColor, icon }: ItemProps) =>
 );
 
 export default function SettingsScreen() {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const controller = (title: string) => {
+    switch (title) {
+      case 'Profile':
+        return 'Profile';
+      case 'Payment Option':
+        return 'PaymentOption';
+      case 'My Certificates':
+        return 'MyCertificates';
+      case 'Terms & Conditions':
+        return 'TermsConditions';
+      case 'Help Center':
+        return 'HelpCenter';
+      case 'Invite friends':
+        return 'InviteFriends';
+      case 'Logout': {
+        authService.logout();
+        navigation.navigate('Login');
+      }
+      default:
+        return 'Profile';
+    }
+  };
   const renderItem = ({ item }: { item: ItemData }) => {
     const backgroundColor = 'transparent';
     const color = '#202244';
     return (
       <Item
         item={item}
-        onPress={() => {}}
+        onPress={() => controller(item.title)}
         backgroundColor={backgroundColor}
         textColor={color}
         icon={item.icon}

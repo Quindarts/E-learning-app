@@ -69,7 +69,7 @@ export default function TextInputPaper(props: TextFieldProps) {
         right={
           icon ? (
             <TextInput.Icon
-              icon={visible ? 'eye-off' : 'eye'}
+              icon={visible ? 'eye' : 'eye-off'}
               onPress={() => setVisible(!visible)}
             />
           ) : null

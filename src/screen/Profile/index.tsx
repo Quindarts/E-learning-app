@@ -35,17 +35,17 @@ const skills: skillsData[] = [
 
 export default function ProfileScreen() {
   return (
-    // <RootLayout>
-    <ScrollView
-      style={{
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#fff',
-      }}
-    >
+    <RootLayout>
+      {/* // <ScrollView
+    //   style={{
+    //     flex: 1,
+    //     padding: 20,
+    //     backgroundColor: '#fff',
+    //   }}
+    // > */}
       <View
         style={{
-          paddingTop: 10,
+          paddingTop: 40,
         }}
       >
         {/* content */}
@@ -161,7 +161,7 @@ export default function ProfileScreen() {
           />
         </View>
       </View>
-    </ScrollView>
-    // </RootLayout>
+      {/* </ScrollView> */}
+    </RootLayout>
   );
 }

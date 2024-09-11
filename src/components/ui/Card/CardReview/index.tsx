@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Avatar, Card, Title, Paragraph, Text } from 'react-native-paper';
 import AvatarPaper from '../../Avatar';
 import StarRating from 'react-native-star-rating-widget';
+import ButtonPaper from '../../Button';
 
 interface CardReviewProps {
   name: string;
