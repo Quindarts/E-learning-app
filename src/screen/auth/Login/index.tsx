@@ -6,7 +6,7 @@ import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/
 import { Formik, FormikProps } from 'formik';
 import React from 'react';
 import { View } from 'react-native';
-import { Button, Text } from 'react-native-paper';
+import { Text } from 'react-native-paper';
 import * as Yup from 'yup';
 
 interface FormValues {
