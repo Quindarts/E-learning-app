@@ -1,8 +1,7 @@
 import { PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Navigation from '@/navigation';
 import theme from '@/theme';
-import { StatusBar, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer, useNavigationState } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '@/screen/auth/Login';
@@ -12,17 +11,10 @@ import ResetPassword from '@/screen/auth/ResetPassword';
 import SettingsScreen from '@/screen/settings';
 import { View } from 'react-native';
 import IconButtonPaper from '@/components/ui/IconButton';
-<<<<<<< HEAD
-import RoutingApp from '@/components/shared/TabNavigation';
-import TabNavigation from '@/components/shared/TabNavigation';
-=======
-import RoutingApp from '@/components/shared/BottomNavigation';
-import Home from '@/screen/Home';
 import ProfileScreen from '@/screen/Profile';
 import MyCoursesScreen from '@/screen/myCourses';
 import BottomTab from '@/components/shared/BottomTab';
 import HomeScreen from '@/screen/Home';
->>>>>>> 5d454b3fcab9e6bc9166177d7f10362eaea8ed14
 const ButtonRight = () => {
   const routeName = useNavigationState((state) => state.routes[state.index].name);
   return (
@@ -52,8 +44,6 @@ export default function App() {
     <SafeAreaProvider style={styles.container}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          <TabNavigation />
-
           <Stack.Navigator
             screenOptions={{
               headerStyle: {
@@ -79,9 +69,6 @@ export default function App() {
               component={ResetPassword}
               options={{ headerShown: false }}
             />
-<<<<<<< HEAD
-
-=======
             {/* <Stack.Screen
               name='RoutingApp'
               component={RoutingApp}
@@ -91,7 +78,6 @@ export default function App() {
             <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name='Profile' component={ProfileScreen} />
             <Stack.Screen name='MyCourses' component={MyCoursesScreen} />
->>>>>>> 5d454b3fcab9e6bc9166177d7f10362eaea8ed14
             <Stack.Screen
               name='Settings'
               component={SettingsScreen}
