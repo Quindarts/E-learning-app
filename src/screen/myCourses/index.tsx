@@ -65,7 +65,7 @@ const courses: coursesData[] = [
 export default function MyCoursesScreen() {
   return (
     <RootLayout>
-      <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', paddingTop: 40 }}>
+      <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', paddingTop: 0 }}>
         {courses.map((course) => (
           <CourseCardPaper
             key={course.id}
