@@ -1,4 +1,4 @@
-import RoutingApp from '@/components/shared/BottomNavigation';
+import RoutingApp from '@/components/shared/TabNavigation';
 import RootLayout from '@/layout/RootLayout';
 import LoginScreen from '@/screen/auth/Login';
 import DetailsScreen from '@/screen/DetailsScreen';

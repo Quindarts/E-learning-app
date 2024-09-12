@@ -12,7 +12,8 @@ import ResetPassword from '@/screen/auth/ResetPassword';
 import SettingsScreen from '@/screen/settings';
 import { View } from 'react-native';
 import IconButtonPaper from '@/components/ui/IconButton';
-import RoutingApp from '@/components/shared/BottomNavigation';
+import RoutingApp from '@/components/shared/TabNavigation';
+import TabNavigation from '@/components/shared/TabNavigation';
 const ButtonRight = () => {
   const routeName = useNavigationState((state) => state.routes[state.index].name);
   return (
@@ -42,6 +43,8 @@ export default function App() {
     <SafeAreaProvider style={styles.container}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
+          <TabNavigation />
+
           <Stack.Navigator
             screenOptions={{
               headerStyle: {
@@ -67,11 +70,7 @@ export default function App() {
               component={ResetPassword}
               options={{ headerShown: false }}
             />
-            <Stack.Screen
-              name='RoutingApp'
-              component={RoutingApp}
-              options={{ headerShown: false }}
-            />
+
             <Stack.Screen
               name='Settings'
               component={SettingsScreen}

@@ -1,4 +1,4 @@
-import RoutingApp from '@/components/shared/BottomNavigation';
+import RoutingApp from '@/components/shared/TabNavigation';
 import { View, StyleSheet, ScrollView, StatusBar } from 'react-native';
 
 interface RootLayoutProps {
