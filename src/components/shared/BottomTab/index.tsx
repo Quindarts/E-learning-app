@@ -2,9 +2,10 @@ import IconButtonPaper from '@/components/ui/IconButton';
 import HomeScreen from '@/screen/Home';
 import MyCoursesScreen from '@/screen/myCourses';
 import ProfileScreen from '@/screen/Profile';
+import theme from '@/theme';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Image, View } from 'react-native';
+import { Icon, Text } from 'react-native-paper';
 import { createMaterialBottomTabNavigator } from 'react-native-paper/lib/typescript/react-navigation';
 
 // const BottomTab = createBottomTabNavigator({
@@ -65,9 +66,24 @@ function BottomTab() {
               />
             </View>
           ),
+          tabBarIcon: () => <Icon source={'home'} size={20} color={theme.colors.primary} />,
+          tabBarLabelStyle: { fontSize: 12, fontWeight: 700 },
         }}
       />
-      <Tab.Screen name='Profile' component={ProfileScreen} />
+      <Tab.Screen
+        name='Profile'
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: () => <Icon source={'account'} size={20} color={theme.colors.primary} />,
+        }}
+      />
+      <Tab.Screen
+        name='MyCourses'
+        component={MyCoursesScreen}
+        options={{
+          tabBarIcon: () => <Icon source={'book'} size={20} color={theme.colors.primary} />,
+        }}
+      />
     </Tab.Navigator>
   );
 }

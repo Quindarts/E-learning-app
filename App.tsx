@@ -78,9 +78,9 @@ export default function App() {
               options={{ headerShown: false }}
             /> */}
             <Stack.Screen name='BottomTab' component={BottomTab} options={{ headerShown: false }} />
-            <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
+            {/* <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name='Profile' component={ProfileScreen} />
-            <Stack.Screen name='MyCourses' component={MyCoursesScreen} />
+            <Stack.Screen name='MyCourses' component={MyCoursesScreen} /> */}
             <Stack.Screen
               name='Settings'
               component={SettingsScreen}

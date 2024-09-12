@@ -45,7 +45,7 @@ export default function ProfileScreen() {
     // > */}
       <View
         style={{
-          paddingTop: 40,
+          paddingTop: 0,
         }}
       >
         {/* content */}
