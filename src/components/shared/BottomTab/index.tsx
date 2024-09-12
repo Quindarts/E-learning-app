@@ -1,6 +1,6 @@
 import IconButtonPaper from '@/components/ui/IconButton';
 import HomeScreen from '@/screen/Home';
-import MyCoursesScreen from '@/screen/myCourses';
+import MyCoursesScreen from '@/screen/MyCourses';
 import ProfileScreen from '@/screen/Profile';
 import theme from '@/theme';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
