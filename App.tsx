@@ -13,6 +13,11 @@ import SettingsScreen from '@/screen/settings';
 import { View } from 'react-native';
 import IconButtonPaper from '@/components/ui/IconButton';
 import RoutingApp from '@/components/shared/BottomNavigation';
+import Home from '@/screen/Home';
+import ProfileScreen from '@/screen/Profile';
+import MyCoursesScreen from '@/screen/myCourses';
+import BottomTab from '@/components/shared/BottomTab';
+import HomeScreen from '@/screen/Home';
 const ButtonRight = () => {
   const routeName = useNavigationState((state) => state.routes[state.index].name);
   return (
@@ -67,11 +72,15 @@ export default function App() {
               component={ResetPassword}
               options={{ headerShown: false }}
             />
-            <Stack.Screen
+            {/* <Stack.Screen
               name='RoutingApp'
               component={RoutingApp}
               options={{ headerShown: false }}
-            />
+            /> */}
+            <Stack.Screen name='BottomTab' component={BottomTab} options={{ headerShown: false }} />
+            <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
+            <Stack.Screen name='Profile' component={ProfileScreen} />
+            <Stack.Screen name='MyCourses' component={MyCoursesScreen} />
             <Stack.Screen
               name='Settings'
               component={SettingsScreen}

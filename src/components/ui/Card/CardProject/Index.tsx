@@ -23,7 +23,7 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
 }) => {
   const [rating, setRating] = useState(initialRating);
   return (
-    <Card elevation={0} style={{ marginVertical: 10, width: '48%' }}>
+    <Card elevation={0} style={{ marginTop: 10, width: '48%' }}>
       <Card.Cover
         // resizeMode='cover' // Điều chỉnh cách hình ảnh được hiển thị
         // resizeMethod='scale' // Điều chỉnh cách hình ảnh được xử lý khi thay đổi kích thước
