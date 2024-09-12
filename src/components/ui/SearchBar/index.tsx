@@ -11,7 +11,7 @@ const SearchBarPaper: React.FC<SearchbarProps> = (props) => {
   return (
     <Searchbar
       {...rest}
-      placeholder='Search'
+      placeholder='Search here'
       value={searchQuery}
       onChangeText={setSearchQuery}
       onFocus={() => setIsFocused(true)}

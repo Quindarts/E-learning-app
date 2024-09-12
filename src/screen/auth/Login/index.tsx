@@ -72,7 +72,7 @@ function LoginScreen() {
             const { email, password } = values;
             const response: any = await handleLogin({ email, password });
             if (response.token) {
-              navigation.navigate('RoutingApp');
+              navigation.navigate('BottomTab');
             }
             // update state
           }}
