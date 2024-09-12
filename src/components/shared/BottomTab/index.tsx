@@ -67,7 +67,6 @@ function BottomTab() {
             </View>
           ),
           tabBarIcon: () => <Icon source={'home'} size={20} color={theme.colors.primary} />,
-          tabBarLabelStyle: { fontSize: 12, fontWeight: 700 },
         }}
       />
       <Tab.Screen
