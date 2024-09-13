@@ -1,5 +1,6 @@
 import IconButtonPaper from '@/components/ui/IconButton';
 import HomeScreen from '@/screen/Home';
+import InBoxSreen from '@/screen/InBox';
 import MyCoursesScreen from '@/screen/MyCourses';
 import ProfileScreen from '@/screen/Profile';
 import theme from '@/theme';
@@ -81,6 +82,13 @@ function BottomTab() {
         component={ProfileScreen}
         options={{
           tabBarIcon: () => <Icon source={'account'} size={20} color={theme.colors.primary} />,
+        }}
+      />
+      <Tab.Screen
+        name='Inbox'
+        component={InBoxSreen}
+        options={{
+          tabBarIcon: () => <Icon source={'chat'} size={20} color={theme.colors.primary} />,
         }}
       />
       <Tab.Screen

@@ -1,5 +1,5 @@
 import theme from '@/theme';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { Text, Card, CardProps, Paragraph, ProgressBar, Title } from 'react-native-paper';
 
 interface CourseCardProps {
@@ -11,14 +11,17 @@ interface CourseCardProps {
 
 const CourseCardPaper: React.FC<CourseCardProps> = ({ title, creater, progress, imageSource }) => {
   return (
-    <Card
-      elevation={2}
+    <TouchableOpacity
       style={{
         marginBottom: 10,
         width: '100%',
         backgroundColor: '#F4F9FF',
+        borderRadius: 8,
+        elevation: 2, // Tạo hiệu ứng đổ bóng nhẹ
       }}
+      onPress={() => {}}
     >
+      {/* <Card elevation={2}> */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 10, padding: 10 }}>
         <Card.Cover
           source={imageSource}
@@ -44,7 +47,8 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({ title, creater, progress, 
           <ProgressBar progress={progress / 100} color={theme.colors.primary} />
         </Card.Content>
       </View>
-    </Card>
+      {/* </Card> */}
+    </TouchableOpacity>
   );
 };
 export default CourseCardPaper;

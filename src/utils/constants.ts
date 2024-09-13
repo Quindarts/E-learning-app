@@ -9,4 +9,5 @@ export const ROUTING = {
   RESET_PASSWORD: 'reset-password',
   SETTING: 'setting',
   NOTIFICATION: 'notification',
+  INBOX: 'inbox',
 };

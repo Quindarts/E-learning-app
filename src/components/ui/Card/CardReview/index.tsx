@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Avatar, Card, Title, Paragraph, Text } from 'react-native-paper';
 import AvatarPaper from '../../Avatar';
 import StarRating from 'react-native-star-rating-widget';
@@ -15,7 +15,8 @@ interface CardReviewProps {
 const CardReview: React.FC<CardReviewProps> = ({ name, reviewText, imgURL, initialRating = 0 }) => {
   const [rating, setRating] = useState(initialRating);
   return (
-    <Card style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={() => {}}>
+      {/* <Card> */}
       <Card.Content style={styles.content}>
         <View style={styles.topSection}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -40,7 +41,8 @@ const CardReview: React.FC<CardReviewProps> = ({ name, reviewText, imgURL, initi
         </View>
         <Text variant='bodyMedium'>{reviewText}</Text>
       </Card.Content>
-    </Card>
+      {/* </Card> */}
+    </TouchableOpacity>
   );
 };
 
