@@ -73,9 +73,9 @@ const ButtonPaper: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
         borderRadius: roundedStyle(rounded),
       }}
       contentStyle={sizeStyle(size)}
-      {...rest}
       // if textColors is passed then use it else use default
       textColor={textColors ? textColors : ''}
+      {...rest}
     >
       {children}
     </Button>

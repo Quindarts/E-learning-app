@@ -2,7 +2,7 @@ import theme from '@/theme';
 import { ROUTING } from '@/utils/constants';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { StyleSheet, View, Image, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Card, Title, Paragraph, ProgressBar, Text } from 'react-native-paper';
 import StarRating from 'react-native-star-rating-widget';
 
@@ -51,22 +51,30 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
         >
           <Text
             style={{
-              // fontSize: 14,
-              fontWeight: 700,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
             }}
-            variant='labelMedium'
           >
-            {title}
+            <Text
+              style={{
+                // fontSize: 14,
+                fontWeight: 700,
+              }}
+              variant='labelMedium'
+            >
+              {title}
+            </Text>
+            <StarRating
+              rating={rating}
+              onChange={setRating}
+              maxStars={5}
+              starSize={14}
+              color={theme.colors.primary}
+              starStyle={{ marginHorizontal: 0 }}
+              enableSwiping={false}
+            />
           </Text>
-          <StarRating
-            rating={rating}
-            onChange={setRating}
-            maxStars={5}
-            starSize={14}
-            color={theme.colors.primary}
-            starStyle={{ marginHorizontal: 0 }}
-            enableSwiping={false}
-          />
         </View>
         <Text style={{ fontSize: 9, color: '#7E7E7E' }}>By {creater}</Text>
         <Text style={{ textAlign: 'right', fontSize: 9, color: '#858383' }}>{progress}% Done</Text>

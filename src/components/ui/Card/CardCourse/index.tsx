@@ -32,8 +32,12 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({
         marginBottom: 10,
         width: '100%',
         backgroundColor: '#F4F9FF',
+        borderRadius: 8,
+        elevation: 2, // Tạo hiệu ứng đổ bóng nhẹ
       }}
+      onPress={() => {}}
     >
+      {/* <Card elevation={2}> */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 10, padding: 10 }}>
         <Card.Cover
           source={imageSource}
@@ -59,6 +63,7 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({
           <ProgressBar progress={progress / 100} color={theme.colors.primary} />
         </Card.Content>
       </View>
+      {/* </Card> */}
     </Card>
   );
 };

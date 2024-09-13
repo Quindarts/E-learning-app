@@ -6,6 +6,7 @@ import SignUp from '@/screen/Auth/SignUp';
 import HomeScreen from '@/screen/Home';
 import Lession from '@/screen/Lession';
 import MyCoursesScreen from '@/screen/MyCourses';
+import NotificationScreen from '@/screen/Notification';
 import OnBoardingScreen from '@/screen/OnBoarding';
 import ProfileScreen from '@/screen/Profile';
 import SettingsScreen from '@/screen/Settings';
@@ -61,9 +62,16 @@ function Navigator() {
         />
         <Stack.Screen name={ROUTING.MY_COURSE} component={MyCoursesScreen} />
         <Stack.Screen
-          name='Settings'
+          name={ROUTING.SETTING}
           component={SettingsScreen}
           options={{ headerRight: () => <RightButton /> }}
+        />
+        <Stack.Screen
+          name={ROUTING.NOTIFICATION}
+          component={NotificationScreen}
+          options={{
+            headerRight: () => <RightButton />,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

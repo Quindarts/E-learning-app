@@ -15,10 +15,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor: '#fff',
   },
   container: {
     paddingHorizontal: 20,
     paddingTop: 10,
-    backgroundColor: '#fff',
   },
 });

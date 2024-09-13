@@ -1,13 +1,14 @@
 export const ROUTING = {
-    HOME: 'home',
-    PROFILE: 'profile',
-    MY_COURSE: 'profile/courses',
-    LOGIN: 'login',
-    BOTTOM_TAB: 'BottomTab',
-    SIGN_UP: 'sign-up',
-    ONBOARDING: 'on-boarding',
-    RESET_PASSWORD: 'reset-password',
-    SETTING: 'setting',
-    LESSION_DETAIL: 'lession-detail',
-
-}
+  HOME: 'home',
+  PROFILE: 'profile',
+  MY_COURSE: 'profile/courses',
+  LOGIN: 'login',
+  BOTTOM_TAB: 'BottomTab',
+  SIGN_UP: 'sign-up',
+  ONBOARDING: 'on-boarding',
+  RESET_PASSWORD: 'reset-password',
+  SETTING: 'setting',
+  LESSION_DETAIL: 'lession-detail',
+  NOTIFICATION: 'notification',
+  INBOX: 'inbox',
+};

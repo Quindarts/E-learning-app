@@ -1,8 +1,15 @@
 import IconButtonPaper from '@/components/ui/IconButton';
-import { useNavigationState } from '@react-navigation/native';
+import { ROUTING } from '@/utils/constants';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+  useNavigationState,
+} from '@react-navigation/native';
 import { View } from 'react-native';
 
 const RightButton = () => {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   const routeName = useNavigationState((state) => state.routes[state.index].name);
   return (
     <View style={{ flexDirection: 'row' }}>
@@ -10,16 +17,20 @@ const RightButton = () => {
         icon='cog'
         variant='md'
         iconColor='sky'
-        containerColor={routeName === 'Settings' ? 'cyan' : 'gray'}
+        containerColor={routeName === ROUTING.SETTING ? 'cyan' : 'gray'}
         rounded='sm'
-        onPress={() => {}}
+        onPress={() => {
+          navigation.navigate(ROUTING.SETTING);
+        }}
       />
       <IconButtonPaper
         icon='bell'
         variant='md'
         iconColor='sky'
-        containerColor={routeName === 'Notification' ? 'cyan' : 'gray'}
-        onPress={() => {}}
+        containerColor={routeName === ROUTING.NOTIFICATION ? 'cyan' : 'gray'}
+        onPress={() => {
+          navigation.navigate(ROUTING.NOTIFICATION);
+        }}
       />
     </View>
   );

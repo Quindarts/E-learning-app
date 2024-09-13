@@ -2,6 +2,7 @@ import ButtonPaper from '@/components/ui/Button';
 import ChipPaper from '@/components/ui/Chip';
 import IconButtonPaper from '@/components/ui/IconButton';
 import TextInputPaper from '@/components/ui/TextInput';
+import { ROUTING } from '@/utils/constants';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { Formik, FormikProps } from 'formik';
 import { View, Text, ScrollView } from 'react-native';
@@ -158,7 +159,7 @@ export default function SignUp() {
           Already Have An Account?
           <Text
             style={{ color: '#0f3975', fontWeight: 'bold' }}
-            onPress={() => navigation.navigate('Login')}
+            onPress={() => navigation.navigate(ROUTING.LOGIN)}
           >
             {' '}
             Sign In?

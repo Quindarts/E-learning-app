@@ -1,6 +1,6 @@
 import theme from '@/theme';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Card, Icon, IconButton, Text, Title } from 'react-native-paper';
 
 interface NotificationCardProps {
@@ -31,7 +31,8 @@ const CardNotification: React.FC<NotificationCardProps> = ({
   time,
 }) => {
   return (
-    <Card style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={() => {}}>
+      {/* <Card> */}
       <Card.Content
         style={{
           flexDirection: 'row',
@@ -64,7 +65,8 @@ const CardNotification: React.FC<NotificationCardProps> = ({
           <Text style={{ fontSize: 8, color: '#767676' }}>{time}</Text>
         </View>
       </Card.Content>
-    </Card>
+      {/* </Card> */}
+    </TouchableOpacity>
   );
 };
 
