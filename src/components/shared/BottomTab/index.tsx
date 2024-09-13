@@ -3,7 +3,9 @@ import HomeScreen from '@/screen/Home';
 import MyCoursesScreen from '@/screen/MyCourses';
 import ProfileScreen from '@/screen/Profile';
 import theme from '@/theme';
+import { ROUTING } from '@/utils/constants';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { Image, View } from 'react-native';
 import { Icon, Text } from 'react-native-paper';
 import { createMaterialBottomTabNavigator } from 'react-native-paper/lib/typescript/react-navigation';
@@ -20,6 +22,7 @@ import { createMaterialBottomTabNavigator } from 'react-native-paper/lib/typescr
 const Tab = createBottomTabNavigator();
 
 function BottomTab() {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -55,14 +58,18 @@ function BottomTab() {
                 iconColor='default'
                 containerColor='sky'
                 rounded='sm'
-                onPress={() => {}}
+                onPress={() => {
+                  navigation.navigate(ROUTING.SETTING);
+                }}
               />
               <IconButtonPaper
                 icon='bell'
                 variant='md'
                 iconColor='sky'
                 containerColor='gray'
-                onPress={() => {}}
+                onPress={() => {
+                  navigation.navigate(ROUTING.NOTIFICATION);
+                }}
               />
             </View>
           ),

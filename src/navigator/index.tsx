@@ -1,10 +1,11 @@
 import BottomTab from '@/components/shared/BottomTab';
 import RightButton from '@/components/shared/RightButton';
-import LoginScreen from '@/screen/Auth/Login';
-import ResetPassword from '@/screen/Auth/ResetPassword';
-import SignUp from '@/screen/Auth/SignUp';
+import LoginScreen from '@/screen/auth/Login';
+import ResetPassword from '@/screen/auth/ResetPassword';
+import SignUp from '@/screen/auth/SignUp';
 import HomeScreen from '@/screen/Home';
 import MyCoursesScreen from '@/screen/MyCourses';
+import NotificationScreen from '@/screen/Notification';
 import OnBoardingScreen from '@/screen/OnBoarding';
 import ProfileScreen from '@/screen/Profile';
 import SettingsScreen from '@/screen/Settings';
@@ -51,9 +52,16 @@ function Navigator() {
         <Stack.Screen name={ROUTING.PROFILE} component={ProfileScreen} />
         <Stack.Screen name={ROUTING.MY_COURSE} component={MyCoursesScreen} />
         <Stack.Screen
-          name='Settings'
+          name={ROUTING.SETTING}
           component={SettingsScreen}
           options={{ headerRight: () => <RightButton /> }}
+        />
+        <Stack.Screen
+          name={ROUTING.NOTIFICATION}
+          component={NotificationScreen}
+          options={{
+            headerRight: () => <RightButton />,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

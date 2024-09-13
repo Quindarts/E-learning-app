@@ -5,6 +5,7 @@ import { useAuth } from '@/hook/useAuth';
 import authService from '@/services/authService';
 import useUserStore from '@/store/auth/useUserStore';
 import theme from '@/theme';
+import { ROUTING } from '@/utils/constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { Formik, FormikProps } from 'formik';
@@ -101,7 +102,7 @@ function LoginScreen() {
                   color: '#6C6C6C',
                 }}
                 onPress={() => {
-                  navigation.navigate('ResetPassword');
+                  navigation.navigate(ROUTING.RESET_PASSWORD);
                 }}
               >
                 Forget password?
@@ -180,7 +181,7 @@ function LoginScreen() {
                 marginLeft: 10,
               }}
               onPress={() => {
-                navigation.navigate('SignUp');
+                navigation.navigate(ROUTING.SIGN_UP);
               }}
             >
               Sign Up here

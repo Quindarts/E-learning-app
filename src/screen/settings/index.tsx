@@ -7,6 +7,7 @@ import theme from '@/theme';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import authService from '@/services/authService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ROUTING } from '@/utils/constants';
 
 type ItemData = {
   id: string;
@@ -129,7 +130,7 @@ export default function SettingsScreen() {
         return 'InviteFriends';
       case 'Logout': {
         authService.logout();
-        navigation.navigate('Login');
+        navigation.navigate(ROUTING.LOGIN);
       }
       default:
         return 'Profile';
