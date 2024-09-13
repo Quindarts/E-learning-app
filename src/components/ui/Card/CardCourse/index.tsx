@@ -1,4 +1,6 @@
 import theme from '@/theme';
+import { ROUTING } from '@/utils/constants';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { View } from 'react-native';
 import { Text, Card, CardProps, Paragraph, ProgressBar, Title } from 'react-native-paper';
 
@@ -6,12 +8,25 @@ interface CourseCardProps {
   title: string;
   creater: string;
   progress: number;
-  imageSource: any; // Adjust type based on your image source
+  imageSource: any;
+  lessionId: string;
 }
 
-const CourseCardPaper: React.FC<CourseCardProps> = ({ title, creater, progress, imageSource }) => {
+const CourseCardPaper: React.FC<CourseCardProps> = ({
+  title,
+  creater,
+  progress,
+  imageSource,
+  lessionId,
+}) => {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
     <Card
+      onPress={() =>
+        navigation.navigate(ROUTING.LESSION_DETAIL, {
+          lessionId: lessionId,
+        })
+      }
       elevation={2}
       style={{
         marginBottom: 10,

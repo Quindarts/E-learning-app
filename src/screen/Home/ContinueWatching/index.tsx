@@ -21,6 +21,7 @@ function ContinueWatching() {
       </View>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
         <CardProjectPaper
+          lessionId={'1'}
           imageSource={{ uri: 'https://picsum.photos/700' }}
           title='Project Title'
           creater='Designer Name'
@@ -28,6 +29,7 @@ function ContinueWatching() {
           progress={50}
         />
         <CardProjectPaper
+          lessionId={'1'}
           imageSource={{ uri: 'https://picsum.photos/700' }}
           title='Project Title'
           creater='Designer Name'

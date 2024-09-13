@@ -4,6 +4,7 @@ import LoginScreen from '@/screen/Auth/Login';
 import ResetPassword from '@/screen/Auth/ResetPassword';
 import SignUp from '@/screen/Auth/SignUp';
 import HomeScreen from '@/screen/Home';
+import Lession from '@/screen/Lession';
 import MyCoursesScreen from '@/screen/MyCourses';
 import OnBoardingScreen from '@/screen/OnBoarding';
 import ProfileScreen from '@/screen/Profile';
@@ -46,9 +47,18 @@ function Navigator() {
           component={ResetPassword}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name='BottomTab' component={BottomTab} options={{ headerShown: false }} />
+        <Stack.Screen
+          name={ROUTING.BOTTOM_TAB}
+          component={BottomTab}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name={ROUTING.HOME} component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name={ROUTING.PROFILE} component={ProfileScreen} />
+        <Stack.Screen
+          name={ROUTING.LESSION_DETAIL}
+          options={{ headerShown: false }}
+          component={Lession}
+        />
         <Stack.Screen name={ROUTING.MY_COURSE} component={MyCoursesScreen} />
         <Stack.Screen
           name='Settings'

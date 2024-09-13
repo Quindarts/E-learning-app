@@ -1,4 +1,6 @@
 import theme from '@/theme';
+import { ROUTING } from '@/utils/constants';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, Dimensions } from 'react-native';
 import { Card, Title, Paragraph, ProgressBar, Text } from 'react-native-paper';
@@ -11,6 +13,7 @@ interface ProjectCardProps {
   progress: number;
   imageSource: any; // Adjust type based on your image source
   dimensions?: { width: number; height: number };
+  lessionId: string;
 }
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -20,10 +23,20 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
   progress,
   imageSource,
   initialRating = 0,
+  lessionId,
 }) => {
   const [rating, setRating] = useState(initialRating);
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
-    <Card elevation={0} style={{ marginTop: 10, width: '48%' }}>
+    <Card
+      onPress={() =>
+        navigation.navigate(ROUTING.LESSION_DETAIL, {
+          lessionId: lessionId,
+        })
+      }
+      elevation={0}
+      style={{ marginTop: 10, width: '48%' }}
+    >
       <Card.Cover
         source={imageSource}
         style={{ borderRadius: 10, width: '100%', height: (screenWidth - 70) / 2 }} // trừ padding / 2

@@ -3,9 +3,11 @@ export const ROUTING = {
     PROFILE: 'profile',
     MY_COURSE: 'profile/courses',
     LOGIN: 'login',
-
+    BOTTOM_TAB: 'BottomTab',
     SIGN_UP: 'sign-up',
     ONBOARDING: 'on-boarding',
     RESET_PASSWORD: 'reset-password',
     SETTING: 'setting',
+    LESSION_DETAIL: 'lession-detail',
+
 }
