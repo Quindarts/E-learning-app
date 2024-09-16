@@ -11,4 +11,6 @@ export const ROUTING = {
   LESSION_DETAIL: 'lession-detail',
   NOTIFICATION: 'notification',
   INBOX: 'inbox',
+  DETAIL: 'detail',
+  TRANSACTION_COMPLETED: 'transaction-completed',
 };

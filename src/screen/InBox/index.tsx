@@ -5,7 +5,6 @@ import theme from '@/theme';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-paper';
 type MessageType = {
-  id: string;
   name: string;
   message: string;
   time: string;
@@ -15,7 +14,6 @@ type MessageType = {
 };
 const data: MessageType[] = [
   {
-    id: '1',
     name: 'Ayesha',
     message: 'Hello, How are you?',
     time: '9:00 AM',
@@ -23,7 +21,6 @@ const data: MessageType[] = [
     count: 2,
   },
   {
-    id: '2',
     name: 'Ayesha',
     message: 'Hello, How are you?',
     time: '9:00 AM',
@@ -31,7 +28,6 @@ const data: MessageType[] = [
     count: 2,
   },
   {
-    id: '1',
     name: 'Ayesha',
     message: 'Hello, How are you?',
     time: '9:00 AM',
@@ -39,7 +35,6 @@ const data: MessageType[] = [
     count: 2,
   },
   {
-    id: '2',
     name: 'Ayesha',
     message: 'Hello, How are you?',
     time: '9:00 AM',

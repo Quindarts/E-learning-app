@@ -1,10 +1,13 @@
 import ButtonPaper from '@/components/ui/Button';
 import theme from '@/theme';
+import { ROUTING } from '@/utils/constants';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native';
 import { Button, Chip, Card, Title, Paragraph, Text } from 'react-native-paper';
 function TabOverview() {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
     <Card style={{ padding: 8 }}>
       <Card.Content>
@@ -138,7 +141,15 @@ function TabOverview() {
           <Chip style={{ margin: 4 }}>Animation</Chip>
           <Chip style={{ margin: 4 }}>User Persona</Chip>
         </View>
-        <ButtonPaper  mode='contained' textColor='white' rounded='sm' size='sm' onPress={() => {}}>
+        <ButtonPaper
+          mode='contained'
+          textColor='white'
+          rounded='sm'
+          size='sm'
+          onPress={() => {
+            navigation.navigate(ROUTING.DETAIL);
+          }}
+        >
           MAKE AN ENROLLMENT
         </ButtonPaper>
       </Card.Content>

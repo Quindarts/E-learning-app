@@ -3,6 +3,8 @@ import RightButton from '@/components/shared/RightButton';
 import LoginScreen from '@/screen/Auth/Login';
 import ResetPassword from '@/screen/Auth/ResetPassword';
 import SignUp from '@/screen/Auth/SignUp';
+import DetailScreen from '@/screen/Detail';
+import TransactionCompletedScreen from '@/screen/Detail/Completed';
 import HomeScreen from '@/screen/Home';
 import Lession from '@/screen/Lession';
 import MyCoursesScreen from '@/screen/MyCourses';
@@ -73,6 +75,8 @@ function Navigator() {
             headerRight: () => <RightButton />,
           }}
         />
+        <Stack.Screen name={ROUTING.DETAIL} component={DetailScreen} />
+        <Stack.Screen name={ROUTING.TRANSACTION_COMPLETED} component={TransactionCompletedScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -35,7 +35,6 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({
         borderRadius: 8,
         elevation: 2, // Tạo hiệu ứng đổ bóng nhẹ
       }}
-      onPress={() => {}}
     >
       {/* <Card elevation={2}> */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 10, padding: 10 }}>
