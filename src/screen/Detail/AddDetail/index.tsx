@@ -3,8 +3,14 @@ import { AntDesign } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import MaskInput, { Masks } from 'react-native-mask-input';
-import { Text, TextInput } from 'react-native-paper';
+import { Button, Text, TextInput } from 'react-native-paper';
 import PurchaseDetail from '../PurchaseDetail';
+import BillingDetail from '../BillingDetail';
+import { Formik, FormikProps } from 'formik';
+import * as Yup from 'yup';
+import TextInputPaper from '@/components/ui/TextInput';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
+import { ROUTING } from '@/utils/constants';
 const MoMo: React.FC = () => {
   const [cardNumber, setCardNumber] = useState('');
   const [cardHolder, setCardHolder] = useState('');
@@ -57,6 +63,7 @@ const MoMo: React.FC = () => {
   );
 };
 export default function PaymentMethod() {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('MoMo');
   const [isMoMo, setIsMoMo] = useState(true);
   const [isVnpay, setIsVnpay] = useState(false);
@@ -77,48 +84,136 @@ export default function PaymentMethod() {
     <View style={styles.container}>
       <View style={styles.paymentMethod}>
         <Text variant='titleLarge' style={{ fontWeight: 'bold', marginVertical: 34 }}>
-          Payment Method
+          Payment
         </Text>
-        <View style={styles.paymentMethodList}>
-          <TouchableOpacity
-            style={styles.paymentMethodItem}
-            onPress={() => handleSelectPaymentMethod('MoMo')}
+
+        <View>
+          <Formik
+            initialValues={{ fullName: '', email: '', phone: '', country: '' }}
+            validationSchema={Yup.object().shape({
+              fullName: Yup.string().required(),
+              email: Yup.string().email().required(),
+              phone: Yup.string().required(),
+              country: Yup.string().required(),
+            })}
+            onSubmit={(values) => {
+              navigation.navigate(ROUTING.TRANSACTION_COMPLETED);
+            }}
           >
-            <Image
-              source={require('../../../../assets/MoMo_Logo.png')}
-              style={styles.paymentMethodIcon}
-            />
-            <Text style={styles.paymentMethodText}>MoMo</Text>
-            {isMoMo && (
-              <AntDesign
-                name='checkcircle'
-                size={24}
-                color={theme.colors.primary}
-                style={styles.checkIcon}
-              />
+            {({
+              handleSubmit,
+            }: FormikProps<{
+              fullName: string;
+              email: string;
+              phone: string;
+              country: string;
+            }>) => (
+              <View style={{ width: '100%' }}>
+                <TextInputPaper
+                  isRequired={true}
+                  label='Full Name'
+                  name='fullName'
+                  placeholder='Full Name'
+                  mode='outlined'
+                  textColor='primary'
+                />
+                <TextInputPaper
+                  isRequired={true}
+                  label='Email Here'
+                  name='email'
+                  placeholder='Email'
+                  mode='outlined'
+                  textColor='primary'
+                />
+                <TextInputPaper
+                  isRequired={true}
+                  label='Phone number'
+                  name='phone'
+                  placeholder=''
+                  mode='outlined'
+                  textColor='primary'
+                  inputMode='numeric'
+                />
+                <TextInputPaper
+                  isRequired={true}
+                  label='Country'
+                  name='country'
+                  placeholder=''
+                  mode='outlined'
+                  textColor='primary'
+                />
+
+                <View style={styles.paymentMethodList}>
+                  <TouchableOpacity
+                    style={styles.paymentMethodItem}
+                    onPress={() => handleSelectPaymentMethod('MoMo')}
+                  >
+                    <View style={[styles.imageContainer, isMoMo && styles.selectedPaymentMethod]}>
+                      <Image
+                        source={require('../../../../assets/MoMo_Logo.png')}
+                        style={styles.paymentMethodIcon}
+                      />
+                    </View>
+                    <Text style={styles.paymentMethodText}>MoMo</Text>
+                    {isMoMo && (
+                      <AntDesign
+                        name='checkcircle'
+                        size={24}
+                        color={theme.colors.primary}
+                        style={styles.checkIcon}
+                      />
+                    )}
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.paymentMethodItem}
+                    onPress={() => handleSelectPaymentMethod('VNPay')}
+                  >
+                    <View
+                      style={[styles.imageContainer, , isVnpay && styles.selectedPaymentMethod]}
+                    >
+                      <Image
+                        source={require('../../../../assets/vnpay_logo.jpg')}
+                        style={styles.paymentMethodIcon}
+                      />
+                    </View>
+                    <Text style={styles.paymentMethodText}>VNPay</Text>
+                    {isVnpay && (
+                      <AntDesign
+                        name='checkcircle'
+                        size={24}
+                        color={theme.colors.primary}
+                        style={styles.checkIcon}
+                      />
+                    )}
+                  </TouchableOpacity>
+                </View>
+                {/* <ButtonPaper
+              uppercase={true}
+              mode='contained'
+              size='lg'
+              rounded='sm'
+              onPress={() => handleSubmit()}
+              style={{ width: '100%', marginTop: 20 }}
+            >
+              Sign Up
+            </ButtonPaper> */}
+                <Button
+                  mode='contained'
+                  uppercase
+                  style={{ marginVertical: 20 }}
+                  onPress={() => {
+                    handleSubmit();
+                  }}
+                >
+                  Started
+                </Button>
+              </View>
             )}
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.paymentMethodItem}
-            onPress={() => handleSelectPaymentMethod('VNPay')}
-          >
-            <Image
-              source={require('../../../../assets/vnpay_logo.jpg')}
-              style={styles.paymentMethodIcon}
-            />
-            <Text style={styles.paymentMethodText}>VNPay</Text>
-            {isVnpay && (
-              <AntDesign
-                name='checkcircle'
-                size={24}
-                color={theme.colors.primary}
-                style={styles.checkIcon}
-              />
-            )}
-          </TouchableOpacity>
+          </Formik>
         </View>
       </View>
-      {isMoMo && <MoMo />}
+
+      {/* {isMoMo && <MoMo />} */}
       <PurchaseDetail />
     </View>
   );
@@ -133,6 +228,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   paymentMethodList: {
+    marginTop: 16,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     gap: 16,
@@ -140,9 +236,21 @@ const styles = StyleSheet.create({
   paymentMethodItem: {
     alignItems: 'center',
   },
+  selectedPaymentMethod: {
+    borderColor: '#06D001',
+    borderWidth: 1,
+    // effect
+    shadowColor: '#06D001',
+    elevation: 3,
+    // shadowOffset: { width: 0, height: 4 },
+  },
+  imageContainer: {
+    padding: 4,
+  },
   paymentMethodIcon: {
     width: 40,
     height: 40,
+    padding: 8,
   },
   paymentMethodText: {
     fontSize: 14,

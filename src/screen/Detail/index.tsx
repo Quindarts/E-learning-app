@@ -11,16 +11,6 @@ export default function DetailScreen() {
     <RootLayout>
       <Overview />
       <PaymentMethod />
-      <Button
-        mode='contained'
-        uppercase
-        style={{ marginVertical: 20 }}
-        onPress={() => {
-          navigation.navigate(ROUTING.TRANSACTION_COMPLETED);
-        }}
-      >
-        Started
-      </Button>
     </RootLayout>
   );
 }
