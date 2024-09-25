@@ -2,6 +2,6 @@ interface Lesson {
   _id: string;
   name: string;
   duration: string; // duration in seconds
-  content: Array<string>; // text, url
+  content: Array<{ [key: string]: string }>; // text, url
 }
 export { Lesson };

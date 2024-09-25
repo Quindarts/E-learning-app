@@ -3,18 +3,24 @@ import { Cart } from './cart.type';
 import { Notify } from './notify.type';
 import { Role } from './role.type';
 
+enum gender {
+  FEMALE = 'Female',
+  MALE = 'Male',
+  OTHER = 'Other',
+}
 interface User {
   _id: string;
-  FirstName: string;
-  LastName: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: string;
-  gender: 'Female' | 'Male' | 'Other';
+  gender: gender;
   status: boolean; // (isActive)
   googleId: string;
   roles: Role[];
-  carts: Cart[];
+  carts: Cart;
   addresses: Address[];
   notifies: Notify[];
+  currentCourse: Array<{ _id: string; progress: number; time: string }>;
 }
 export { User };
