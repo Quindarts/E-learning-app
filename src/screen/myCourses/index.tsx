@@ -68,6 +68,7 @@ export default function MyCoursesScreen() {
       <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', paddingTop: 0 }}>
         {courses.map((course) => (
           <CourseCardPaper
+            lessionId={course.id}
             key={course.id}
             title={course.title}
             creater={course.author}

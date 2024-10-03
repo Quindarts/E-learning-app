@@ -5,13 +5,13 @@ import { IAuth } from '@/types/auth.type';
 
 const login: any = async ({ email, password }: IAuth) => {
   console.log(email, password);
-  return await axiosConfig.post('/login', {
+  return await axiosConfig.post('/auth/login', {
     email,
     password,
   });
 };
 const logout = () => {
-  AsyncStorage.removeItem('accessToken');
+  AsyncStorage.removeItem('tokenList');
 };
 
 const authService = {

@@ -8,11 +8,10 @@ export const useAuth = () => {
     try {
       const response = await authService.login({ email, password });
       console.log('schema respone', response);
-      if (response && response.token) {
-        console.log('token', response.token);
-        AsyncStorage.setItem('accessToken', response.token);
-      }
-      //   AsyncStorage.getItem('accessToken').then((res) => console.log(res));
+      // if (response && response.tokenList.accessToken) {
+      //   console.log('token', response.token);
+      //   AsyncStorage.setItem('tokenList', response.tokenList);
+      // }
       console.log('response', response);
       return response;
     } catch (error) {

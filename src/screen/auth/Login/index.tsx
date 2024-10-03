@@ -64,7 +64,7 @@ function LoginScreen() {
         }}
       >
         <Formik
-          initialValues={{ email: 'eve.holt@reqres.in', password: 'cityslicka' }}
+          initialValues={{ email: 'quang@gmail.com', password: '123456Aa@' }}
           validationSchema={Yup.object().shape({
             email: Yup.string().email().required(),
             password: Yup.string().required(),
@@ -72,7 +72,8 @@ function LoginScreen() {
           onSubmit={async (values) => {
             const { email, password } = values;
             const response: any = await handleLogin({ email, password });
-            if (response.token) {
+            console.log('response here', response);
+            if (response.tokenList.accessToken) {
               navigation.navigate('BottomTab');
             }
             // update state
