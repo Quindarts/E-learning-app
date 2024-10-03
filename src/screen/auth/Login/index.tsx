@@ -73,7 +73,7 @@ function LoginScreen() {
             const { email, password } = values;
             const response: any = await handleLogin({ email, password });
             console.log('response here', response);
-            if (response.tokenList.accessToken) {
+            if (response?.tokenList?.accessToken) {
               navigation.navigate('BottomTab');
             }
             // update state

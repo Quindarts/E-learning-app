@@ -12,7 +12,7 @@ export const useAuth = () => {
       //   console.log('token', response.token);
       //   AsyncStorage.setItem('tokenList', response.tokenList);
       // }
-      console.log('response', response);
+      // console.log('response', response);
       return response;
     } catch (error) {
       return error;

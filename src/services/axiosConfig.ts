@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 const getTokenList = async () => {
   try {
@@ -48,9 +49,10 @@ const setRefreshToken = async (refreshToken: string) => {
     console.error('Error setting refresh token:', error);
   }
 };
+// function convert localhost to ip
 
 const axiosConfig = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: `http://192.168.1.6:5000`, // phone đâu bik localhost là ip nào
   headers: {
     'Content-Type': 'application/json',
   },
@@ -71,28 +73,28 @@ axiosConfig.interceptors.request.use(
 
 axiosConfig.interceptors.response.use(
   (response: any) => {
-    return response.data;
+    return response?.data;
   },
   async (error) => {
     const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (error?.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       const refreshToken = await getRefreshToken();
       if (refreshToken) {
-        try {
-          const response = await axiosConfig.post('/refreshToken', {
-            refreshToken,
-          });
-          const newAccessToken = response.data.accessToken; // chờ viết api xem trả về như thế nào
-          setAccessToken(newAccessToken);
-          return axiosConfig(originalRequest);
-        } catch (error) {
-          console.error('Error refreshing token:', error);
-          return Promise.reject(error);
-        }
+        // try {
+        //   const response = await axiosConfig.post('/refreshToken', {
+        //     refreshToken,
+        //   });
+        //   const newAccessToken = response?.data?.accessToken; // chờ viết api xem trả về như thế nào
+        //   setAccessToken(newAccessToken);
+        //   return axiosConfig(originalRequest);
+        // } catch (error) {
+        //   console.error('Error refreshing token:', error);
+        //   return Promise.reject(error);
+        // }
       }
     }
-    return Promise.reject(error.response.data);
+    return Promise.reject(error?.response?.data);
   },
 );
 export default axiosConfig;
