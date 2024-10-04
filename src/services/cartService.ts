@@ -2,7 +2,7 @@ import axiosConfig from './axiosConfig';
 
 // Add course to cart
 const addCourseToCart = async (courseId: string) => {
-  return await axiosConfig.post('/cart/add', { courseId });
+  return await axiosConfig.post('/cart/add-to-cart', { courseId });
 };
 
 // Remove course from cart
