@@ -5,7 +5,6 @@ import ContinueWatching from './ContinueWatching';
 import TrendingNow from './TrendingNow';
 
 export default function HomeScreen() {
-  // const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
     <RootLayout>
       <View

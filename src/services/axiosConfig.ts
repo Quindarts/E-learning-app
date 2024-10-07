@@ -9,8 +9,8 @@ const axiosConfig = axios.create({
 });
 
 axiosConfig.interceptors.request.use(
-  (config) => {
-    const accessToken = TokenService.getAccessToken();
+  async (config) => {
+    const accessToken = await TokenService.getAccessToken();
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }

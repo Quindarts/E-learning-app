@@ -1,30 +1,20 @@
-import axiosConfig from './axiosConfig';
+import { Cart } from '@/types/cart.type';
+import GeneralRepositoryServices from './generalRepository';
 
-// Add course to cart
-const addCourseToCart = async (courseId: string) => {
-  return await axiosConfig.post('/cart/add-to-cart', { courseId });
-};
+class CartService {
+  private repoCourse = new GeneralRepositoryServices<any>('cart/courses');
+  private repoCart = new GeneralRepositoryServices<Cart>('cart');
 
-// Remove course from cart
-const removeCourseFromCart = async (courseId: string) => {
-  return await axiosConfig.post('/cart/remove', { courseId });
-};
-
-// Get all items in the cart
-const getCartItems = async () => {
-  return await axiosConfig.get('/cart');
-};
-
-// Clear the cart
-const clearCart = async () => {
-  return await axiosConfig.post('/cart/clear');
-};
-
-const cartService = {
-  addCourseToCart,
-  removeCourseFromCart,
-  getCartItems,
-  clearCart,
-};
+  public addCourseToCart = async (courseId: string) => {
+    return this.repoCourse.save({ courseId })
+  };
+  public removeCourseFromCart = async (courseId: string) => {
+    return await this.repoCourse.deleteById(courseId)
+  };
+  public getMyCart = async () => {
+    return await this.repoCart.findByToken()
+  }
+}
+const cartService = new CartService();
 
 export default cartService;

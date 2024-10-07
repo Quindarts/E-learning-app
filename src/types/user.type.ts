@@ -18,7 +18,7 @@ interface User {
   status: boolean; // (isActive)
   googleId: string;
   roles: Role[];
-  carts: Cart;
+  cart: Cart;
   addresses: Address[];
   notifies: Notify[];
   currentCourse: Array<{ _id: string; progress: number; time: string }>;

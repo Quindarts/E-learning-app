@@ -20,6 +20,7 @@ const filterCourses = async (filterParams: any) => {
   return await axiosConfig.get('/courses/filter', { params: filterParams });
 };
 
+
 const courseService = {
   createCourse,
   getCourseById,

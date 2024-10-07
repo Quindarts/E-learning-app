@@ -3,7 +3,7 @@ import { Order } from './order.type';
 import { Review } from './review.type';
 
 interface Course {
-  _id: string;
+  id: string;
   name: string;
   isActive: boolean;
   description: string;

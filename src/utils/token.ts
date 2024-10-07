@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const getTokenList = async () => {
     try {
         const data = await AsyncStorage.getItem('tokenList');
-        return JSON.parse(data || '[]');
+        return JSON.parse(`${data}`);
     } catch (error) {
         console.error('Error getting token list:', error);
         return [];
@@ -11,13 +11,8 @@ const getTokenList = async () => {
 };
 
 const getAccessToken = async () => {
-    try {
-        const tokenList = await getTokenList();
-        return tokenList.accessToken || null;
-    } catch (error) {
-        console.error('Error getting access token:', error);
-        return null;
-    }
+    const tokenList = await getTokenList();
+    return tokenList.accessToken
 };
 
 const getRefreshToken = async () => {
@@ -47,6 +42,7 @@ const setRefreshToken = async (refreshToken: string) => {
         console.error('Error setting refresh token:', error);
     }
 };
+
 export default {
     setAccessToken,
     setRefreshToken,
