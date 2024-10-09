@@ -5,15 +5,15 @@ import { View } from 'react-native';
 
 const SearchBarPaper: React.FC<SearchbarProps> = (props) => {
   const { ...rest } = props;
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <Searchbar
       {...rest}
       placeholder='Search here'
-      value={searchQuery}
-      onChangeText={setSearchQuery}
+      // value={searchQuery}
+      // onChangeText={setSearchQuery}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       icon={() => (

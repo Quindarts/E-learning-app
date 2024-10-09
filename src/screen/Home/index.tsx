@@ -1,11 +1,22 @@
 import RootLayout from '@/layout/RootLayout';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import Header from './Header';
-import ContinueWatching from './ContinueWatching';
 import TrendingNow from './TrendingNow';
+import AllCourse from './AllCourse';
+import { useCourse } from '@/hook/useCourse';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 export default function HomeScreen() {
   // const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const {
+    courses,
+    categories,
+    loading,
+    error,
+    fetchCourses,
+    fetchFilteredCourses,
+    fetchCategories,
+  } = useCourse();
   return (
     <RootLayout>
       <View
@@ -14,9 +25,13 @@ export default function HomeScreen() {
           alignItems: 'center',
         }}
       >
-        <Header />
-        <ContinueWatching />
-        <TrendingNow />
+        <Header
+          fetchCourses={fetchCourses}
+          fetchFilteredCourses={fetchFilteredCourses}
+          fetchCategories={fetchCategories}
+          categories={categories}
+        />
+        <AllCourse courses={courses} loading={loading} error={error} fetchCourses={fetchCourses} />
       </View>
     </RootLayout>
   );

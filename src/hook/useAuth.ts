@@ -7,7 +7,7 @@ export const useAuth = () => {
   const handleLogin = async ({ email, password }: IAuth) => {
     try {
       const response = await authService.login({ email, password });
-      console.log('schema respone', response);
+      // console.log('schema respone', response);
       // if (response && response.tokenList.accessToken) {
       //   console.log('token', response.token);
       //   AsyncStorage.setItem('tokenList', response.tokenList);

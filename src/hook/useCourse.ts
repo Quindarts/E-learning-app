@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import courseService from '@/services/courseService';
 
-// Assuming the same Course interface we defined earlier
 export const useCourse = () => {
   const [courses, setCourses] = useState<any[]>([]);
   const [course, setCourse] = useState<any | null>(null);
+  const [categories, setCategories] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -13,7 +13,7 @@ export const useCourse = () => {
     setLoading(true);
     try {
       const response: any = await courseService.getAllCourses();
-      setCourses(response.courses);
+      setCourses(response.course);
     } catch (err: any) {
       setError(err.message || 'Failed to fetch courses');
     } finally {
@@ -60,19 +60,54 @@ export const useCourse = () => {
     }
   };
 
-  // Hook to automatically fetch all courses on component mount
+  // call ở đây hoặc ở từng component nhỏ
   // useEffect(() => {
   //   fetchCourses();
+  //   fetchCategories();
   // }, []);
+
+  // useEffect(() => {
+  //   console.log('Vừa update', courses);
+  // }, [courses]);
+
+  // Fetch categories (Assuming you have an API for this)
+  const fetchCategories = async () => {
+    setLoading(true);
+    try {
+      const response: any = await courseService.getCategories(); // Assuming there's an endpoint for categories
+      // console.log(response.categories);
+      setCategories(response.categories);
+    } catch (err: any) {
+      setError(err.message || 'Failed to fetch categories');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchFilteredCourses = async (filters: any) => {
+    setLoading(true);
+    try {
+      const response: any = await courseService.filterCourses(filters);
+      setCourses([...response.courses]);
+      // console.log('Filtered courses:', response.courses);
+    } catch (err: any) {
+      setError(err.message || 'Failed to fetch courses');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return {
     courses,
     course,
+    categories,
     loading,
     error,
     fetchCourses,
     fetchCourseById,
     createCourse,
     deleteCourse,
+    fetchCategories,
+    fetchFilteredCourses,
   };
 };

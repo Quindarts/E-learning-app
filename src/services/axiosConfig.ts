@@ -52,7 +52,7 @@ const setRefreshToken = async (refreshToken: string) => {
 // function convert localhost to ip
 
 const axiosConfig = axios.create({
-  baseURL: `http://192.168.1.6:5000`, // phone đâu bik localhost là ip nào
+  baseURL: `http://192.168.1.104:5000`,
   headers: {
     'Content-Type': 'application/json',
   },
