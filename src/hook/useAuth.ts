@@ -1,18 +1,21 @@
 import authService from '@/services/authService';
+import useAppStore from '@/store/app';
+import useUserStore from '@/store/auth/useUserStore';
 import { IAuth } from '@/types/auth.type';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// excute client side - be side (nơi lưu vào redux, )
 export const useAuth = () => {
+  const { onLoading, unLoading } = useAppStore((s) => s);
+  const setUser = useUserStore((s) => s.signup);
   const handleLogin = async ({ email, password }: IAuth) => {
     try {
+      onLoading();
       const response = await authService.login({ email, password });
-      // console.log('schema respone', response);
-      // if (response && response.tokenList.accessToken) {
-      //   console.log('token', response.token);
-      //   AsyncStorage.setItem('tokenList', response.tokenList);
-      // }
-      // console.log('response', response);
+      if (response && response.tokenList.accessToken) {
+        AsyncStorage.setItem('tokenList', JSON.stringify(response.tokenList));
+        setUser(response.user);
+        unLoading();
+      }
       return response;
     } catch (error) {
       return error;
