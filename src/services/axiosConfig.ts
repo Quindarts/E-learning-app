@@ -9,16 +9,16 @@ const axiosConfig = axios.create({
 });
 
 axiosConfig.interceptors.request.use(
-  // async (config) => {
-  //   const accessToken = await TokenService.getAccessToken();
-  //   if (accessToken) {
-  //     config.headers.Authorization = `Bearer ${accessToken}`;
-  //   }
-  //   return config;
-  // },
-  // (error) => {
-  //   return Promise.reject(error);
-  // },
+  async (config) => {
+    const accessToken = await TokenService.getAccessToken();
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
 );
 
 axiosConfig.interceptors.response.use(
