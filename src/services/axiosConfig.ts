@@ -1,8 +1,8 @@
 import axios from 'axios';
-import TokenService from "@/utils/token"
+import TokenService from '@/utils/token';
 
 const axiosConfig = axios.create({
-  baseURL: `http://192.168.2.114:5000`,
+  baseURL: `http://192.168.1.104:5000`,
   headers: {
     'Content-Type': 'application/json',
   },

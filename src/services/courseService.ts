@@ -20,6 +20,9 @@ const filterCourses = async (filterParams: any) => {
   return await axiosConfig.get('/courses/filter', { params: filterParams });
 };
 
+const getCategories = async () => {
+  return await axiosConfig.get('/courses/categories'); // Assuming the endpoint exists
+};
 
 const courseService = {
   createCourse,
@@ -27,6 +30,7 @@ const courseService = {
   getAllCourses,
   deleteCourse,
   filterCourses,
+  getCategories,
 };
 
 export default courseService;
