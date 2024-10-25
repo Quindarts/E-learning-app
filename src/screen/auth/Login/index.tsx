@@ -69,6 +69,8 @@ function LoginScreen() {
           })}
           onSubmit={async (values) => {
             const { email, password } = values;
+            console.log('🚀 ~ onSubmit={ ~ password:', password);
+            console.log('🚀 ~ onSubmit={ ~ email:', email);
             const response: any = await handleLogin({ email, password });
             console.log('response here', response);
             if (response?.tokenList?.accessToken) {

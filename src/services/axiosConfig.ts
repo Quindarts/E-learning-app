@@ -2,23 +2,23 @@ import axios from 'axios';
 import TokenService from "@/utils/token"
 
 const axiosConfig = axios.create({
-  baseURL: `http://192.168.2.154:5000`,
+  baseURL: `http://192.168.2.114:5000`,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
 axiosConfig.interceptors.request.use(
-  async (config) => {
-    const accessToken = await TokenService.getAccessToken();
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  },
+  // async (config) => {
+  //   const accessToken = await TokenService.getAccessToken();
+  //   if (accessToken) {
+  //     config.headers.Authorization = `Bearer ${accessToken}`;
+  //   }
+  //   return config;
+  // },
+  // (error) => {
+  //   return Promise.reject(error);
+  // },
 );
 
 axiosConfig.interceptors.response.use(
