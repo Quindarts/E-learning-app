@@ -1,8 +1,8 @@
 import axios from 'axios';
 import TokenService from '@/utils/token';
-
+const API_URL = process.env.EXPO_PUBLIC_API_URL;
 const axiosConfig = axios.create({
-  baseURL: `http://192.168.1.104:5000`,
+  baseURL: `${API_URL}`,
   headers: {
     'Content-Type': 'application/json',
   },
