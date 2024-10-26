@@ -12,6 +12,7 @@ import Header from '../Home/Header';
 import LeftButtonRouting from '@/components/shared/LeftButton';
 import { ROUTING } from '@/utils/constants';
 import { useRoute } from '@react-navigation/native';
+import ButtonPaper from '@/components/ui/Button';
 
 const renderScene = SceneMap({
   overview: TabOverview,
@@ -21,6 +22,7 @@ const renderScene = SceneMap({
 
 function Lession() {
   const router = useRoute();
+  const { courseId } = router.params;
   console.log('🚀 ~ Lession ~ lessionId:', router.params);
   const layout = useWindowDimensions();
 
@@ -52,6 +54,24 @@ function Lession() {
         style={{ backgroundColor: '#fffff' }}
         renderTabBar={TabBarCustom}
       />
+      <ButtonPaper
+        mode='contained'
+        style={{
+          marginBottom: 10,
+          width: '80%',
+          position: 'absolute',
+          bottom: 10,
+          left: '10%',
+        }}
+        textColor='white'
+        rounded='sm'
+        size='sm'
+        onPress={() => {
+          // handleEnroll();
+        }}
+      >
+        MAKE AN ENROLLMENT
+      </ButtonPaper>
     </View>
   );
 }

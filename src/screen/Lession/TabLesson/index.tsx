@@ -41,6 +41,9 @@ function TabLesson() {
       ],
     },
   ];
+  const handleEnroll = () => {
+    navigation.navigate(ROUTING.DETAIL);
+  };
   return (
     <View
       style={{
@@ -51,7 +54,7 @@ function TabLesson() {
       }}
     >
       <AccordionGroupPaper list={data} />
-      <ButtonPaper
+      {/* <ButtonPaper
         mode='contained'
         style={{
           marginBottom: 10,
@@ -60,11 +63,11 @@ function TabLesson() {
         rounded='sm'
         size='sm'
         onPress={() => {
-          navigation.navigate(ROUTING.DETAIL);
+          handleEnroll();
         }}
       >
         MAKE AN ENROLLMENT
-      </ButtonPaper>
+      </ButtonPaper> */}
     </View>
   );
 }

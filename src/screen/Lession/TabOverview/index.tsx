@@ -9,7 +9,7 @@ import { Button, Chip, Card, Title, Paragraph, Text } from 'react-native-paper';
 function TabOverview() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
-    <Card style={{ padding: 8 }}>
+    <Card style={{ padding: 8, flex: 1 }}>
       <Card.Content>
         <View
           style={{
@@ -141,7 +141,7 @@ function TabOverview() {
           <Chip style={{ margin: 4 }}>Animation</Chip>
           <Chip style={{ margin: 4 }}>User Persona</Chip>
         </View>
-        <ButtonPaper
+        {/* <ButtonPaper
           mode='contained'
           textColor='white'
           rounded='sm'
@@ -151,7 +151,7 @@ function TabOverview() {
           }}
         >
           MAKE AN ENROLLMENT
-        </ButtonPaper>
+        </ButtonPaper> */}
       </Card.Content>
     </Card>
   );

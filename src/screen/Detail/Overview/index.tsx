@@ -1,9 +1,9 @@
 import theme from '@/theme';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { Text } from 'react-native-paper';
-import StarRating, { StarRatingDisplay } from 'react-native-star-rating-widget';
+import { StarRatingDisplay } from 'react-native-star-rating-widget';
 import PurchaseDetail from '../PurchaseDetail';
 const overviewData = {
   name: 'Mobile App UI UX',
