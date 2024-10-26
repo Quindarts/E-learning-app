@@ -1,11 +1,17 @@
 import BottomTab from '@/components/shared/BottomTab';
 import RightButton from '@/components/shared/RightButton';
+import LoginScreen from '@/screen/auth/Login';
+import ResetPassword from '@/screen/auth/ResetPassword';
+import SignUp from '@/screen/auth/SignUp';
 import DetailScreen from '@/screen/Detail';
 import TransactionCompletedScreen from '@/screen/Detail/Completed';
 import HomeScreen from '@/screen/Home';
 import Lession from '@/screen/Lession';
+import MyCoursesScreen from '@/screen/myCourses';
 import NotificationScreen from '@/screen/Notification';
+import OnBoardingScreen from '@/screen/onBoarding';
 import ProfileScreen from '@/screen/Profile';
+import SettingsScreen from '@/screen/settings';
 import { ROUTING } from '@/utils/constants';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

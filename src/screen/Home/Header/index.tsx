@@ -1,33 +1,10 @@
 import ButtonPaper from '@/components/ui/Button';
 import SearchBarPaper from '@/components/ui/SearchBar';
-import { useCourse } from '@/hook/useCourse';
 import useDebounce from '@/hook/useDebounce';
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { View } from 'react-native';
 import { Menu, Text } from 'react-native-paper';
-type FilterType = {
-  id: string;
-  title: string;
-  value: string;
-};
-// const FILTER_DATA: FilterType[] = [
-//   {
-//     id: '1',
-//     title: 'All',
-//     value: '',
-//   },
-//   {
-//     id: '2',
-//     title: 'React',
-//     value: '',
-//   },
-//   {
-//     id: '3',
-//     title: 'JavaScript',
-//     value: '',
-//   },
-// ];
-// Available search keys
+
 const SEARCH_KEYS = [
   { label: 'Course Name', value: 'name' },
   { label: 'Author', value: 'author' },
@@ -41,50 +18,37 @@ interface HeaderProps {
 }
 
 function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categories }: HeaderProps) {
-  const [searchTerm, setSearchTerm] = useState(''); // Search input state
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]); // Track selected categories (multiple)
+  const [searchTerm, setSearchTerm] = useState(''); 
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]); 
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
-  const [selectedSearchKey, setSelectedSearchKey] = useState('name'); // Default search key is "name"
-  const [menuVisible, setMenuVisible] = useState(false); // For the dropdown menu
-  // const { fetchFilteredCourses, fetchCategories, courses, categories } = useCourse(); // Destructure the useCourse hook
+  const [selectedSearchKey, setSelectedSearchKey] = useState('name'); 
+  const [menuVisible, setMenuVisible] = useState(false);
 
-  // Fetch categories when the component mounts
   useEffect(() => {
     fetchCategories();
   }, []);
 
   useLayoutEffect(() => {
-    // nếu không có category nào được chọn thì fetch tất cả các khóa học
     if (selectedCategories.length === 0) {
       fetchCourses();
       return;
     }
 
-    // Gọi API khi `selectedCategories` hoặc `searchTerm` thay đổi
     fetchFilteredCourses({
       keywords: debouncedSearchTerm,
       category: selectedCategories.length ? selectedCategories : [],
       sortField: selectedSearchKey,
-      minPrice: 100, // Ví dụ thêm khoảng giá vào
+      minPrice: 100,
       maxPrice: 500,
     });
-    // console.log({
-    //   keywords: debouncedSearchTerm,
-    //   category: selectedCategories.length ? selectedCategories : [],
-    //   sortField: selectedSearchKey,
-    //   minPrice: 100, // Ví dụ thêm khoảng giá vào
-    //   maxPrice: 500,
-    // });
-  }, [selectedCategories, debouncedSearchTerm]); // Mỗi khi state này thay đổi, fetch lại dữ liệu
+    
+  }, [selectedCategories, debouncedSearchTerm]);
 
-  // Handle selection of "All Courses"
   const handleSelectAll = () => {
-    setSelectedCategories([]); // Clear all other selected categories
+    setSelectedCategories([]); 
   };
 
-  // Handle category selection
   const handleSelectCategory = (category: string) => {
-    // Nếu đã chọn category thì bỏ chọn, nếu chưa chọn thì thêm vào
     if (selectedCategories.includes(category)) {
       setSelectedCategories(selectedCategories.filter((c) => c !== category));
     } else {
@@ -96,9 +60,7 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
       <SearchBarPaper
         value={searchTerm}
         onChangeText={(text) => setSearchTerm(text)}
-        // onSubmitEditing={handleSearch}
       />
-      {/* Dropdown for selecting search key */}
       <View
         style={{
           flexDirection: 'row',
@@ -114,7 +76,6 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
           visible={menuVisible}
           onDismiss={() => setMenuVisible(false)}
           anchor={
-            // Show the selected search key or "Search Key" if none is selected
             <ButtonPaper
               onPress={() => setMenuVisible(true)}
               mode='outlined'

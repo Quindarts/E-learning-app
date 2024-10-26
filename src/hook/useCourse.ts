@@ -52,7 +52,7 @@ export const useCourse = () => {
     setLoading(true);
     try {
       await courseService.deleteCourse(id);
-      setCourses((prevCourses) => prevCourses.filter((course) => course._id !== id));
+      setCourses((prevCourses) => prevCourses.filter((course) => course.id !== id));
     } catch (err: any) {
       setError(err.message || 'Failed to delete course');
     } finally {
