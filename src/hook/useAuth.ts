@@ -5,13 +5,14 @@ import { IAuth } from '@/types/auth.type';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const useAuth = () => {
-  const { onLoading, unLoading } = useAppStore((s) => s);
+  const onLoading = useAppStore((s) => s.onLoading);
+  const unLoading = useAppStore((s) => s.unLoading);
   const setUser = useUserStore((s) => s.signup);
   const handleLogin = async ({ email, password }: IAuth) => {
     try {
       onLoading();
       const response = await authService.login({ email, password });
-      if (response && response.tokenList.accessToken) {
+      if (response) {
         AsyncStorage.setItem('tokenList', JSON.stringify(response.tokenList));
         setUser(response.user);
         unLoading();
