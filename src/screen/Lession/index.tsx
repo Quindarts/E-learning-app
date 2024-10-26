@@ -11,8 +11,9 @@ import TabBarCustom from './TabBar';
 import Header from '../Home/Header';
 import LeftButtonRouting from '@/components/shared/LeftButton';
 import { ROUTING } from '@/utils/constants';
-import { useRoute } from '@react-navigation/native';
+import { NavigationProp, ParamListBase, useNavigation, useRoute } from '@react-navigation/native';
 import ButtonPaper from '@/components/ui/Button';
+import useCart from '@/hook/useCart';
 
 const renderScene = SceneMap({
   overview: TabOverview,
@@ -21,9 +22,14 @@ const renderScene = SceneMap({
 });
 
 function Lession() {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const { addCourseToCart } = useCart();
+
   const router = useRoute();
-  const { courseId } = router.params;
-  console.log('🚀 ~ Lession ~ lessionId:', router.params);
+  const { courseId } = router.params as any;
+
+  console.log('🚀 ~ Lession ~ lessionId:', courseId);
+
   const layout = useWindowDimensions();
 
   const [index, setIndex] = React.useState(0);
@@ -32,6 +38,11 @@ function Lession() {
     { key: 'lesson', title: 'Lesson' },
     { key: 'review', title: 'Reviews' },
   ]);
+
+  const handleEnroll = () => {
+    addCourseToCart(courseId);
+    navigation.navigate(ROUTING.DETAIL);
+  };
   return (
     <View style={{ flex: 1, position: 'relative' }}>
       {/* <Header /> */}
@@ -67,7 +78,7 @@ function Lession() {
         rounded='sm'
         size='sm'
         onPress={() => {
-          // handleEnroll();
+          handleEnroll();
         }}
       >
         MAKE AN ENROLLMENT

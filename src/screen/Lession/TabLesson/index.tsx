@@ -1,12 +1,8 @@
-import ButtonPaper from '@/components/ui/Button';
 import AccordionGroupPaper from '@/components/ui/GroupAccordion';
-import { ROUTING } from '@/utils/constants';
-import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native';
 
 function TabLesson() {
-  const navigation: NavigationProp<ParamListBase> = useNavigation();
   const data = [
     {
       id: '1',
@@ -41,9 +37,7 @@ function TabLesson() {
       ],
     },
   ];
-  const handleEnroll = () => {
-    navigation.navigate(ROUTING.DETAIL);
-  };
+
   return (
     <View
       style={{
@@ -54,20 +48,6 @@ function TabLesson() {
       }}
     >
       <AccordionGroupPaper list={data} />
-      {/* <ButtonPaper
-        mode='contained'
-        style={{
-          marginBottom: 10,
-        }}
-        textColor='white'
-        rounded='sm'
-        size='sm'
-        onPress={() => {
-          handleEnroll();
-        }}
-      >
-        MAKE AN ENROLLMENT
-      </ButtonPaper> */}
     </View>
   );
 }
