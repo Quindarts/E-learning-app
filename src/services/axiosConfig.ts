@@ -1,6 +1,7 @@
 import axios from 'axios';
 import TokenService from '@/utils/token';
 const API_URL = process.env.EXPO_PUBLIC_API_URL;
+console.log('API_URL', API_URL);
 const axiosConfig = axios.create({
   baseURL: `http://172.20.64.1:5000`,
   headers: {
@@ -8,7 +9,8 @@ const axiosConfig = axios.create({
   },
 });
 
-axiosConfig.interceptors.request.use(
+axiosConfig.interceptors.request
+  .use
   // async (config) => {
   //   const accessToken = await TokenService.getAccessToken();
   //   if (accessToken) {
@@ -19,7 +21,7 @@ axiosConfig.interceptors.request.use(
   // (error) => {
   //   return Promise.reject(error);
   // },
-);
+  ();
 
 axiosConfig.interceptors.response.use(
   (response: any) => {
