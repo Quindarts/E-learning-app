@@ -1,7 +1,6 @@
 import RootLayout from '@/layout/RootLayout';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import Header from './Header';
-import TrendingNow from './TrendingNow';
 import AllCourse from './AllCourse';
 import { useCourse } from '@/hook/useCourse';
 import { useEffect, useLayoutEffect, useState } from 'react';

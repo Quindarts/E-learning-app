@@ -1,36 +1,34 @@
 import axiosConfig from './axiosConfig';
+import GeneralRepositoryServices from './generalRepository';
 
-const createCourse = async (courseData: any) => {
-  return await axiosConfig.post('/courses', courseData);
-};
+class CourseService {
+  private repoCourse = new GeneralRepositoryServices<any>('courses');
 
-const getCourseById = async (id: string) => {
-  return await axiosConfig.get(`/courses/${id}`);
-};
+  public createCourse = async (courseData: any) => {
+    return await this.repoCourse.save(courseData);
+  };
 
-const getAllCourses = async () => {
-  return await axiosConfig.get('/courses');
-};
+  public getCourseById = async (id: string) => {
+    return await this.repoCourse.findById(id);
+  };
 
-const deleteCourse = async (id: string) => {
-  return await axiosConfig.delete(`/courses/${id}`);
-};
+  public getAllCourses = async () => {
+    return await axiosConfig.get('/courses');
+  };
 
-const filterCourses = async (filterParams: any) => {
-  return await axiosConfig.get('/courses/filter', { params: filterParams });
-};
+  public deleteCourse = async (id: string) => {
+    return await this.repoCourse.deleteById(id);
+  };
 
-const getCategories = async () => {
-  return await axiosConfig.get('/courses/categories'); // Assuming the endpoint exists
-};
+  public filterCourses = async (filterParams: any) => {
+    return await axiosConfig.get('/courses/filter', { params: filterParams });
+  };
 
-const courseService = {
-  createCourse,
-  getCourseById,
-  getAllCourses,
-  deleteCourse,
-  filterCourses,
-  getCategories,
-};
+  public getCategories = async () => {
+    return await axiosConfig.get('/courses/categories');
+  };
+}
+
+const courseService = new CourseService();
 
 export default courseService;
