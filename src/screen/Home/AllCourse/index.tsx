@@ -31,9 +31,9 @@ function AllCourse({ courses, loading, error, fetchCourses }: AllCourseProps) {
   return (
     <View>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-        {courses?.map((course: Course) => (
+        {courses?.map((course: Course, Index) => (
           <CardProjectPaper
-            key={course.id}
+            key={Index}
             lessionId={course.id}
             imageSource={{ uri: course.imgUrls[0] }}
             title={course.name}

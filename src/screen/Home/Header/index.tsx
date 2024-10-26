@@ -18,10 +18,10 @@ interface HeaderProps {
 }
 
 function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categories }: HeaderProps) {
-  const [searchTerm, setSearchTerm] = useState(''); 
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]); 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
-  const [selectedSearchKey, setSelectedSearchKey] = useState('name'); 
+  const [selectedSearchKey, setSelectedSearchKey] = useState('name');
   const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
@@ -41,11 +41,10 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
       minPrice: 100,
       maxPrice: 500,
     });
-    
   }, [selectedCategories, debouncedSearchTerm]);
 
   const handleSelectAll = () => {
-    setSelectedCategories([]); 
+    setSelectedCategories([]);
   };
 
   const handleSelectCategory = (category: string) => {
@@ -57,10 +56,7 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
   };
   return (
     <>
-      <SearchBarPaper
-        value={searchTerm}
-        onChangeText={(text) => setSearchTerm(text)}
-      />
+      <SearchBarPaper value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
       <View
         style={{
           flexDirection: 'row',
