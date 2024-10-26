@@ -1,7 +1,6 @@
 import IconButtonPaper from '@/components/ui/IconButton';
 import HomeScreen from '@/screen/Home';
 import InBoxSreen from '@/screen/InBox';
-import MyCoursesScreen from '@/screen/MyCourses';
 import ProfileScreen from '@/screen/Profile';
 import theme from '@/theme';
 import { ROUTING } from '@/utils/constants';
