@@ -3,7 +3,7 @@ import { AntDesign } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import MaskInput, { Masks } from 'react-native-mask-input';
-import { Button, Text, TextInput } from 'react-native-paper';
+import { Button, Divider, Menu, Text, TextInput } from 'react-native-paper';
 import { Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 import TextInputPaper from '@/components/ui/TextInput';
@@ -60,11 +60,31 @@ const MoMo: React.FC = () => {
     </View>
   );
 };
+
+const coupon = [
+  {
+    id: 1,
+    code: 'ABC123',
+    discount: 10,
+  },
+  {
+    id: 2,
+    code: 'ABC456',
+    discount: 20,
+  },
+  {
+    id: 3,
+    code: 'ABC789',
+    discount: 30,
+  },
+];
 export default function BillingDetail() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('MoMo');
   const [isMoMo, setIsMoMo] = useState(true);
   const [isVnpay, setIsVnpay] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
+  const [selectedCoupon, setSelectedCoupon] = useState<any>();
 
   const handleSelectPaymentMethod = (paymentMethod: string) => {
     setSelectedPaymentMethod(paymentMethod);
@@ -143,14 +163,42 @@ export default function BillingDetail() {
                   mode='outlined'
                   textColor='primary'
                 />
-                <TextInputPaper
+                {/* <TextInputPaper
                   isRequired={true}
                   label='Coupon'
                   name='coupon'
                   placeholder=''
                   mode='outlined'
                   textColor='primary'
-                />
+                /> */}
+                <Menu
+                  visible={menuVisible}
+                  onDismiss={() => setMenuVisible(false)}
+                  anchor={
+                    <Button onPress={() => setMenuVisible(true)} style={{ marginTop: 10 }}>
+                      {coupon?.find((c) => c.id === selectedCoupon?.id)?.code || 'Show Coupons'}
+                    </Button>
+                  }
+                >
+                  {coupon.map((c) => (
+                    <Menu.Item
+                      key={c.id}
+                      onPress={() => {
+                        setMenuVisible(false);
+                        setSelectedCoupon(c);
+                      }}
+                      title={`${c.code} - ${c.discount}%`}
+                    />
+                  ))}
+                  <Divider />
+                  <Menu.Item
+                    onPress={() => {
+                      setMenuVisible(false);
+                      setSelectedCoupon(undefined);
+                    }}
+                    title='Cancel'
+                  />
+                </Menu>
 
                 <View style={styles.paymentMethodList}>
                   <TouchableOpacity
@@ -196,16 +244,7 @@ export default function BillingDetail() {
                     )}
                   </TouchableOpacity>
                 </View>
-                {/* <ButtonPaper
-              uppercase={true}
-              mode='contained'
-              size='lg'
-              rounded='sm'
-              onPress={() => handleSubmit()}
-              style={{ width: '100%', marginTop: 20 }}
-            >
-              Sign Up
-            </ButtonPaper> */}
+
                 <Button
                   mode='contained'
                   uppercase

@@ -7,7 +7,7 @@ export default function DetailScreen() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const route = useRoute();
   const { course } = route.params as any;
-  console.log('🚀 ~ file: index.tsx ~ line 6 ~ DetailScreen ~ course', course);
+  // console.log('🚀 ~ file: index.tsx ~ line 6 ~ DetailScreen ~ course', course);
   return (
     <RootLayout>
       <Overview course={course} />

@@ -70,7 +70,7 @@ function LoginScreen() {
           onSubmit={async (values) => {
             const { email, password } = values;
             const response: any = await handleLogin({ email, password });
-            console.log('response here', response);
+            // console.log('response here', response);
             if (response?.tokenList?.accessToken) {
               navigation.navigate('BottomTab');
             }
