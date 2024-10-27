@@ -2,7 +2,8 @@ import AccordionGroupPaper from '@/components/ui/GroupAccordion';
 import React from 'react';
 import { View } from 'react-native';
 
-function TabLesson() {
+function TabLesson({ course }: { course: any }) {
+  console.log('🚀 ~ TabLesson ~ course: ', course);
   const data = [
     {
       id: '1',

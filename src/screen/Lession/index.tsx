@@ -15,20 +15,20 @@ import { NavigationProp, ParamListBase, useNavigation, useRoute } from '@react-n
 import ButtonPaper from '@/components/ui/Button';
 import useCart from '@/hook/useCart';
 
-const renderScene = SceneMap({
-  overview: TabOverview,
-  lesson: TabLesson,
-  review: TabReview,
-});
+// const renderScene = SceneMap({
+//   overview: TabOverview,
+//   lesson: TabLesson,
+//   review: TabReview,
+// });
 
 function Lession() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const { addCourseToCart } = useCart();
 
   const router = useRoute();
-  const { courseId } = router.params as any;
+  const { course } = router.params as any;
 
-  console.log('🚀 ~ Lession ~ lessionId:', courseId);
+  console.log('🚀 ~ Lession ~ course: ', course, ' id: ', course._id);
 
   const layout = useWindowDimensions();
 
@@ -38,10 +38,21 @@ function Lession() {
     { key: 'lesson', title: 'Lesson' },
     { key: 'review', title: 'Reviews' },
   ]);
-
+  const renderScene = ({ route }: any) => {
+    switch (route.key) {
+      case 'overview':
+        return <TabOverview course={course} />;
+      case 'lesson':
+        return <TabLesson course={course} />;
+      case 'review':
+        return <TabReview course={course} />;
+      default:
+        return null;
+    }
+  };
   const handleEnroll = () => {
-    addCourseToCart(courseId);
-    navigation.navigate(ROUTING.DETAIL);
+    // addCourseToCart(course._id);
+    navigation.navigate(ROUTING.DETAIL, { course: course });
   };
   return (
     <View style={{ flex: 1, position: 'relative' }}>

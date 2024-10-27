@@ -3,7 +3,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { View } from 'react-native';
 import { Chip, Card, Paragraph, Text } from 'react-native-paper';
-function TabOverview() {
+function TabOverview({ course }: { course: any }) {
+  // console.log('🚀 ~ TabOverview ~ course: ', course);
   return (
     <Card style={{ padding: 8, flex: 1 }}>
       <Card.Content>
@@ -16,12 +17,18 @@ function TabOverview() {
         >
           <View>
             <Text variant='titleMedium' style={{ fontWeight: 'bold', marginBottom: 2 }}>
-              Mobile App UI UX
+              {/* Mobile App UI UX */}
+              {course.name}
             </Text>
-            <Paragraph style={{ color: '#6b7280' }}>By Tom Makesman</Paragraph>
+            <Paragraph style={{ color: '#6b7280' }}>By {course.author}</Paragraph>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
-              {[1, 2, 3, 4, 5].map(() => (
-                <Text style={{ color: theme.colors.primary, marginRight: 4, fontSize: 14 }}>★</Text>
+              {[1, 2, 3, 4, 5].map((item, key) => (
+                <Text
+                  key={key}
+                  style={{ color: theme.colors.primary, marginRight: 4, fontSize: 14 }}
+                >
+                  ★
+                </Text>
               ))}
             </View>
           </View>
@@ -29,11 +36,11 @@ function TabOverview() {
             <Text
               style={{
                 fontWeight: '700',
-                fontSize: 32,
+                fontSize: 28,
                 textAlign: 'right',
               }}
             >
-              $85
+              {course.price * 22700}đ
             </Text>
             <Text
               variant='bodySmall'
@@ -49,8 +56,9 @@ function TabOverview() {
         </View>
 
         <Paragraph style={{ color: '#374151', marginBottom: 16 }}>
-          Lorem ipsum dolor sit amet consectetur. Lectus viverra sed aliquam quis enim leo. Turpis
-          nec facilisis placerat dolor ac donec.
+          {course.description}
+          {/* Lorem ipsum dolor sit amet consectetur. Lectus viverra sed aliquam quis enim leo. Turpis
+          nec facilisis placerat dolor ac donec. */}
         </Paragraph>
         <View
           style={{
@@ -77,7 +85,7 @@ function TabOverview() {
           >
             <MaterialCommunityIcons name='bookshelf' size={16} color={theme.colors.primary} />
             <Text variant='bodyLarge' style={{ color: theme.colors.primary }}>
-              100+ Lessons
+              {course.lessons.length} Lessons
             </Text>
           </View>
           <View
@@ -110,7 +118,7 @@ function TabOverview() {
               color={theme.colors.primary}
             />
             <Text variant='bodyLarge' style={{ color: theme.colors.primary }}>
-              7 Weeks
+              {parseInt(course.totalDuration) / (60 * 60)} hours
             </Text>
           </View>
           <View

@@ -9,14 +9,15 @@ const overviewData = {
   name: 'Mobile App UI UX',
   rating: 5,
   time: '7 HRs',
-  totalTime: '7 Weeks',
-  lesson: '100 Lessons',
+  totalTime: '7 Weeks', // Total duration
+  lesson: '100 Lessons', // total lesson
   discount: 0.2,
-  trainner: 'Frank Darabont',
-  totalPrice: 76,
+  trainner: 'Frank Darabont', // author
+  totalPrice: 76, // price
 };
 export default function Overview() {
   const [rating, setRating] = useState(overviewData.rating);
+
   return (
     <View style={{}}>
       <Text variant='titleLarge' style={{ fontWeight: 'bold', marginVertical: 34 }}>

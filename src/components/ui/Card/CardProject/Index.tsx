@@ -13,7 +13,7 @@ interface ProjectCardProps {
   progress: number;
   imageSource: any; // Adjust type based on your image source
   dimensions?: { width: number; height: number };
-  courseId: string;
+  course: any;
 }
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -23,7 +23,7 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
   progress,
   imageSource,
   initialRating = 0,
-  courseId,
+  course,
 }) => {
   const [rating, setRating] = useState(initialRating);
   const navigation: NavigationProp<ParamListBase> = useNavigation();
@@ -31,7 +31,7 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
     <Card
       onPress={() =>
         navigation.navigate(ROUTING.LESSION_DETAIL, {
-          courseId: courseId,
+          course: course,
         })
       }
       elevation={0}
