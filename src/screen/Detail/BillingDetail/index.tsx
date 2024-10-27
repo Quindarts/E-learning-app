@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import MaskInput, { Masks } from 'react-native-mask-input';
 import { Button, Text, TextInput } from 'react-native-paper';
-import PurchaseDetail from '../PurchaseDetail';
 import { Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 import TextInputPaper from '@/components/ui/TextInput';
@@ -224,7 +223,6 @@ export default function BillingDetail() {
       </View>
 
       {/* {isMoMo && <MoMo />} */}
-      <PurchaseDetail />
     </View>
   );
 }

@@ -28,7 +28,7 @@ function Lession() {
   const router = useRoute();
   const { course } = router.params as any;
 
-  console.log('🚀 ~ Lession ~ course: ', course, ' id: ', course._id);
+  // console.log('🚀 ~ Lession ~ course: ', course, ' id: ', course._id);
 
   const layout = useWindowDimensions();
 
@@ -51,6 +51,7 @@ function Lession() {
     }
   };
   const handleEnroll = () => {
+    // xong het thi uncomment
     // addCourseToCart(course._id);
     navigation.navigate(ROUTING.DETAIL, { course: course });
   };

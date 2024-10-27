@@ -10,7 +10,7 @@ export default function DetailScreen() {
   console.log('🚀 ~ file: index.tsx ~ line 6 ~ DetailScreen ~ course', course);
   return (
     <RootLayout>
-      <Overview />
+      <Overview course={course} />
       <BillingDetail />
     </RootLayout>
   );

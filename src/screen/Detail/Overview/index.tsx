@@ -4,20 +4,26 @@ import { useState } from 'react';
 import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { StarRatingDisplay } from 'react-native-star-rating-widget';
-import PurchaseDetail from '../PurchaseDetail';
-const overviewData = {
-  name: 'Mobile App UI UX',
-  rating: 5,
-  time: '7 HRs',
-  totalTime: '7 Weeks', // Total duration
-  lesson: '100 Lessons', // total lesson
-  discount: 0.2,
-  trainner: 'Frank Darabont', // author
-  totalPrice: 76, // price
-};
-export default function Overview() {
-  const [rating, setRating] = useState(overviewData.rating);
+// const overviewData = {
+//   name: 'Mobile App UI UX',
+//   rating: 5,
+//   time: '7 HRs',
+//   totalTime: '7 Weeks', // Total duration
+//   lesson: '100 Lessons', // total lesson
+//   discount: 0.2,
+//   trainner: 'Frank Darabont', // author
+//   totalPrice: 76, // price
+// };
+const coupon = 0.2;
 
+export default function Overview({ course }: { course: any }) {
+  const [rating, setRating] = useState(5);
+
+  const formattedDate = new Date(course.startDate).toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
   return (
     <View style={{}}>
       <Text variant='titleLarge' style={{ fontWeight: 'bold', marginVertical: 34 }}>
@@ -29,7 +35,8 @@ export default function Overview() {
           Name Of Lesson:
         </Text>
         <Text variant='titleMedium' style={{ fontWeight: 'bold', flexShrink: 1 }}>
-          {overviewData.name}
+          {/* {overviewData.name} */}
+          {course.name}
         </Text>
       </View>
       {/*  */}
@@ -58,7 +65,8 @@ export default function Overview() {
         >
           <MaterialCommunityIcons name='book-multiple' size={24} color={theme.colors.primary} />
           <Text variant='bodyMedium' style={{ fontWeight: 'medium' }}>
-            {overviewData.lesson}
+            {/* {overviewData.lesson} */}
+            {course.lessons.length} Lessons
           </Text>
         </View>
         <View
@@ -84,7 +92,7 @@ export default function Overview() {
         >
           <MaterialCommunityIcons name='clock-time-eight' size={24} color={theme.colors.primary} />
           <Text variant='bodyMedium' style={{ fontWeight: 'medium' }}>
-            {overviewData.totalTime}
+            {(parseInt(course.totalDuration) / (60 * 60)).toFixed(2)} hours
           </Text>
         </View>
         <View
@@ -97,7 +105,8 @@ export default function Overview() {
         >
           <MaterialIcons name='discount' size={24} color={theme.colors.primary} />
           <Text variant='bodyMedium' style={{ fontWeight: 'medium' }}>
-            {overviewData.discount * 100}%
+            {/* {overviewData.discount * 100}% */}
+            20%
           </Text>
         </View>
       </View>
@@ -120,7 +129,8 @@ export default function Overview() {
             Course Time:
           </Text>
           <Text variant='titleMedium' style={{ fontWeight: 'bold' }}>
-            {overviewData.time}
+            {/* {overviewData.time} */}
+            {course.lessons.length} Lessons
           </Text>
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
@@ -128,11 +138,70 @@ export default function Overview() {
             Name Of Trainer:
           </Text>
           <Text variant='titleMedium' style={{ fontWeight: 'bold' }}>
-            {overviewData.trainner}
+            {/* {overviewData.trainner} */}
+            {course.author}
           </Text>
         </View>
       </View>
-      <PurchaseDetail />
+      {/* <PurchaseDetail /> */}
+      <View>
+        <View
+          style={{
+            marginVertical: 34,
+            borderRadius: 18,
+            borderColor: '#DEDEDE',
+            borderWidth: 1,
+            flexDirection: 'row',
+            paddingVertical: 20,
+            flexWrap: 'wrap',
+            paddingHorizontal: 26,
+            justifyContent: 'space-between',
+            padding: 20,
+          }}
+        >
+          <Text
+            variant='labelLarge'
+            style={{
+              position: 'absolute',
+              top: -12,
+              left: 20,
+              backgroundColor: '#FFFFFF',
+            }}
+          >
+            Purchase Detail:
+          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20, flexBasis: '40%' }}>
+            <Text variant='bodyMedium' style={{ fontWeight: 'medium' }}>
+              Date:
+            </Text>
+            <Text variant='bodyMedium' style={{ fontWeight: 'bold' }}>
+              {formattedDate}
+            </Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20, flexBasis: '40%' }}>
+            <Text variant='bodyMedium' style={{ fontWeight: 'medium' }}>
+              Price:
+            </Text>
+            <Text variant='bodyMedium' style={{ fontWeight: 'bold' }}>
+              {course.price * 22700}đ
+            </Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20, marginTop: 20 }}>
+            <Text variant='bodyMedium' style={{ fontWeight: 'medium' }}>
+              Coupon:
+            </Text>
+            <Text variant='bodyMedium' style={{ fontWeight: 'bold' }}>
+              Added {coupon * 100}% discount
+            </Text>
+          </View>
+        </View>
+        <View style={{ flexDirection: 'row', alignSelf: 'flex-end' }}>
+          <Text variant='titleMedium'>Final Price: </Text>
+          <Text variant='titleMedium' style={{ fontWeight: 'bold', color: theme.colors.primary }}>
+            {course.price * 22700 - course.price * 22700 * coupon}đ
+          </Text>
+        </View>
+      </View>
     </View>
   );
 }

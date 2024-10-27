@@ -118,7 +118,7 @@ function TabOverview({ course }: { course: any }) {
               color={theme.colors.primary}
             />
             <Text variant='bodyLarge' style={{ color: theme.colors.primary }}>
-              {parseInt(course.totalDuration) / (60 * 60)} hours
+              {(parseInt(course.totalDuration) / (60 * 60)).toFixed(2)} hours
             </Text>
           </View>
           <View

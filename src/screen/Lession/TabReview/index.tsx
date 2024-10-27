@@ -3,7 +3,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 function TabReview({ course }: { course: any }) {
-  console.log('🚀 ~ TabReview ~ course: ', course);
+  // console.log('🚀 ~ TabReview ~ course: ', course);
   return (
     <View
       style={{
