@@ -11,7 +11,7 @@ export default function DetailScreen() {
   return (
     <RootLayout>
       <Overview course={course} />
-      <BillingDetail />
+      <BillingDetail courseId={course._id} />
     </RootLayout>
   );
 }

@@ -9,6 +9,7 @@ import * as Yup from 'yup';
 import TextInputPaper from '@/components/ui/TextInput';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { ROUTING } from '@/utils/constants';
+import { usePayment } from '@/hook/usePayment';
 const MoMo: React.FC = () => {
   const [cardNumber, setCardNumber] = useState('');
   const [cardHolder, setCardHolder] = useState('');
@@ -63,28 +64,30 @@ const MoMo: React.FC = () => {
 
 const coupon = [
   {
-    id: 1,
+    id: '1',
     code: 'ABC123',
     discount: 10,
   },
   {
-    id: 2,
+    id: '2',
     code: 'ABC456',
     discount: 20,
   },
   {
-    id: 3,
+    id: '3',
     code: 'ABC789',
     discount: 30,
   },
 ];
-export default function BillingDetail() {
+export default function BillingDetail({ courseId }: { courseId: string }) {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('MoMo');
   const [isMoMo, setIsMoMo] = useState(true);
   const [isVnpay, setIsVnpay] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
   const [selectedCoupon, setSelectedCoupon] = useState<any>();
+
+  const { createPayment } = usePayment();
 
   const handleSelectPaymentMethod = (paymentMethod: string) => {
     setSelectedPaymentMethod(paymentMethod);
@@ -98,7 +101,23 @@ export default function BillingDetail() {
     }
   };
 
-  const handleSubmitPayment = () => {
+  const handleSubmitPayment = (values: {
+    fullName: string;
+    email: string;
+    phone: string;
+    country: string;
+  }) => {
+    const objectBody = {
+      fullName: values.fullName,
+      email: values.email,
+      phone: values.phone,
+      country: values.country,
+      paymentMethod: selectedPaymentMethod,
+      couponId: selectedCoupon?.id,
+      courseId: courseId,
+    };
+    console.log(objectBody);
+    // createPayment(objectBody);
     navigation.navigate(ROUTING.TRANSACTION_COMPLETED);
   };
   return (
@@ -118,7 +137,7 @@ export default function BillingDetail() {
               country: Yup.string().required(),
             })}
             onSubmit={(values) => {
-              handleSubmitPayment();
+              handleSubmitPayment(values);
             }}
           >
             {({
