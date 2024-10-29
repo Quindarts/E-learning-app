@@ -2,7 +2,7 @@ import CardReview from '@/components/ui/Card/CardReview';
 import React from 'react';
 import { View } from 'react-native';
 
-function TabReview({ course }: { course: any }) {
+function TabReview({ reviews }: { reviews: any }) {
   // console.log('🚀 ~ TabReview ~ course: ', course);
   return (
     <View
@@ -11,12 +11,12 @@ function TabReview({ course }: { course: any }) {
         backgroundColor: 'white',
       }}
     >
-      {[1, 2, 3, 4, 5].map((item, key) => (
+      {reviews.map((review: any, key: number) => (
         <CardReview
           key={key}
-          name='Name Here'
-          reviewText='Lorem ipsum dolor sit amet consectetur. Lectus viverra sed aliquam quis enim leo. Turpis nec facilisis placerat dolor ac donec. Odio semper quis rutrum quis '
-          initialRating={5}
+          name={review.userId} // chỗ này tính sau
+          reviewText={review.comment}
+          initialRating={review.rating}
           imgURL={'/assets/google.png'}
         />
       ))}

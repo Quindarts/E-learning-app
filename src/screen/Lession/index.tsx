@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useWindowDimensions, View } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import VideoFrame from './Video';
@@ -6,7 +6,7 @@ import TabOverview from './TabOverview';
 import TabLesson from './TabLesson';
 import TabReview from './TabReview';
 import theme from '@/theme';
-import { Text } from 'react-native-paper';
+import { ActivityIndicator, Text } from 'react-native-paper';
 import TabBarCustom from './TabBar';
 import Header from '../Home/Header';
 import LeftButtonRouting from '@/components/shared/LeftButton';
@@ -15,8 +15,7 @@ import { NavigationProp, ParamListBase, useNavigation, useRoute } from '@react-n
 import ButtonPaper from '@/components/ui/Button';
 import useCart from '@/hook/useCart';
 import useUserStore from '@/store/auth/useUserStore';
-import { Cart } from '@/types/cart.type';
-import { produce } from 'immer';
+import { useCourse } from '@/hook/useCourse';
 
 // const renderScene = SceneMap({
 //   overview: TabOverview,
@@ -30,9 +29,8 @@ function Lession() {
   const { addCourseToCart } = useCart();
 
   const router = useRoute();
-  const { course } = router.params as any;
-
-  // console.log('🚀 ~ Lession ~ course: ', course, ' id: ', course._id);
+  const { courseId } = router.params as any;
+  const { course, fetchCourseById, loading, error } = useCourse();
 
   const layout = useWindowDimensions();
 
@@ -42,14 +40,23 @@ function Lession() {
     { key: 'lesson', title: 'Lesson' },
     { key: 'review', title: 'Reviews' },
   ]);
+
+  useEffect(() => {
+    if (courseId) {
+      fetchCourseById(courseId);
+    }
+  }, []);
+  console.log('🚀 ~ Lession ~ course: ', course, ' id: ', course?._id);
+
   const renderScene = ({ route }: any) => {
+    if (!course) return null;
     switch (route.key) {
       case 'overview':
         return <TabOverview course={course} />;
       case 'lesson':
-        return <TabLesson course={course} />;
+        return <TabLesson lessons={course.lessons} />;
       case 'review':
-        return <TabReview course={course} />;
+        return <TabReview reviews={course.reviews} />;
       default:
         return null;
     }
@@ -59,24 +66,44 @@ function Lession() {
     // addCourseToCart(course._id);
 
     // chờ respone từ backend, vì logic course có dc thêm hay ko.
-    //  setCart({
-    //    items: [
-    //      {
-    //        course: {
-    //          name: course.name,
-    //          description: course.description,
-    //          author: course.author,
-    //          imgUrls: course.imgUrls,
-    //          price: course.price,
-    //        },
-    //        quantity: 1,
-    //      },
-    //    ],
-    //    totalPrice: course.price,
-    //  });
+    // if (course) {
+    //   addCourseToCart(course._id);
+    //   setCart({
+    //     items: [
+    //       {
+    //         course: {
+    //           name: course.name,
+    //           description: course.description,
+    //           author: course.author,
+    //           imgUrls: course.imgUrls,
+    //           price: course.price,
+    //         },
+    //         quantity: 1,
+    //       },
+    //     ],
+    //     totalPrice: course.price,
+    //   });
+    // }
 
     navigation.navigate(ROUTING.DETAIL, { course: course });
   };
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size='large' color='#0000ff' />
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ color: 'red' }}>{error}</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={{ flex: 1, position: 'relative' }}>
       {/* <Header /> */}

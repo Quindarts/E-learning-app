@@ -138,12 +138,15 @@ function TabOverview({ course }: { course: any }) {
         </View>
         <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 8 }}>Skills</Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 16 }}>
-          <Chip style={{ margin: 4 }}>UI/UX</Chip>
-          <Chip style={{ margin: 4 }}>Website Design</Chip>
-          <Chip style={{ margin: 4 }}>Figma</Chip>
-          <Chip style={{ margin: 4 }}>XD</Chip>
-          <Chip style={{ margin: 4 }}>Animation</Chip>
-          <Chip style={{ margin: 4 }}>User Persona</Chip>
+          {Array.isArray(course.category) ? (
+            course.category.map((item: any, key: number) => (
+              <Chip key={key} style={{ marginRight: 8, marginBottom: 8 }}>
+                {item}
+              </Chip>
+            ))
+          ) : (
+            <Chip style={{ marginRight: 8, marginBottom: 8 }}>{course.category}</Chip>
+          )}
         </View>
       </Card.Content>
     </Card>

@@ -34,7 +34,7 @@ function AllCourse({ courses, loading, error, fetchCourses }: AllCourseProps) {
         {courses?.map((course: any, Index) => (
           <CardProjectPaper
             key={Index}
-            course={course}
+            courseId={course._id}
             imageSource={{ uri: course.imgUrls[0] }}
             title={course.name}
             creater={course.author}
