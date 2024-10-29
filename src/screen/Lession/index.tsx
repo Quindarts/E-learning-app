@@ -14,6 +14,9 @@ import { ROUTING } from '@/utils/constants';
 import { NavigationProp, ParamListBase, useNavigation, useRoute } from '@react-navigation/native';
 import ButtonPaper from '@/components/ui/Button';
 import useCart from '@/hook/useCart';
+import useUserStore from '@/store/auth/useUserStore';
+import { Cart } from '@/types/cart.type';
+import { produce } from 'immer';
 
 // const renderScene = SceneMap({
 //   overview: TabOverview,
@@ -23,6 +26,7 @@ import useCart from '@/hook/useCart';
 
 function Lession() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const setCart = useUserStore((s) => s.setCart);
   const { addCourseToCart } = useCart();
 
   const router = useRoute();
@@ -53,6 +57,24 @@ function Lession() {
   const handleEnroll = () => {
     // xong het thi uncomment
     // addCourseToCart(course._id);
+
+    // chờ respone từ backend, vì logic course có dc thêm hay ko.
+    //  setCart({
+    //    items: [
+    //      {
+    //        course: {
+    //          name: course.name,
+    //          description: course.description,
+    //          author: course.author,
+    //          imgUrls: course.imgUrls,
+    //          price: course.price,
+    //        },
+    //        quantity: 1,
+    //      },
+    //    ],
+    //    totalPrice: course.price,
+    //  });
+
     navigation.navigate(ROUTING.DETAIL, { course: course });
   };
   return (

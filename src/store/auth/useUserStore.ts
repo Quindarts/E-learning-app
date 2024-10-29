@@ -5,7 +5,7 @@ import { Cart } from '@/types/cart.type';
 
 interface UserState {
   user: Partial<User>;
-  carts: Partial<Cart>;
+  carts: Partial<Cart>; // any
 }
 
 interface UserAction {

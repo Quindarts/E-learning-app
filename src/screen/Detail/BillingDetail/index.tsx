@@ -63,8 +63,9 @@ const MoMo: React.FC = () => {
 };
 
 const coupon = [
+  // nhét vô user
   {
-    id: '1',
+    id: '1', // bỏ
     code: 'ABC123',
     discount: 10,
   },
@@ -113,11 +114,12 @@ export default function BillingDetail({ courseId }: { courseId: string }) {
       phone: values.phone,
       country: values.country,
       paymentMethod: selectedPaymentMethod,
-      couponId: selectedCoupon?.id,
-      courseId: courseId,
+      couponCode: selectedCoupon?.id, // chỉnh lại thêm
+      // courseId: courseId,
     };
     console.log(objectBody);
     // createPayment(objectBody);
+    // reponse trả về
     navigation.navigate(ROUTING.TRANSACTION_COMPLETED);
   };
   return (

@@ -1,18 +1,13 @@
 import { Course } from './course.type';
 
-interface Cart {
-  courses: Omit<
-    Course,
-    'id'
-    | 'isActive'
-    | 'startDate'
-    | 'endDate'
-    | 'totalDuration'
-    | 'totalReview'
-    | 'orders'
-    | 'lessons'
-    | 'review'
-    | 'category'
-  >[];
+interface CartItem {
+  course: Pick<Course, 'name' | 'description' | 'author' | 'imgUrls' | 'price'>;
+  quantity: number;
 }
-export { Cart };
+
+interface Cart {
+  items: CartItem[];
+  totalPrice: number;
+}
+
+export { Cart, CartItem };

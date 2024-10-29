@@ -33,6 +33,7 @@ function TabLesson({ course }: { course: any }) {
       id: '4',
       name: 'Lesson 4 : App Design Process',
       details: [
+        // content, duration (icon block), video (icon youtube), tiền xử lí data để render
         { id: '2-1', icon: 'face', content: 'Item 3' },
         { id: '2-2', icon: 'home', content: 'Item 4' },
       ],
