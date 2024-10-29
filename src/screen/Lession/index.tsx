@@ -46,7 +46,7 @@ function Lession() {
       fetchCourseById(courseId);
     }
   }, []);
-  console.log('🚀 ~ Lession ~ course: ', course, ' id: ', course?._id);
+  // console.log('🚀 ~ Lession ~ course: ', course, ' id: ', course?._id);
 
   const renderScene = ({ route }: any) => {
     if (!course) return null;

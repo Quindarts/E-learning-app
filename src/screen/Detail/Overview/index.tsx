@@ -113,10 +113,15 @@ export default function Overview({
           }}
         >
           <MaterialIcons name='discount' size={24} color={theme.colors.primary} />
-          <Text variant='bodyMedium' style={{ fontWeight: 'medium' }}>
-            {/* {overviewData.discount * 100}% */}
-            20%
-          </Text>
+          {selectedCoupon ? (
+            <Text variant='bodyMedium' style={{ fontWeight: 'medium' }}>
+              {selectedCoupon.discount}%
+            </Text>
+          ) : (
+            <Text variant='bodyMedium' style={{ fontWeight: 'medium' }}>
+              No coupon
+            </Text>
+          )}
         </View>
       </View>
       {/*  */}

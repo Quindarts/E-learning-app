@@ -20,7 +20,7 @@ function TabLesson({ lessons }: { lessons: any }) {
   }
 
   const data = convertData(lessons);
-  console.log('🚀 ~ TabLesson ~ data: ', data);
+  // console.log('🚀 ~ TabLesson ~ data: ', data);
 
   // const data = [
   //   {
