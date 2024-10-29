@@ -1,4 +1,5 @@
 import theme from '@/theme';
+import { convertVND } from '@/utils/convertVND';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { View } from 'react-native';
@@ -40,7 +41,7 @@ function TabOverview({ course }: { course: any }) {
                 textAlign: 'right',
               }}
             >
-              {course.price * 22700}đ
+              {convertVND(course.price * 22700)}
             </Text>
             <Text
               variant='bodySmall'

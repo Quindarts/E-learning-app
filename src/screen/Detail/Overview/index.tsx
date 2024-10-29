@@ -1,4 +1,5 @@
 import theme from '@/theme';
+import { convertVND } from '@/utils/convertVND';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { View } from 'react-native';
@@ -14,9 +15,17 @@ import { StarRatingDisplay } from 'react-native-star-rating-widget';
 //   trainner: 'Frank Darabont', // author
 //   totalPrice: 76, // price
 // };
-const coupon = 0.2;
+// const coupon = 0.2;
 
-export default function Overview({ course }: { course: any }) {
+export default function Overview({
+  course,
+  finalPrice,
+  selectedCoupon,
+}: {
+  course: any;
+  finalPrice: number;
+  selectedCoupon: any;
+}) {
   const [rating, setRating] = useState(5);
 
   const formattedDate = new Date(course.startDate).toLocaleDateString('en-GB', {
@@ -183,22 +192,28 @@ export default function Overview({ course }: { course: any }) {
               Price:
             </Text>
             <Text variant='bodyMedium' style={{ fontWeight: 'bold' }}>
-              {course.price * 22700}đ
+              {convertVND(course.price * 22700)}
             </Text>
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20, marginTop: 20 }}>
             <Text variant='bodyMedium' style={{ fontWeight: 'medium' }}>
               Coupon:
             </Text>
-            <Text variant='bodyMedium' style={{ fontWeight: 'bold' }}>
-              Added {coupon * 100}% discount
-            </Text>
+            {selectedCoupon ? (
+              <Text variant='bodyMedium' style={{ fontWeight: 'bold' }}>
+                Added {selectedCoupon.discount}% discount
+              </Text>
+            ) : (
+              <Text variant='bodyMedium' style={{ fontWeight: 'bold' }}>
+                No coupon
+              </Text>
+            )}
           </View>
         </View>
         <View style={{ flexDirection: 'row', alignSelf: 'flex-end' }}>
           <Text variant='titleMedium'>Final Price: </Text>
           <Text variant='titleMedium' style={{ fontWeight: 'bold', color: theme.colors.primary }}>
-            {course.price * 22700 - course.price * 22700 * coupon}đ
+            {convertVND(finalPrice)}
           </Text>
         </View>
       </View>

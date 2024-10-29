@@ -5,9 +5,9 @@ import useUserStore from '@/store/auth/useUserStore';
 
 export const useCart = () => {
   const [error, setError] = useState<string | null>(null);
-  const { onLoading, unLoading } = useAppStore(s => s)
-  const carts = useUserStore(s => s.carts)
-  const setCart = useUserStore(s => s.setCart)
+  const { onLoading, unLoading } = useAppStore((s) => s);
+  const carts = useUserStore((s) => s.carts);
+  const setCart = useUserStore((s) => s.setCart);
 
   const fetchCartItems = async () => {
     onLoading();
@@ -19,7 +19,6 @@ export const useCart = () => {
       unLoading();
     }
   };
-
 
   const addCourseToCart = async (courseId: string) => {
     onLoading();
@@ -34,7 +33,6 @@ export const useCart = () => {
     }
   };
 
-
   const removeCourseFromCart = async (courseId: string) => {
     onLoading();
     setError(null);
@@ -45,10 +43,8 @@ export const useCart = () => {
       setError(err.message || 'Failed to remove course from cart');
     } finally {
       unLoading();
-
     }
   };
-
 
   // const clearCart = async () => {
   //   onLoading();

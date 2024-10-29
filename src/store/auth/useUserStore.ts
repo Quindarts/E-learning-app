@@ -38,9 +38,11 @@ const useUserStore = create<UserState & UserAction>((set) => ({
       }),
     ),
   setCart: (carts) =>
-    set(produce((state) => {
-      state.carts = carts;
-    }),)
+    set(
+      produce((state) => {
+        state.carts = carts;
+      }),
+    ),
 }));
 
 export default useUserStore;
