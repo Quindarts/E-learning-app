@@ -9,7 +9,7 @@ interface CourseCardProps {
   creater: string;
   progress: number;
   imageSource: any;
-  lessionId: string;
+  lessionId: string; // course id
 }
 
 const CourseCardPaper: React.FC<CourseCardProps> = ({

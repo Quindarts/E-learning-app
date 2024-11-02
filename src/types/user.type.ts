@@ -1,5 +1,6 @@
 import { Address } from './address.type';
 import { Cart } from './cart.type';
+import { Coupon } from './coupon.type';
 import { Notify } from './notify.type';
 import { Role } from './role.type';
 
@@ -21,6 +22,7 @@ interface User {
   cart: Cart;
   addresses: Address[];
   notifies: Notify[];
+  coupons: Coupon[];
   currentCourse: Array<{ _id: string; progress: number; time: string }>;
 }
 export { User };

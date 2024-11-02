@@ -81,10 +81,12 @@ const MoMo: React.FC = () => {
 //   },
 // ];
 export default function BillingDetail({
+  addressDetail,
   coupon,
   selectedCoupon,
   setSelectedCoupon,
 }: {
+  addressDetail: any;
   coupon: any;
   selectedCoupon: any;
   setSelectedCoupon: (coupon: any) => void;
@@ -137,7 +139,12 @@ export default function BillingDetail({
 
         <View>
           <Formik
-            initialValues={{ fullName: '', email: '', phone: '', country: '' }}
+            initialValues={{
+              fullName: addressDetail.fullName,
+              email: addressDetail.email,
+              phone: addressDetail.phone,
+              country: addressDetail.country,
+            }}
             validationSchema={Yup.object().shape({
               fullName: Yup.string().required(),
               email: Yup.string().email().required(),

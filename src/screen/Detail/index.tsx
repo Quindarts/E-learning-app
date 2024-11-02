@@ -14,7 +14,7 @@ export default function DetailScreen() {
   const carts = useUserStore((s) => s.carts);
   const user = useUserStore((s) => s.user);
   const { course, fetchCourseById, loading, error } = useCourse();
-  const [selectedCoupon, setSelectedCoupon] = useState<any>(); // obejct coupon
+  const [selectedCoupon, setSelectedCoupon] = useState<any>(user.coupons?.[0] ?? null); // obejct coupon
   const [finalPrice, setFinalPrice] = useState<number>(course?.price || 0);
 
   useEffect(() => {
@@ -58,7 +58,13 @@ export default function DetailScreen() {
         <Overview course={course} finalPrice={finalPrice} selectedCoupon={selectedCoupon} />
       )}
       <BillingDetail
-        coupon={(user as any).coupons}
+        addressDetail={{
+          country: user.addresses?.[0]?.province ?? '',
+          phone: user.phone,
+          email: user.email,
+          fullName: `${user.firstName} ${user.lastName}`,
+        }}
+        coupon={user.coupons}
         selectedCoupon={selectedCoupon}
         setSelectedCoupon={setSelectedCoupon}
       />
