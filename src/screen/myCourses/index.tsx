@@ -68,10 +68,10 @@ export default function MyCoursesScreen() {
       <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', paddingTop: 0 }}>
         {courses.map((course) => (
           <CourseCardPaper
-            lessionId={course.id}
+            courseId={course.id}
             key={course.id}
-            title={course.title}
-            creater={course.author}
+            name={course.title}
+            author={course.author}
             progress={course.progress}
             imageSource={{ uri: course.img }}
           />

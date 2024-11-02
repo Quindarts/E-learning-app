@@ -36,8 +36,8 @@ function AllCourse({ courses, loading, error, fetchCourses }: AllCourseProps) {
             key={Index}
             courseId={course._id}
             imageSource={{ uri: course.imgUrls[0] }}
-            title={course.name}
-            creater={course.author}
+            name={course.name}
+            author={course.author}
             initialRating={5}
             progress={Number(course.totalDuration)}
           />

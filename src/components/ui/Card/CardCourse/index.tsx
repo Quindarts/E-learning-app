@@ -5,26 +5,26 @@ import { View } from 'react-native';
 import { Text, Card, CardProps, Paragraph, ProgressBar, Title } from 'react-native-paper';
 
 interface CourseCardProps {
-  title: string;
-  creater: string;
+  name: string;
+  author: string;
   progress: number;
   imageSource: any;
-  lessionId: string; // course id
+  courseId: string; // course id
 }
 
 const CourseCardPaper: React.FC<CourseCardProps> = ({
-  title,
-  creater,
+  name,
+  author,
   progress,
   imageSource,
-  lessionId,
+  courseId,
 }) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
     <Card
       onPress={() =>
         navigation.navigate(ROUTING.LESSION_DETAIL, {
-          lessionId: lessionId,
+          lessionId: courseId,
         })
       }
       elevation={2}
@@ -53,9 +53,9 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({
               // margin: 0,
             }}
           >
-            {title}
+            {name}
           </Text>
-          <Text style={{ fontSize: 9, color: '#7E7E7E', marginBottom: 20 }}>By {creater}</Text>
+          <Text style={{ fontSize: 9, color: '#7E7E7E', marginBottom: 20 }}>By {author}</Text>
           <Text style={{ textAlign: 'right', fontSize: 9, color: '#858383' }}>
             {progress}% Done
           </Text>

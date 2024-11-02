@@ -7,10 +7,10 @@ import { Card, Title, Paragraph, ProgressBar, Text } from 'react-native-paper';
 import StarRating from 'react-native-star-rating-widget';
 
 interface ProjectCardProps {
-  title: string;
-  creater: string;
+  name: string;
+  author: string;
   initialRating?: number;
-  progress: number;
+  progress: number; // total duration
   imageSource: any; // Adjust type based on your image source
   dimensions?: { width: number; height: number };
   courseId: string;
@@ -18,8 +18,8 @@ interface ProjectCardProps {
 const { width: screenWidth } = Dimensions.get('window');
 
 const CardProjectPaper: React.FC<ProjectCardProps> = ({
-  title,
-  creater,
+  name,
+  author,
   progress,
   imageSource,
   initialRating = 0,
@@ -63,7 +63,7 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
               }}
               variant='labelMedium'
             >
-              {title}
+              {name}
             </Text>
             <StarRating
               rating={rating}
@@ -76,7 +76,7 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
             />
           </Text>
         </View>
-        <Text style={{ fontSize: 9, color: '#7E7E7E' }}>By {creater}</Text>
+        <Text style={{ fontSize: 9, color: '#7E7E7E' }}>By {author}</Text>
         <Text style={{ textAlign: 'right', fontSize: 9, color: '#858383' }}>{progress}% Done</Text>
         <ProgressBar progress={progress / 100} color='#0f3975' />
       </Card.Content>
