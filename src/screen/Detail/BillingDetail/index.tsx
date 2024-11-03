@@ -10,6 +10,7 @@ import TextInputPaper from '@/components/ui/TextInput';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { ROUTING } from '@/utils/constants';
 import { usePayment } from '@/hook/usePayment';
+import useOrder from '@/hook/useOrder';
 const MoMo: React.FC = () => {
   const [cardNumber, setCardNumber] = useState('');
   const [cardHolder, setCardHolder] = useState('');
@@ -96,6 +97,10 @@ export default function BillingDetail({
   const [isMoMo, setIsMoMo] = useState(true);
   const [isVnpay, setIsVnpay] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
+  const { createOrder, orders, loading, error } = useOrder();
+  const [orderData, setOrderData] = useState<any>({
+    /* dữ liệu đơn hàng */
+  });
 
   const { createPayment } = usePayment();
   const handleSelectPaymentMethod = (paymentMethod: string) => {
@@ -110,25 +115,21 @@ export default function BillingDetail({
     }
   };
 
-  const handleSubmitPayment = (values: {
+  const handleSubmitPayment = async (values: {
     fullName: string;
     email: string;
     phone: string;
     country: string;
   }) => {
     const objectBody = {
-      fullName: values.fullName,
-      email: values.email,
-      phone: values.phone,
-      country: values.country,
-      paymentMethod: selectedPaymentMethod,
       couponCode: selectedCoupon?.code, // chỉnh lại thêm
-      // courseId: courseId,
     };
     console.log(objectBody);
-    // createPayment(objectBody);
-    // reponse trả về
-    navigation.navigate(ROUTING.TRANSACTION_COMPLETED);
+
+    const orderResponse = await createOrder(objectBody);
+    if (orderResponse && orderResponse.success && orderResponse?.order?.status === 'completed') {
+      navigation.navigate(ROUTING.TRANSACTION_COMPLETED);
+    }
   };
   return (
     <View style={styles.container}>

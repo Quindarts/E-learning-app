@@ -5,8 +5,9 @@ import BillingDetail from './BillingDetail';
 import useUserStore from '@/store/auth/useUserStore';
 import { Text, View } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useCourse } from '@/hook/useCourse';
+import useCart from '@/hook/useCart';
 
 export default function DetailScreen() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
@@ -17,11 +18,25 @@ export default function DetailScreen() {
   const [selectedCoupon, setSelectedCoupon] = useState<any>(user.coupons?.[0] ?? null); // obejct coupon
   const [finalPrice, setFinalPrice] = useState<number>(course?.price || 0);
 
+  const { clearCart } = useCart();
+
+  // handle clear cart when user leave this screen
   useEffect(() => {
-    if (carts && carts.items && carts.items.length > 0) {
-      const courseId = carts.items[0].course as any; // lỗi type khó chịu
-      fetchCourseById(courseId);
-    }
+    const unsubscribe = navigation.addListener('beforeRemove', () => {
+      clearCart();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
+  useEffect(() => {
+    const fetchCourse = async () => {
+      if (carts && carts.items && carts.items.length > 0) {
+        const courseId = carts.items[0].course._id as any; // lỗi type khó chịu
+        await fetchCourseById(courseId);
+      }
+    };
+    fetchCourse();
   }, []);
 
   useEffect(() => {

@@ -61,31 +61,16 @@ function Lession() {
         return null;
     }
   };
-  const handleEnroll = () => {
-    // xong het thi uncomment
-    // addCourseToCart(course._id);
-
-    // chờ respone từ backend, vì logic course có dc thêm hay ko.
-    // if (course) {
-    //   addCourseToCart(course._id);
-    //   setCart({
-    //     items: [
-    //       {
-    //         course: {
-    //           name: course.name,
-    //           description: course.description,
-    //           author: course.author,
-    //           imgUrls: course.imgUrls,
-    //           price: course.price,
-    //         },
-    //         quantity: 1,
-    //       },
-    //     ],
-    //     totalPrice: course.price,
-    //   });
-    // }
-
-    navigation.navigate(ROUTING.DETAIL, { course: course });
+  const handleEnroll = async () => {
+    try {
+      const res = await addCourseToCart(course._id);
+      if (res && res.success && res.cart.items.length > 0) {
+        navigation.navigate(ROUTING.DETAIL);
+      }
+    } catch (error) {
+      // Xử lý lỗi nếu cần
+      console.error('Failed to add course to cart:', error);
+    }
   };
 
   if (loading) {

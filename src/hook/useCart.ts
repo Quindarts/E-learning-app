@@ -2,6 +2,7 @@ import { useState } from 'react';
 import cartService from '@/services/cartService';
 import useAppStore from '@/store/app';
 import useUserStore from '@/store/auth/useUserStore';
+import { Cart } from '@/types/cart.type';
 
 export const useCart = () => {
   const [error, setError] = useState<string | null>(null);
@@ -25,7 +26,8 @@ export const useCart = () => {
     setError(null);
     try {
       const response = await cartService.addCourseToCart(courseId);
-      setCart(response.carts);
+      setCart(response.cart);
+      return response;
     } catch (err: any) {
       setError(err.message || 'Failed to add course to cart');
     } finally {
@@ -38,7 +40,7 @@ export const useCart = () => {
     setError(null);
     try {
       const response: any = await cartService.removeCourseFromCart(courseId);
-      setCart(response.carts);
+      setCart(response.cart);
     } catch (err: any) {
       setError(err.message || 'Failed to remove course from cart');
     } finally {
@@ -46,26 +48,25 @@ export const useCart = () => {
     }
   };
 
-  // const clearCart = async () => {
-  //   onLoading();
-  //   setError(null);
-  //   try {
-  //     await cartService.clearCart();
-  //     setCart(null);
-  //   } catch (err: any) {
-  //     setError(err.message || 'Failed to clear cart');
-  //   } finally {
-  //     unLoading();
-
-  //   }
-  // };
+  const clearCart = async () => {
+    onLoading();
+    setError(null);
+    try {
+      await cartService.clearCart();
+      setCart({} as Cart);
+    } catch (err: any) {
+      setError(err.message || 'Failed to clear cart');
+    } finally {
+      unLoading();
+    }
+  };
 
   return {
     carts,
     fetchCartItems,
     addCourseToCart,
     removeCourseFromCart,
-    // clearCart,
+    clearCart,
   };
 };
 
