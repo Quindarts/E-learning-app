@@ -1,5 +1,7 @@
 import CourseCardPaper from '@/components/ui/Card/CardCourse';
 import RootLayout from '@/layout/RootLayout';
+import useUserStore from '@/store/auth/useUserStore';
+import { current } from 'immer';
 import { FlatList, ScrollView, View } from 'react-native';
 import { Text } from 'react-native-paper';
 type coursesData = {
@@ -63,17 +65,19 @@ const courses: coursesData[] = [
 ];
 
 export default function MyCoursesScreen() {
+  const user = useUserStore((s) => s.user);
+  const currentCourse = user?.currentCourses;
   return (
     <RootLayout>
       <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', paddingTop: 0 }}>
-        {courses.map((course) => (
+        {currentCourse?.map((c: any) => (
           <CourseCardPaper
-            courseId={course.id}
-            key={course.id}
-            name={course.title}
-            author={course.author}
-            progress={course.progress}
-            imageSource={{ uri: course.img }}
+            courseId={c.course._id}
+            key={c.course._id}
+            name={c.course.name}
+            author={c.course.author}
+            progress={c.course.totalDuration}
+            imageSource={{ uri: c.course.imgUrls[0] }}
           />
         ))}
       </View>

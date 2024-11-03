@@ -1,3 +1,4 @@
+import useUserStore from '@/store/auth/useUserStore';
 import theme from '@/theme';
 import { ROUTING } from '@/utils/constants';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
@@ -27,11 +28,17 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
 }) => {
   const [rating, setRating] = useState(initialRating);
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const user = useUserStore((s) => s.user);
+
+  // check course is in my course
+  const isMyCourse = user?.currentCourses?.find((c: any) => c.course._id === courseId);
+
   return (
     <Card
       onPress={() =>
         navigation.navigate(ROUTING.LESSION_DETAIL, {
           courseId: courseId,
+          isMyCourse: isMyCourse,
         })
       }
       elevation={0}

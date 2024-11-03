@@ -24,7 +24,8 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({
     <Card
       onPress={() =>
         navigation.navigate(ROUTING.LESSION_DETAIL, {
-          lessionId: courseId,
+          courseId: courseId,
+          isMyCourse: true,
         })
       }
       elevation={2}

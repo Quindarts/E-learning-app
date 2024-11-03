@@ -23,6 +23,6 @@ interface User {
   addresses: Address[];
   notifies: Notify[];
   coupons: Coupon[];
-  currentCourse: Array<{ _id: string; progress: number; time: string }>;
+  currentCourses: Array<{ _id: string; progress: number; time: string }>;
 }
 export { User };

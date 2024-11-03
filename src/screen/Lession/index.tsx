@@ -29,7 +29,7 @@ function Lession() {
   const { addCourseToCart } = useCart();
 
   const router = useRoute();
-  const { courseId } = router.params as any;
+  const { courseId, isMyCourse } = router.params as any;
   const { course, fetchCourseById, loading, error } = useCourse();
 
   const layout = useWindowDimensions();
@@ -126,24 +126,26 @@ function Lession() {
         style={{ backgroundColor: '#fffff' }}
         renderTabBar={TabBarCustom}
       />
-      <ButtonPaper
-        mode='contained'
-        style={{
-          marginBottom: 10,
-          width: '80%',
-          position: 'absolute',
-          bottom: 10,
-          left: '10%',
-        }}
-        textColor='white'
-        rounded='sm'
-        size='sm'
-        onPress={() => {
-          handleEnroll();
-        }}
-      >
-        MAKE AN ENROLLMENT
-      </ButtonPaper>
+      {!isMyCourse && (
+        <ButtonPaper
+          mode='contained'
+          style={{
+            marginBottom: 10,
+            width: '80%',
+            position: 'absolute',
+            bottom: 10,
+            left: '10%',
+          }}
+          textColor='white'
+          rounded='sm'
+          size='sm'
+          onPress={() => {
+            handleEnroll();
+          }}
+        >
+          MAKE AN ENROLLMENT
+        </ButtonPaper>
+      )}
     </View>
   );
 }
