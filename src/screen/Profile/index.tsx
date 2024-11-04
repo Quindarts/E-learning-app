@@ -2,6 +2,7 @@ import AvatarPaper from '@/components/ui/Avatar';
 import ButtonPaper from '@/components/ui/Button';
 import CardProjectPaper from '@/components/ui/Card/CardProject/Index';
 import RootLayout from '@/layout/RootLayout';
+import useUserStore from '@/store/auth/useUserStore';
 import { FlatList, ScrollView, View } from 'react-native';
 import { Text } from 'react-native-paper';
 
@@ -34,6 +35,8 @@ const skills: skillsData[] = [
 ];
 
 export default function ProfileScreen() {
+  const user = useUserStore((state) => state.user);
+
   return (
     <RootLayout>
       {/* // <ScrollView
@@ -81,10 +84,10 @@ export default function ProfileScreen() {
               href={{ uri: 'https://avatars.githubusercontent.com/u/47231147?v=4' }}
             />
             <Text variant='titleLarge' style={{ fontWeight: 'bold' }}>
-              Name Here
+              {user?.lastName}
             </Text>
             <Text variant='bodySmall' style={{ color: '#7E7E7E' }}>
-              Email Here
+              {user?.email}
             </Text>
           </View>
           {/* user info */}
@@ -145,20 +148,17 @@ export default function ProfileScreen() {
           <Text variant='bodyMedium'>View all</Text>
         </View>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-          <CardProjectPaper
-            imageSource={{ uri: 'https://picsum.photos/700' }}
-            title='Project Title'
-            creater='Designer Name'
-            initialRating={3}
-            progress={50}
-          />
-          <CardProjectPaper
-            imageSource={{ uri: 'https://picsum.photos/700' }}
-            title='Project Title'
-            creater='Designer Name'
-            initialRating={3}
-            progress={80}
-          />
+          {user?.currentCourses?.map((course: any, Index) => (
+            <CardProjectPaper
+              key={Index}
+              courseId={course.course._id}
+              imageSource={{ uri: course.course.imgUrls[0] }}
+              name={course.course.name}
+              author={course.course.author}
+              initialRating={5}
+              progress={Number(course.course.totalDuration)}
+            />
+          ))}
         </View>
       </View>
       {/* </ScrollView> */}

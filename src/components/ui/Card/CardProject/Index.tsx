@@ -58,30 +58,22 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
         >
           <Text
             style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
+              // fontSize: 14,
+              fontWeight: 700,
             }}
+            variant='labelMedium'
           >
-            <Text
-              style={{
-                // fontSize: 14,
-                fontWeight: 700,
-              }}
-              variant='labelMedium'
-            >
-              {name}
-            </Text>
-            <StarRating
-              rating={rating}
-              onChange={setRating}
-              maxStars={5}
-              starSize={14}
-              color={theme.colors.primary}
-              starStyle={{ marginHorizontal: 0 }}
-              enableSwiping={false}
-            />
+            {name}
           </Text>
+          <StarRating
+            rating={rating}
+            onChange={setRating}
+            maxStars={5}
+            starSize={14}
+            color={theme.colors.primary}
+            starStyle={{ marginHorizontal: 0 }}
+            enableSwiping={false}
+          />
         </View>
         <Text style={{ fontSize: 9, color: '#7E7E7E' }}>By {author}</Text>
         <Text style={{ textAlign: 'right', fontSize: 9, color: '#858383' }}>{progress}% Done</Text>
