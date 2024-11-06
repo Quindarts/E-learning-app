@@ -3,7 +3,7 @@ import TokenService from '@/utils/token';
 import useUserStore from '@/store/auth/useUserStore';
 const API_URL = process.env.EXPO_PUBLIC_API_URL;
 const axiosConfig = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: 'http://localhost:5000',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -37,7 +37,7 @@ axiosConfig.interceptors.response.use(
       //   const response = await axiosConfig.post('/refreshToken', {
       //     refreshToken,
       //   });
-      //   const newAccessToken = response?.data?.accessToken; 
+      //   const newAccessToken = response?.data?.accessToken;
       //   setAccessToken(newAccessToken);
       //   return axiosConfig(originalRequest);
       // } catch (error) {
