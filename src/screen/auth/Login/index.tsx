@@ -1,5 +1,5 @@
 import ButtonPaper from '@/components/ui/Button';
-import ChipPaper from '@/components/ui/Chip';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import TextInputPaper from '@/components/ui/TextInput';
 import { useAuth } from '@/hook/useAuth';
 import useUserStore from '@/store/auth/useUserStore';
@@ -9,8 +9,9 @@ import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/
 import { Formik, FormikProps } from 'formik';
 import React from 'react';
 import { View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Icon, Text } from 'react-native-paper';
 import * as Yup from 'yup';
+import Foundation from '@expo/vector-icons/Foundation';
 
 interface FormValues {
   email: string;
@@ -20,7 +21,6 @@ interface FormValues {
 function LoginScreen() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   // zustand state
-  const user = useUserStore((state) => state.user);
   const { handleLogin } = useAuth();
   return (
     <View
@@ -69,12 +69,7 @@ function LoginScreen() {
           })}
           onSubmit={async (values) => {
             const { email, password } = values;
-            const response: any = await handleLogin({ email, password });
-            // console.log('response here', response);
-            if (response?.tokenList?.accessToken) {
-              navigation.navigate('BottomTab');
-            }
-            // update state
+            await handleLogin({ email, password });
           }}
         >
           {({ handleSubmit }: FormikProps<FormValues>) => (
@@ -145,24 +140,20 @@ function LoginScreen() {
             paddingHorizontal: 20,
           }}
         >
-          <ChipPaper
-            onPress={() => {}}
-            bgColor='#1877F2'
-            mode='outlined'
-            icon='facebook'
-            textColor='white'
-          >
-            Sign Up with Facebook
-          </ChipPaper>
-          <ChipPaper
-            onPress={() => {}}
-            mode='outlined'
-            bgColor='#FFFFFF'
-            iconImage='../../../../assets/google.png'
-            textColor='#0000008A'
-          >
-            Sign Up with Google
-          </ChipPaper>
+          <ButtonPaper mode='outlined' onPress={() => {}}>
+            <Foundation
+              style={{ margin: 10 }}
+              name='social-facebook'
+              size={24}
+              color='primary.main'
+            />
+            <Text> Sign Up with Facebook</Text>
+          </ButtonPaper>
+
+          <ButtonPaper mode='outlined' onPress={() => {}}>
+            <AntDesign name='google' style={{ margin: 10 }} size={20} color='#333' />
+            <Text> Sign Up with Google</Text>
+          </ButtonPaper>
           <Text
             style={{
               textAlign: 'center',

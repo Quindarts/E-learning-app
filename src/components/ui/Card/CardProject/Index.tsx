@@ -31,7 +31,7 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
   const user = useUserStore((s) => s.user);
 
   // check course is in my course
-  const isMyCourse = user?.currentCourses?.find((c: any) => c.course._id === courseId);
+  const isMyCourse = user?.currentCourses?.find((c: any) => c?.course?._id === courseId);
 
   return (
     <Card

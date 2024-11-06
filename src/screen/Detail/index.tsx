@@ -75,8 +75,8 @@ export default function DetailScreen() {
       <BillingDetail
         addressDetail={{
           country: user.addresses?.[0]?.province ?? '',
-          phone: user.phone,
-          email: user.email,
+          phone: user?.phone,
+          email: user?.email,
           fullName: `${user.firstName} ${user.lastName}`,
         }}
         coupon={user.coupons}

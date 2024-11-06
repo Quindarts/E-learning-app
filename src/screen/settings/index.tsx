@@ -8,6 +8,7 @@ import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/
 import authService from '@/services/authService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ROUTING } from '@/utils/constants';
+import { useAuth } from '@/hook/useAuth';
 
 type ItemData = {
   id: string;
@@ -113,7 +114,7 @@ const Item = ({ item, onPress, backgroundColor, textColor, icon }: ItemProps) =>
 );
 
 export default function SettingsScreen() {
-  const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const { handleLogout } = useAuth();
   const controller = (title: string) => {
     switch (title) {
       case 'Profile':
@@ -129,8 +130,7 @@ export default function SettingsScreen() {
       case 'Invite friends':
         return 'InviteFriends';
       case 'Logout': {
-        authService.logout();
-        navigation.navigate(ROUTING.LOGIN);
+        handleLogout();
       }
       default:
         return 'Profile';

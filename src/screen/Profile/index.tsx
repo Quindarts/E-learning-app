@@ -151,12 +151,12 @@ export default function ProfileScreen() {
           {user?.currentCourses?.map((course: any, Index) => (
             <CardProjectPaper
               key={Index}
-              courseId={course.course._id}
-              imageSource={{ uri: course.course.imgUrls[0] }}
-              name={course.course.name}
-              author={course.course.author}
+              courseId={course?.course?._id}
+              imageSource={{ uri: course?.course?.imgUrls[0] }}
+              name={course?.course?.name}
+              author={course?.course?.author}
               initialRating={5}
-              progress={Number(course.course.totalDuration)}
+              progress={Number(course?.course?.totalDuration)}
             />
           ))}
         </View>

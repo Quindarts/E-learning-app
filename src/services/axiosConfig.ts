@@ -6,16 +6,17 @@ const axiosConfig = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  timeout: 10000,
 });
 
 axiosConfig.interceptors.request.use(
-  async (config) => {
-    const accessToken = await TokenService.getAccessToken();
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
-    return config;
-  },
+  // async (config) => {
+  //   const accessToken = await TokenService.getAccessToken();
+  //   if (accessToken !== null) {
+  //     config.headers.Authorization = `Bearer ${accessToken}`;
+  //   }
+  //   return config;
+  // },
   (error) => {
     return Promise.reject(error);
   },
@@ -35,7 +36,7 @@ axiosConfig.interceptors.response.use(
         //   const response = await axiosConfig.post('/refreshToken', {
         //     refreshToken,
         //   });
-        //   const newAccessToken = response?.data?.accessToken; // chờ viết api xem trả về như thế nào
+        //   const newAccessToken = response?.data?.accessToken; 
         //   setAccessToken(newAccessToken);
         //   return axiosConfig(originalRequest);
         // } catch (error) {

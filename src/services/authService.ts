@@ -1,5 +1,4 @@
 import axiosConfig from './axiosConfig';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IAuth } from '@/types/auth.type';
 
 const login: any = async ({ email, password }: IAuth) => {
@@ -8,12 +7,9 @@ const login: any = async ({ email, password }: IAuth) => {
     password,
   });
 };
-const logout = () => {
-  AsyncStorage.removeItem('tokenList');
-};
+
 
 const authService = {
   login,
-  logout,
 };
 export default authService;

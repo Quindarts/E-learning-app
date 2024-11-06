@@ -17,12 +17,6 @@ import useCart from '@/hook/useCart';
 import useUserStore from '@/store/auth/useUserStore';
 import { useCourse } from '@/hook/useCourse';
 
-// const renderScene = SceneMap({
-//   overview: TabOverview,
-//   lesson: TabLesson,
-//   review: TabReview,
-// });
-
 function Lession() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const setCart = useUserStore((s) => s.setCart);
@@ -46,7 +40,6 @@ function Lession() {
       fetchCourseById(courseId);
     }
   }, []);
-  // console.log('🚀 ~ Lession ~ course: ', course, ' id: ', course?._id);
 
   const renderScene = ({ route }: any) => {
     if (!course) return null;
@@ -68,7 +61,6 @@ function Lession() {
         navigation.navigate(ROUTING.DETAIL);
       }
     } catch (error) {
-      // Xử lý lỗi nếu cần
       console.error('Failed to add course to cart:', error);
     }
   };
