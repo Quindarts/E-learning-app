@@ -14,10 +14,10 @@ function TabReview({ reviews }: { reviews: any }) {
       {reviews.map((review: any, key: number) => (
         <CardReview
           key={key}
-          name={review?.user.name} 
+          name={review?.user?.name} 
           reviewText={review?.comment}
           initialRating={review?.rating}
-          imgURL={review?.user.avatar}
+          imgURL={review?.user?.avatar}
         />
       ))}
     </View>
