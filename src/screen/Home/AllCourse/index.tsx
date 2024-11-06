@@ -33,9 +33,8 @@ function AllCourse({ courses, loading, error, fetchCourses }: AllCourseProps) {
       style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', gap: 10 }}
     >
       {courses?.map((course: any) => (
-        <View style={{ width: '48%' }}>
+        <View style={{ width: '48%' }} key={course._id}>
           <CardProjectPaper
-            key={course._id}
             name={course.name}
             author={course.author}
             progress={Number(course.totalDuration ?? 0)}
