@@ -38,7 +38,7 @@ export default function HomeScreen() {
             marginTop: 6,
             marginBottom: 14,
             fontSize: 20,
-            textAlign: 'start',
+            textAlign: 'left',
           }}
         >
           All course
