@@ -140,22 +140,6 @@ function LoginScreen() {
             paddingHorizontal: 20,
           }}
         >
-<<<<<<< HEAD
-          <ButtonPaper mode='outlined' onPress={() => {}}>
-            <Foundation
-              style={{ margin: 10 }}
-              name='social-facebook'
-              size={24}
-              color='primary.main'
-            />
-            <Text> Sign Up with Facebook</Text>
-          </ButtonPaper>
-
-          <ButtonPaper mode='outlined' onPress={() => {}}>
-            <AntDesign name='google' style={{ margin: 10 }} size={20} color='#333' />
-            <Text> Sign Up with Google</Text>
-          </ButtonPaper>
-=======
           {/* <ChipPaper
             onPress={() => {}}
             bgColor='#1877F2'
@@ -203,7 +187,6 @@ function LoginScreen() {
           >
             Sign Up with Google
           </Button>
->>>>>>> 0a5e285cc11f8424027d67b8e3a476c0fa9e00f2
           <Text
             style={{
               textAlign: 'center',
