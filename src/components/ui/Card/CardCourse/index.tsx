@@ -58,9 +58,9 @@ const CourseCardPaper: React.FC<CourseCardProps> = ({
           </Text>
           <Text style={{ fontSize: 9, color: '#7E7E7E', marginBottom: 20 }}>By {author}</Text>
           <Text style={{ textAlign: 'right', fontSize: 9, color: '#858383' }}>
-            {progress}% Done
+            {progress ?? 0}% Done
           </Text>
-          <ProgressBar progress={progress / 100} color={theme.colors.primary} />
+          <ProgressBar progress={(progress ?? 0) / 100} color={theme.colors.primary} />
         </Card.Content>
       </View>
       {/* </Card> */}

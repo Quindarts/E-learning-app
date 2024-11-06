@@ -168,7 +168,7 @@ export default function ProfileScreen() {
                 name={item.course.name}
                 author={item.course.author}
                 initialRating={5}
-                progress={Number(item.course.totalDuration)}
+                progress={Number(item.course.totalDuration ?? 0)}
               />
             </View>
           )}

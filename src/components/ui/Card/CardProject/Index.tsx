@@ -81,9 +81,9 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
           </View>
           <Text style={{ fontSize: 9, color: '#7E7E7E' }}>By {author}</Text>
           <Text style={{ textAlign: 'right', fontSize: 9, color: '#858383' }}>
-            {progress}% Done
+            {progress ?? 0}% Done
           </Text>
-          <ProgressBar progress={progress / 100} color='#0f3975' />
+          <ProgressBar progress={(progress ?? 0) / 100} color='#0f3975' />
         </Card.Content>
       </Card>
     </TouchableOpacity>

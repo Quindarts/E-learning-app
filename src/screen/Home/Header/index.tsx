@@ -55,7 +55,7 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
     }
   };
   return (
-    <>
+    <View>
       <SearchBarPaper value={searchTerm} onChangeText={(text) => setSearchTerm(text)} />
       <View
         style={{
@@ -126,7 +126,7 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
           </ButtonPaper>
         ))}
       </View>
-    </>
+    </View>
   );
 }
 

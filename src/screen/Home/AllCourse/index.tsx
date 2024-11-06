@@ -29,25 +29,23 @@ function AllCourse({ courses, loading, error, fetchCourses }: AllCourseProps) {
   }
 
   return (
-    <FlatList
-      data={courses}
-      keyExtractor={(item) => item._id}
-      renderItem={({ item }) => (
-        <View style={{ flex: 1, marginHorizontal: 5, marginBottom: 10 }}>
+    <View
+      style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', gap: 10 }}
+    >
+      {courses?.map((course: any) => (
+        <View style={{ width: '48%' }}>
           <CardProjectPaper
-            courseId={item._id}
-            imageSource={{ uri: item.imgUrls[0] }}
-            name={item.name}
-            author={item.author}
+            key={course._id}
+            name={course.name}
+            author={course.author}
+            progress={Number(course.totalDuration ?? 0)}
+            imageSource={{ uri: course.imgUrls[0] }}
+            courseId={course._id}
             initialRating={5}
-            progress={Number(item.totalDuration)}
           />
         </View>
-      )}
-      numColumns={2}
-      style={{ flex: 1 }}
-      scrollEnabled={false}
-    />
+      ))}
+    </View>
   );
 }
 
