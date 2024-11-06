@@ -9,7 +9,7 @@ const axiosConfig = axios.create({
   timeout: 10000,
 });
 
-axiosConfig.interceptors.request.
+axiosConfig.interceptors.request.use(
   async (config) => {
     // const accessToken = await TokenService.getAccessToken();
     // if (accessToken) {

@@ -94,7 +94,7 @@ function Lession() {
       >
         <LeftButtonRouting icon='arrow-left' backPath={ROUTING.BOTTOM_TAB} />
       </View>
-      <VideoFrame />
+      <VideoFrame course={course} />
       <TabView
         navigationState={{ index, routes }}
         renderScene={renderScene}
