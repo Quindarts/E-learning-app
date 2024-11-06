@@ -140,29 +140,11 @@ function LoginScreen() {
             paddingHorizontal: 20,
           }}
         >
-          {/* <ChipPaper
-            onPress={() => {}}
-            bgColor='#1877F2'
-            mode='outlined'
-            icon='facebook'
-            textColor='white'
-          >
-            Sign Up with Facebook
-          </ChipPaper>
-          <ChipPaper
-            onPress={() => {}}
-            mode='outlined'
-            bgColor='#FFFFFF'
-            iconImage='../../../../assets/google.png'
-            textColor='#0000008A'
-          >
-            Sign Up with Google
-          </ChipPaper> */}
           <Button
             mode='contained'
             onPress={() => {}}
             style={{ backgroundColor: '#1877F2', marginVertical: 8, borderRadius: 8 }}
-            icon={() => <Icon source='facebook' size={20} />}
+            icon={() => <Icon source='facebook' color='white' size={24} />}
             labelStyle={{ color: 'white' }}
           >
             Sign Up with Facebook

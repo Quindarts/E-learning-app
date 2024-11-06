@@ -12,6 +12,7 @@ interface TextFieldProps extends TextInputProps {
   textColor?: string;
   name: string;
   isSecure?: boolean;
+  style?: any;
 }
 const textColorMapping = (text: string) => {
   let value = '#858383';
@@ -41,15 +42,16 @@ export default function TextInputPaper(props: TextFieldProps) {
     isSecure = false,
     icon,
     name,
+    style,
     ...rest
   } = props;
   const [visible, setVisible] = useState(false);
   const [field, meta, helpers] = useField(name);
 
   return (
-    <View style={{ marginTop: 4 }}>
+    <View style={{ marginTop: 8 }}>
       {label ? (
-        <Text variant='labelLarge' style={{ fontWeight: 700 }}>
+        <Text variant='labelLarge' style={{ fontWeight: 700, marginBottom: 4 }}>
           {label}{' '}
           <Text variant='labelLarge' style={{ color: 'red' }}>
             {isRequired ? '*' : ''}
@@ -65,6 +67,7 @@ export default function TextInputPaper(props: TextFieldProps) {
         value={field.value}
         onChangeText={helpers.setValue}
         onBlur={field.onBlur(name)}
+        style={{ ...style, backgroundColor: 'white' }}
         error={meta.error && meta.touched ? true : false}
         right={
           icon ? (

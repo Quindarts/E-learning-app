@@ -36,6 +36,7 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate(ROUTING.LESSION_DETAIL, { courseId, isMyCourse })}
+      style={{ width: '100%' }}
     >
       <Card
         // onPress={() =>

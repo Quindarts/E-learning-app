@@ -27,10 +27,15 @@ function AllCourse({ courses, loading, error, fetchCourses }: AllCourseProps) {
   if (courses && courses.length === 0) {
     return <Text>No courses found.</Text>;
   }
-
   return (
     <View
-      style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', gap: 10 }}
+      style={{
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        width: '100%',
+        gap: 10,
+      }}
     >
       {courses?.map((course: any) => (
         <View style={{ width: '48%' }} key={course._id}>

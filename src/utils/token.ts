@@ -3,7 +3,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const getTokenList = async () => {
     try {
         const data = await AsyncStorage.getItem('tokenList');
-        alert(data)
         return JSON.parse(`${data}`);
     } catch (error) {
         console.error('Error getting token list:', error);

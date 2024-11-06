@@ -49,9 +49,9 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
 
   const handleSelectCategory = (category: string) => {
     if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((c) => c !== category)); // Remove the category from the selected list
+      setSelectedCategories(selectedCategories.filter((c) => c !== category));
     } else {
-      setSelectedCategories([...selectedCategories, category]); // Add the category to the selected list
+      setSelectedCategories([...selectedCategories, category]);
     }
   };
   return (
@@ -61,8 +61,9 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
         style={{
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'flex-start',
+          justifyContent: 'flex-end',
           width: '100%',
+          marginBottom: 4,
         }}
       >
         <Text variant='bodyMedium' style={{ marginLeft: 10 }}>
@@ -76,6 +77,7 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
               onPress={() => setMenuVisible(true)}
               mode='outlined'
               size='sm'
+              rounded='lg'
               compact
               style={{ marginLeft: 10 }}
             >
