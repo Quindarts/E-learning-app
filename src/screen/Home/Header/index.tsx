@@ -29,7 +29,7 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
   }, []);
 
   useLayoutEffect(() => {
-    if (selectedCategories.length === 0) {
+    if (selectedCategories.length === 0 && debouncedSearchTerm === '') {
       fetchCourses();
       return;
     }
@@ -38,8 +38,8 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
       keywords: debouncedSearchTerm,
       category: selectedCategories.length ? selectedCategories : [],
       sortField: selectedSearchKey,
-      minPrice: 100,
-      maxPrice: 500,
+      minPrice: 0,
+      maxPrice: 9999999,
     });
   }, [selectedCategories, debouncedSearchTerm]);
 
@@ -49,9 +49,9 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
 
   const handleSelectCategory = (category: string) => {
     if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((c) => c !== category));
+      setSelectedCategories(selectedCategories.filter((c) => c !== category)); // Remove the category from the selected list
     } else {
-      setSelectedCategories([...selectedCategories, category]);
+      setSelectedCategories([...selectedCategories, category]); // Add the category to the selected list
     }
   };
   return (
@@ -96,7 +96,7 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
         </Menu>
       </View>
       {/* filter */}
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', width: '100%', marginTop: 8, gap: 4 }}>
         {/* Dynamically render categories */}
         <ButtonPaper
           key='all'
@@ -105,6 +105,7 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
           size='sm'
           textColors={selectedCategories.length === 0 ? 'white' : 'black'}
           style={{ margin: 2, borderRadius: 20 }}
+          compact
         >
           All
         </ButtonPaper>
@@ -119,6 +120,7 @@ function Header({ fetchCourses, fetchFilteredCourses, fetchCategories, categorie
             size='sm'
             textColors={selectedCategories.includes(category) ? 'white' : 'black'}
             style={{ margin: 2, borderRadius: 20 }}
+            compact
           >
             {category}
           </ButtonPaper>

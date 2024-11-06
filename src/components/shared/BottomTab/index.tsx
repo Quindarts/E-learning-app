@@ -3,6 +3,7 @@ import HomeScreen from '@/screen/Home';
 import InBoxSreen from '@/screen/InBox';
 import MyCoursesScreen from '@/screen/myCourses';
 import ProfileScreen from '@/screen/Profile';
+import useUserStore from '@/store/auth/useUserStore';
 import theme from '@/theme';
 import { ROUTING } from '@/utils/constants';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -24,6 +25,7 @@ const Tab = createBottomTabNavigator();
 
 function BottomTab() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const user = useUserStore((state) => state.user);
   return (
     <Tab.Navigator
       screenOptions={{
@@ -47,7 +49,7 @@ function BottomTab() {
                 Welcome{' '}
               </Text>
               <Text variant='titleMedium' style={{ fontWeight: 'bold', color: '#0F3975' }}>
-                Ayesha
+                {user?.lastName}
               </Text>
             </View>
           ),

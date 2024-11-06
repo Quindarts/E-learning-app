@@ -79,10 +79,7 @@ export default function ProfileScreen() {
               zIndex: 1, // to be on top of the parent
             }}
           >
-            <AvatarPaper
-              variant={'lg'}
-              href={{ uri: 'https://avatars.githubusercontent.com/u/47231147?v=4' }}
-            />
+            <AvatarPaper variant={'lg'} href={{ uri: (user as any)?.avatar }} />
             <Text variant='titleLarge' style={{ fontWeight: 'bold' }}>
               {user?.lastName}
             </Text>
@@ -147,7 +144,7 @@ export default function ProfileScreen() {
           </Text>
           <Text variant='bodyMedium'>View all</Text>
         </View>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+        {/* <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
           {user?.currentCourses?.map((course: any, Index) => (
             <CardProjectPaper
               key={Index}
@@ -159,7 +156,26 @@ export default function ProfileScreen() {
               progress={Number(course.course.totalDuration)}
             />
           ))}
-        </View>
+        </View> */}
+        <FlatList
+          data={user?.currentCourses}
+          keyExtractor={(item: any) => item.course._id}
+          renderItem={({ item }: any) => (
+            <View style={{ flex: 1, marginHorizontal: 5, marginBottom: 10 }}>
+              <CardProjectPaper
+                courseId={item.course._id}
+                imageSource={{ uri: item.course.imgUrls[0] }}
+                name={item.course.name}
+                author={item.course.author}
+                initialRating={5}
+                progress={Number(item.course.totalDuration)}
+              />
+            </View>
+          )}
+          numColumns={2}
+          style={{ flex: 1 }}
+          scrollEnabled={false}
+        />
       </View>
       {/* </ScrollView> */}
     </RootLayout>

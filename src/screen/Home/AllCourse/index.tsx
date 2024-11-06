@@ -1,7 +1,7 @@
 import CardProjectPaper from '@/components/ui/Card/CardProject/Index';
 import { Course } from '@/types/course.type';
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { Text } from 'react-native-paper';
 
 interface AllCourseProps {
@@ -29,21 +29,25 @@ function AllCourse({ courses, loading, error, fetchCourses }: AllCourseProps) {
   }
 
   return (
-    <View>
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-        {courses?.map((course: any, Index) => (
+    <FlatList
+      data={courses}
+      keyExtractor={(item) => item._id}
+      renderItem={({ item }) => (
+        <View style={{ flex: 1, marginHorizontal: 5, marginBottom: 10 }}>
           <CardProjectPaper
-            key={Index}
-            courseId={course._id}
-            imageSource={{ uri: course.imgUrls[0] }}
-            name={course.name}
-            author={course.author}
+            courseId={item._id}
+            imageSource={{ uri: item.imgUrls[0] }}
+            name={item.name}
+            author={item.author}
             initialRating={5}
-            progress={Number(course.totalDuration)}
+            progress={Number(item.totalDuration)}
           />
-        ))}
-      </View>
-    </View>
+        </View>
+      )}
+      numColumns={2}
+      style={{ flex: 1 }}
+      scrollEnabled={false}
+    />
   );
 }
 
