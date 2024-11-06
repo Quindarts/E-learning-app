@@ -3,7 +3,7 @@ import TokenService from '@/utils/token';
 import useUserStore from '@/store/auth/useUserStore';
 const API_URL = process.env.EXPO_PUBLIC_API_URL;
 const axiosConfig = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -11,11 +11,10 @@ const axiosConfig = axios.create({
 });
 
 axiosConfig.interceptors.request.use(
-  (config) => {
-    const accessToken = Promise.resolve(TokenService.getAccessToken());
-    if (accessToken !== null || accessToken !== undefined) {
+  async (config) => {
+    Promise.resolve(TokenService.getAccessToken()).then((accessToken) => {
       config.headers.Authorization = `Bearer ${accessToken}`;
-    }
+    })
     return config;
   },
   (error) => {
