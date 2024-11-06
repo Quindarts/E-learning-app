@@ -8,8 +8,8 @@ import { ROUTING } from '@/utils/constants';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { Formik, FormikProps } from 'formik';
 import React from 'react';
-import { View } from 'react-native';
-import { Icon, Text } from 'react-native-paper';
+import { Image, View } from 'react-native';
+import { Button, Icon, Text } from 'react-native-paper';
 import * as Yup from 'yup';
 import Foundation from '@expo/vector-icons/Foundation';
 
@@ -140,6 +140,7 @@ function LoginScreen() {
             paddingHorizontal: 20,
           }}
         >
+<<<<<<< HEAD
           <ButtonPaper mode='outlined' onPress={() => {}}>
             <Foundation
               style={{ margin: 10 }}
@@ -154,6 +155,55 @@ function LoginScreen() {
             <AntDesign name='google' style={{ margin: 10 }} size={20} color='#333' />
             <Text> Sign Up with Google</Text>
           </ButtonPaper>
+=======
+          {/* <ChipPaper
+            onPress={() => {}}
+            bgColor='#1877F2'
+            mode='outlined'
+            icon='facebook'
+            textColor='white'
+          >
+            Sign Up with Facebook
+          </ChipPaper>
+          <ChipPaper
+            onPress={() => {}}
+            mode='outlined'
+            bgColor='#FFFFFF'
+            iconImage='../../../../assets/google.png'
+            textColor='#0000008A'
+          >
+            Sign Up with Google
+          </ChipPaper> */}
+          <Button
+            mode='contained'
+            onPress={() => {}}
+            style={{ backgroundColor: '#1877F2', marginVertical: 8, borderRadius: 8 }}
+            icon={() => <Icon source='facebook' size={20} />}
+            labelStyle={{ color: 'white' }}
+          >
+            Sign Up with Facebook
+          </Button>
+          <Button
+            mode='contained'
+            onPress={() => {}}
+            style={{
+              backgroundColor: '#FFFFFF',
+              marginVertical: 8,
+              borderWidth: 0.5,
+              borderColor: '#0000008A',
+              borderRadius: 8,
+            }}
+            icon={() => (
+              <Image
+                source={require('../../../../assets/google.png')}
+                style={{ width: 20, height: 20 }}
+              />
+            )}
+            labelStyle={{ color: '#0000008A' }}
+          >
+            Sign Up with Google
+          </Button>
+>>>>>>> 0a5e285cc11f8424027d67b8e3a476c0fa9e00f2
           <Text
             style={{
               textAlign: 'center',

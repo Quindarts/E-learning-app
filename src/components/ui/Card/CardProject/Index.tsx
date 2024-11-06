@@ -34,52 +34,59 @@ const CardProjectPaper: React.FC<ProjectCardProps> = ({
   const isMyCourse = user?.currentCourses?.find((c: any) => c?.course?._id === courseId);
 
   return (
-    <Card
-      onPress={() =>
-        navigation.navigate(ROUTING.LESSION_DETAIL, {
-          courseId: courseId,
-          isMyCourse: isMyCourse,
-        })
-      }
-      elevation={0}
-      style={{ marginTop: 10, width: '48%' }}
+    <TouchableOpacity
+      onPress={() => navigation.navigate(ROUTING.LESSION_DETAIL, { courseId, isMyCourse })}
     >
-      <Card.Cover
-        source={imageSource}
-        style={{ borderRadius: 10, width: '100%', height: (screenWidth - 70) / 2 }} // trừ padding / 2
-      />
-      <Card.Content style={{ paddingLeft: 0, paddingRight: 0, marginTop: 10 }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <Text
+      <Card
+        // onPress={() =>
+        //   navigation.navigate(ROUTING.LESSION_DETAIL, {
+        //     courseId: courseId,
+        //     isMyCourse: isMyCourse,
+        //   })
+        // }
+        elevation={0}
+        style={{ marginTop: 10, width: '100%' }}
+      >
+        <Card.Cover
+          source={imageSource}
+          style={{ borderRadius: 10, width: '100%', height: (screenWidth - 70) / 2 }} // trừ padding / 2
+        />
+        <Card.Content style={{ paddingLeft: 0, paddingRight: 0, marginTop: 10 }}>
+          <View
             style={{
-              // fontSize: 14,
-              fontWeight: 700,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
             }}
-            variant='labelMedium'
           >
-            {name}
+            <Text
+              style={{
+                // fontSize: 14,
+                fontWeight: 700,
+              }}
+              variant='labelMedium'
+            >
+              {name}
+            </Text>
+            <StarRating
+              rating={rating}
+              onChange={setRating}
+              maxStars={5}
+              starSize={14}
+              color={theme.colors.primary}
+              starStyle={{ marginHorizontal: 0 }}
+              enableSwiping={false}
+            />
+          </View>
+          <Text style={{ fontSize: 9, color: '#7E7E7E' }}>By {author}</Text>
+          <Text style={{ textAlign: 'right', fontSize: 9, color: '#858383' }}>
+            {progress ?? 0}% Done
           </Text>
-          <StarRating
-            rating={rating}
-            onChange={setRating}
-            maxStars={5}
-            starSize={14}
-            color={theme.colors.primary}
-            starStyle={{ marginHorizontal: 0 }}
-            enableSwiping={false}
-          />
-        </View>
-        <Text style={{ fontSize: 9, color: '#7E7E7E' }}>By {author}</Text>
-        <Text style={{ textAlign: 'right', fontSize: 9, color: '#858383' }}>{progress}% Done</Text>
-        <ProgressBar progress={progress / 100} color='#0f3975' />
-      </Card.Content>
-    </Card>
+          <ProgressBar progress={(progress ?? 0) / 100} color='#0f3975' />
+        </Card.Content>
+      </Card>
+    </TouchableOpacity>
   );
 };
 

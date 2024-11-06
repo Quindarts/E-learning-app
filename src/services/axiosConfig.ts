@@ -9,14 +9,14 @@ const axiosConfig = axios.create({
   timeout: 10000,
 });
 
-axiosConfig.interceptors.request.use(
-  // async (config) => {
-  //   const accessToken = await TokenService.getAccessToken();
-  //   if (accessToken !== null) {
-  //     config.headers.Authorization = `Bearer ${accessToken}`;
-  //   }
-  //   return config;
-  // },
+axiosConfig.interceptors.request.
+  async (config) => {
+    // const accessToken = await TokenService.getAccessToken();
+    // if (accessToken) {
+    //   config.headers.Authorization = `Bearer ${accessToken}`;
+    // }
+    return config;
+  },
   (error) => {
     return Promise.reject(error);
   },

@@ -116,6 +116,7 @@ const ChipPaper: React.FC<ChipPropsType> = (props) => {
           textAlign: 'center',
           fontSize: 16,
           fontWeight: '600',
+          height: 30,
         }}
         variant='bodyLarge'
       >
