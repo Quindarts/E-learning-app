@@ -8,8 +8,8 @@ import { ROUTING } from '@/utils/constants';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { Formik, FormikProps } from 'formik';
 import React from 'react';
-import { View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Image, View } from 'react-native';
+import { Button, Icon, Text } from 'react-native-paper';
 import * as Yup from 'yup';
 
 interface FormValues {
@@ -145,7 +145,7 @@ function LoginScreen() {
             paddingHorizontal: 20,
           }}
         >
-          <ChipPaper
+          {/* <ChipPaper
             onPress={() => {}}
             bgColor='#1877F2'
             mode='outlined'
@@ -162,7 +162,36 @@ function LoginScreen() {
             textColor='#0000008A'
           >
             Sign Up with Google
-          </ChipPaper>
+          </ChipPaper> */}
+          <Button
+            mode='contained'
+            onPress={() => {}}
+            style={{ backgroundColor: '#1877F2', marginVertical: 8, borderRadius: 8 }}
+            icon={() => <Icon source='facebook' size={20} />}
+            labelStyle={{ color: 'white' }}
+          >
+            Sign Up with Facebook
+          </Button>
+          <Button
+            mode='contained'
+            onPress={() => {}}
+            style={{
+              backgroundColor: '#FFFFFF',
+              marginVertical: 8,
+              borderWidth: 0.5,
+              borderColor: '#0000008A',
+              borderRadius: 8,
+            }}
+            icon={() => (
+              <Image
+                source={require('../../../../assets/google.png')}
+                style={{ width: 20, height: 20 }}
+              />
+            )}
+            labelStyle={{ color: '#0000008A' }}
+          >
+            Sign Up with Google
+          </Button>
           <Text
             style={{
               textAlign: 'center',
