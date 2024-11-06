@@ -8,8 +8,4 @@ const login: any = async ({ email, password }: IAuth) => {
   });
 };
 
-
-const authService = {
-  login,
-};
-export default authService;
+export { login };

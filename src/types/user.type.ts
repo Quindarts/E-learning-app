@@ -24,5 +24,6 @@ interface User {
   notifies: Notify[];
   coupons: Coupon[];
   currentCourses: Array<{ _id: string; progress: number; time: string }>;
+  tokenList?: { accessToken: string; refreshToken: string };
 }
 export { User };

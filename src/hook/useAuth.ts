@@ -1,4 +1,4 @@
-import authService from '@/services/authService';
+import { login } from '@/services/authService';
 import useAppStore from '@/store/app';
 import useUserStore from '@/store/auth/useUserStore';
 import { IAuth } from '@/types/auth.type';
@@ -14,18 +14,18 @@ export const useAuth = () => {
   const handleLogin = async ({ email, password }: IAuth) => {
     try {
       onLoading();
-      const response = await authService.login({ email, password });
-      AsyncStorage.setItem('tokenList', JSON.stringify(response.tokenList));
+      const response = await login({ email, password });
+      await AsyncStorage.setItem('tokenList', JSON.stringify(response.tokenList));
       setUser(response.user);
       unLoading();
       navigation.navigate('BottomTab');
-      return response;
+      return
     } catch (error) {
       return error;
     }
   };
   const handleLogout = async () => {
-    await AsyncStorage.removeItem('tokenList')
+    await AsyncStorage.clear();
     navigation.navigate(ROUTING.LOGIN);
 
   };

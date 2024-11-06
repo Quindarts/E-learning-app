@@ -1,8 +1,9 @@
 import axios from 'axios';
 import TokenService from '@/utils/token';
+import useUserStore from '@/store/auth/useUserStore';
 const API_URL = process.env.EXPO_PUBLIC_API_URL;
 const axiosConfig = axios.create({
-  baseURL: API_URL,
+  baseURL: "http://localhost:5000",
   headers: {
     'Content-Type': 'application/json',
   },
@@ -10,9 +11,9 @@ const axiosConfig = axios.create({
 });
 
 axiosConfig.interceptors.request.use(
-  async (config) => {
-    const accessToken = await TokenService.getAccessToken();
-    if (accessToken) {
+  (config) => {
+    const accessToken = Promise.resolve(TokenService.getAccessToken());
+    if (accessToken !== null || accessToken !== undefined) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
@@ -30,20 +31,20 @@ axiosConfig.interceptors.response.use(
     const originalRequest = error.config;
     if (error?.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      const refreshToken = await TokenService.getRefreshToken();
-      if (refreshToken) {
-        // try {
-        //   const response = await axiosConfig.post('/refreshToken', {
-        //     refreshToken,
-        //   });
-        //   const newAccessToken = response?.data?.accessToken; 
-        //   setAccessToken(newAccessToken);
-        //   return axiosConfig(originalRequest);
-        // } catch (error) {
-        //   console.error('Error refreshing token:', error);
-        //   return Promise.reject(error);
-        // }
-      }
+      // const refreshToken = await TokenService.getRefreshToken();
+      // if (refreshToken) {
+      // try {
+      //   const response = await axiosConfig.post('/refreshToken', {
+      //     refreshToken,
+      //   });
+      //   const newAccessToken = response?.data?.accessToken; 
+      //   setAccessToken(newAccessToken);
+      //   return axiosConfig(originalRequest);
+      // } catch (error) {
+      //   console.error('Error refreshing token:', error);
+      //   return Promise.reject(error);
+      // }
+      // }
     }
     return Promise.reject(error?.response?.data);
   },
