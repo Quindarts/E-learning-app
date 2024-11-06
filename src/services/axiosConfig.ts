@@ -10,10 +10,10 @@ const axiosConfig = axios.create({
 
 axiosConfig.interceptors.request.use(
   async (config) => {
-    // const accessToken = await TokenService.getAccessToken();
-    // if (accessToken) {
-    //   config.headers.Authorization = `Bearer ${accessToken}`;
-    // }
+    const accessToken = await TokenService.getAccessToken();
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
     return config;
   },
   (error) => {
