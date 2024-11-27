@@ -2,21 +2,26 @@ import ButtonPaper from '@/components/ui/Button';
 import ChipPaper from '@/components/ui/Chip';
 import IconButtonPaper from '@/components/ui/IconButton';
 import TextInputPaper from '@/components/ui/TextInput';
+import { useAuth } from '@/hook/useAuth';
 import { ROUTING } from '@/utils/constants';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { Formik, FormikProps } from 'formik';
-import { View, Text, ScrollView } from 'react-native';
-import { Button } from 'react-native-paper';
+import { View, Text, ScrollView, Image, Alert } from 'react-native';
+import { Button, Icon } from 'react-native-paper';
 import * as Yup from 'yup';
 export default function SignUp() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+  const { handleRegister } = useAuth();
+
   return (
-    <View
-      style={{
-        flex: 1,
+    <ScrollView
+      contentContainerStyle={{
+        // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
+        paddingHorizontal: 20,
+        paddingTop: 40,
         backgroundColor: 'white',
       }}
     >
@@ -59,21 +64,34 @@ export default function SignUp() {
       </View>
       {/* form */}
       <Formik
-        initialValues={{ fullName: '', email: '', password: '', confirmPassword: '' }}
+        initialValues={{
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        }}
         validationSchema={Yup.object().shape({
-          fullName: Yup.string().required(),
+          firstName: Yup.string().required(),
+          lastName: Yup.string().required(),
           email: Yup.string().email().required(),
           password: Yup.string().required(),
           confirmPassword: Yup.string().oneOf([Yup.ref('password')], 'Passwords must match'),
         })}
-        onSubmit={(values) => {
-          console.log(values);
+        onSubmit={async (values) => {
+          const { firstName, lastName, email, password } = values;
+          const response: any = await handleRegister({ firstName, lastName, email, password });
+          console.log('sigunup: ', response);
+          if (response.status === 409) {
+            alert(response.message);
+          }
         }}
       >
         {({
           handleSubmit,
         }: FormikProps<{
-          fullName: string;
+          firstName: string;
+          lastName: string;
           email: string;
           password: string;
           confirmPassword: string;
@@ -81,9 +99,17 @@ export default function SignUp() {
           <View style={{ width: '100%' }}>
             <TextInputPaper
               isRequired={true}
-              label='Full Name'
-              name='fullName'
-              placeholder='Full Name'
+              label='First Name'
+              name='firstName'
+              placeholder='First Name'
+              mode='outlined'
+              textColor='primary'
+            />
+            <TextInputPaper
+              isRequired={true}
+              label='Last Name'
+              name='lastName'
+              placeholder='Last Name'
               mode='outlined'
               textColor='primary'
             />
@@ -137,25 +163,36 @@ export default function SignUp() {
       </View>
       {/* chip */}
       <View style={{ marginTop: 15, paddingHorizontal: 15, gap: 10 }}>
-        <ChipPaper
+        <Button
+          mode='contained'
           onPress={() => {}}
-          bgColor='#1877F2'
-          mode='outlined'
-          icon='facebook'
-          textColor='white'
+          style={{ backgroundColor: '#1877F2', marginVertical: 8, borderRadius: 8 }}
+          icon={() => <Icon source='facebook' color='white' size={24} />}
+          labelStyle={{ color: 'white' }}
         >
           Sign Up with Facebook
-        </ChipPaper>
-        <ChipPaper
+        </Button>
+        <Button
+          mode='contained'
           onPress={() => {}}
-          mode='outlined'
-          bgColor='#FFFFFF'
-          iconImage='../../../../assets/google.png'
-          textColor='#0000008A'
+          style={{
+            backgroundColor: '#FFFFFF',
+            marginVertical: 8,
+            borderWidth: 0.5,
+            borderColor: '#0000008A',
+            borderRadius: 8,
+          }}
+          icon={() => (
+            <Image
+              source={require('../../../../assets/google.png')}
+              style={{ width: 20, height: 20 }}
+            />
+          )}
+          labelStyle={{ color: '#0000008A' }}
         >
           Sign Up with Google
-        </ChipPaper>
-        <Text style={{ textAlign: 'center' }}>
+        </Button>
+        {/* <Text style={{ textAlign: 'center' }}>
           Already Have An Account?
           <Text
             style={{ color: '#0f3975', fontWeight: 'bold' }}
@@ -164,8 +201,8 @@ export default function SignUp() {
             {' '}
             Sign In?
           </Text>
-        </Text>
+        </Text> */}
       </View>
-    </View>
+    </ScrollView>
   );
 }

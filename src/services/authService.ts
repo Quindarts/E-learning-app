@@ -8,4 +8,13 @@ const login: any = async ({ email, password }: IAuth) => {
   });
 };
 
-export { login };
+const register: any = async ({ firstName, lastName, email, password }: IAuth) => {
+  return await axiosConfig.post('/auth/register', {
+    firstName,
+    lastName,
+    email,
+    password,
+  });
+};
+
+export { login, register };

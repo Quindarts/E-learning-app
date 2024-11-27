@@ -1,4 +1,5 @@
-import { login } from '@/services/authService';
+import SignUp from '@/screen/auth/SignUp';
+import { login, register } from '@/services/authService';
 import useAppStore from '@/store/app';
 import useUserStore from '@/store/auth/useUserStore';
 import { IAuth } from '@/types/auth.type';
@@ -19,7 +20,7 @@ export const useAuth = () => {
       setUser(response.user);
       unLoading();
       navigation.navigate('BottomTab');
-      return
+      return;
     } catch (error) {
       return error;
     }
@@ -27,7 +28,19 @@ export const useAuth = () => {
   const handleLogout = async () => {
     await AsyncStorage.clear();
     navigation.navigate(ROUTING.LOGIN);
-
   };
-  return { handleLogin, handleLogout };
+  const handleRegister = async ({ firstName, lastName, email, password }: IAuth) => {
+    try {
+      onLoading();
+      const response = await register({ firstName, lastName, email, password });
+      await AsyncStorage.setItem('tokenList', JSON.stringify(response.tokenList));
+      setUser(response.user);
+      unLoading();
+      navigation.navigate('BottomTab');
+    } catch (error) {
+      unLoading();
+      return error;
+    }
+  };
+  return { handleLogin, handleLogout, handleRegister };
 };

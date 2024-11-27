@@ -3,6 +3,7 @@ export const ROUTING = {
   PROFILE: 'profile',
   MY_COURSE: 'profile/courses',
   LOGIN: 'login',
+  REGISTER: 'register',
   BOTTOM_TAB: 'BottomTab',
   SIGN_UP: 'sign-up',
   ONBOARDING: 'on-boarding',

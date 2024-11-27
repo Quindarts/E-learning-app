@@ -1,4 +1,4 @@
-import { Cart } from "./cart.type";
+import { Cart } from './cart.type';
 
 interface IUser {
   id?: string;
@@ -6,10 +6,12 @@ interface IUser {
   firstName: string;
   lastName: string;
   gender: 'M' | 'F' | 'O';
-  cart: Cart
+  cart: Cart;
 }
 
 interface IAuth {
+  firstName?: string;
+  lastName?: string;
   email: string;
   password: string;
 }
