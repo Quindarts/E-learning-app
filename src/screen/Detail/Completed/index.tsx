@@ -32,7 +32,7 @@ export default function TransactionCompletedScreen() {
             navigation.navigate(ROUTING.BOTTOM_TAB);
           }}
         >
-          Started to lesson
+          Go home
         </Button>
       </View>
     </RootLayout>

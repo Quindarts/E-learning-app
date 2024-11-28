@@ -122,12 +122,13 @@ export default function BillingDetail({
     country: string;
   }) => {
     const objectBody = {
-      couponCode: selectedCoupon?.code, // chỉnh lại thêm
+      couponCode: selectedCoupon?.code || '',
     };
     console.log(objectBody);
 
     const orderResponse = await createOrder(objectBody);
-    if (orderResponse && orderResponse.success && orderResponse?.order?.status === 'completed') {
+    console.log(orderResponse);
+    if (orderResponse && orderResponse.success && orderResponse?.status === 201) {
       navigation.navigate(ROUTING.TRANSACTION_COMPLETED);
     }
   };
